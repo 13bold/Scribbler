@@ -102,9 +102,9 @@
 	if (!runningRequest && [requestQueue count] > 0)
 	{
 		LFRequest *nextRequest = [requestQueue objectAtIndex:0];
+		runningRequest = YES;
 		[nextRequest setDelegate:self];
 		[nextRequest dispatch];
-		runningRequest = YES;
 	}
 }
 
