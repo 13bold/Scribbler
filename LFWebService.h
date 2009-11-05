@@ -65,13 +65,6 @@
 - (void)loveTrack:(LFTrack *)theTrack;
 - (void)banTrack:(LFTrack *)theTrack;
 
-// Web service methods
-- (void)dispatchNextRequestIfPossible;
-
-// Request callback methods
-- (void)requestSucceeded:(LFRequest *)theRequest;
-- (void)request:(LFRequest *)theRequest failedWithError:(NSError *)theError;
-
 @end
 
 // Delegate interface

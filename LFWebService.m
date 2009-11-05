@@ -25,6 +25,7 @@
 //
 
 #import "LFWebService.h"
+#import "LFWebServicePrivate.h"
 #import "LFTrack.h"
 #import "LFRequest.h"
 

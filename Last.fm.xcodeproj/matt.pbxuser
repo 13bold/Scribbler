@@ -98,17 +98,17 @@
 	};
 	C9CD582310A3302200AB1952 /* LFWebService.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {781, 1014}}";
+			sepNavIntBoundsRect = "{{0, 0}, {781, 1144}}";
 			sepNavSelRange = "{79, 1146}";
-			sepNavVisRange = "{0, 1223}";
+			sepNavVisRange = "{0, 1205}";
 			sepNavWindowFrame = "{{84, 202}, {926, 608}}";
 		};
 	};
 	C9CD582410A3302200AB1952 /* LFWebService.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {781, 429}}";
-			sepNavSelRange = "{1225, 0}";
-			sepNavVisRange = "{0, 1205}";
+			sepNavIntBoundsRect = "{{0, 0}, {781, 1534}}";
+			sepNavSelRange = "{1283, 0}";
+			sepNavVisRange = "{295, 1062}";
 			sepNavWindowFrame = "{{107, 181}, {926, 608}}";
 		};
 	};
@@ -116,15 +116,15 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {781, 689}}";
 			sepNavSelRange = "{1226, 0}";
-			sepNavVisRange = "{1046, 545}";
+			sepNavVisRange = "{1046, 516}";
 			sepNavWindowFrame = "{{38, 244}, {926, 608}}";
 		};
 	};
 	C9CD582A10A3327700AB1952 /* LFPlaySession.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {781, 1209}}";
+			sepNavIntBoundsRect = "{{0, 0}, {781, 1053}}";
 			sepNavSelRange = "{1226, 0}";
-			sepNavVisRange = "{1046, 488}";
+			sepNavVisRange = "{1046, 471}";
 			sepNavWindowFrame = "{{61, 223}, {926, 608}}";
 		};
 	};
@@ -137,16 +137,18 @@
 	};
 	C9CD584C10A3553500AB1952 /* LFRequest.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {781, 767}}";
-			sepNavSelRange = "{1222, 0}";
-			sepNavVisRange = "{525, 900}";
+			sepNavIntBoundsRect = "{{0, 0}, {781, 949}}";
+			sepNavSelRange = "{2230, 0}";
+			sepNavVisRange = "{451, 956}";
+			sepNavWindowFrame = "{{130, 160}, {926, 608}}";
 		};
 	};
 	C9CD584D10A3553500AB1952 /* LFRequest.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {781, 949}}";
-			sepNavSelRange = "{1222, 0}";
-			sepNavVisRange = "{210, 1111}";
+			sepNavIntBoundsRect = "{{0, 0}, {781, 1261}}";
+			sepNavSelRange = "{2533, 0}";
+			sepNavVisRange = "{2037, 505}";
+			sepNavWindowFrame = "{{153, 139}, {926, 608}}";
 		};
 	};
 	C9CD586410A35D4D00AB1952 /* PlistBookmark */ = {
@@ -311,6 +313,13 @@
 		vrLen = 1216;
 		vrLoc = 32;
 	};
+	C9CD589310A366C800AB1952 /* LFWebServicePrivate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {781, 297}}";
+			sepNavSelRange = "{420, 0}";
+			sepNavVisRange = "{0, 427}";
+		};
+	};
 	C9D5C77F10A289D500AFCF8A /* Source Control */ = {
 		isa = PBXSourceControlManager;
 		fallbackIsa = XCSourceControlManager;
@@ -384,17 +393,17 @@
 	};
 	C9D5C7A510A28B3500AFCF8A /* LFTrack.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {781, 897}}";
+			sepNavIntBoundsRect = "{{0, 0}, {781, 832}}";
 			sepNavSelRange = "{1220, 0}";
-			sepNavVisRange = "{523, 882}";
+			sepNavVisRange = "{1450, 580}";
 			sepNavWindowFrame = "{{15, 265}, {926, 608}}";
 		};
 	};
 	C9D5C7A610A28B3500AFCF8A /* LFTrack.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {781, 1625}}";
+			sepNavIntBoundsRect = "{{0, 0}, {781, 1443}}";
 			sepNavSelRange = "{1220, 0}";
-			sepNavVisRange = "{724, 823}";
+			sepNavVisRange = "{1721, 525}";
 		};
 	};
 }
