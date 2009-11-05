@@ -62,6 +62,9 @@
 - (void)loveTrack:(LFTrack *)theTrack;
 - (void)banTrack:(LFTrack *)theTrack;
 
+// Web service methods
+- (void)dispatchNextRequest;
+
 @end
 
 // Delegate interface

@@ -29,4 +29,66 @@
 
 @implementation LFWebService
 
+#pragma mark Initializers
+- (id)init
+{
+	if (self = [super init])
+	{
+		clientID = @"tst";
+		requestQueue = [[NSMutableArray alloc] init];
+	}
+	return self;
+}
++ (id)sharedWebService
+{
+	static id __sharedLFWebService = nil;
+	if (!__sharedLFWebService)
+		__sharedLFWebService = [[self alloc] init];
+	return __sharedLFWebService;
+}
+
+#pragma mark Deallocator
+- (void)dealloc
+{
+	[APIKey release];
+	[sharedSecret release];
+	[clientID release];
+	[sessionKey release];
+	[currentTrack release];
+	[requestQueue release];
+	[super dealloc];
+}
+
+#pragma mark Properties
+@synthesize delegate;
+@synthesize APIKey;
+@synthesize sharedSecret;
+@synthesize clientID;
+@synthesize sessionKey;
+@synthesize currentTrack;
+
+#pragma mark Session methods
+- (void)establishNewSession
+{
+}
+
+#pragma mark Track methods
+- (void)startPlayingTrack:(LFTrack *)theTrack
+{
+}
+- (void)scrobbleTrackIfNecessary:(LFTrack *)theTrack
+{
+}
+- (void)loveTrack:(LFTrack *)theTrack
+{
+}
+- (void)banTrack:(LFTrack *)theTrack
+{
+}
+
+#pragma mark Web service methods
+- (void)dispatchNextRequest
+{
+}
+
 @end
