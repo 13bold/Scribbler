@@ -57,11 +57,36 @@
 - (void)dealloc
 {
 	[track release];
+	[connection release];
+	[response release];
+	[responseData release];
 	[super dealloc];
 }
 
 #pragma mark Properties
+@synthesize delegate;
 @synthesize track;
 @synthesize type;
+@synthesize response;
+@synthesize responseData;
+
+#pragma mark Dispatch methods
+- (void)dispatch
+{
+}
+
+#pragma mark NSURLConnection delegate methods
+- (void)connection:(NSURLConnection *)theConnection didReceiveResponse:(NSURLResponse *)theResponse
+{
+}
+- (void)connection:(NSURLConnection *)theConnection didReceiveData:(NSData *)data
+{
+}
+- (void)connectionDidFinishLoading:(NSURLConnection *)theConnection
+{
+}
+- (void)connection:(NSURLConnection *)theConnection didFailWithError:(NSError *)error
+{
+}
 
 @end

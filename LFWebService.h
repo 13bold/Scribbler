@@ -29,6 +29,7 @@
 
 // Forward declarations
 @class LFTrack;
+@class LFRequest;
 
 @interface LFWebService : NSObject {
 	id delegate;
@@ -40,6 +41,8 @@
 	
 	LFTrack *currentTrack;
 	NSMutableArray *requestQueue;
+	
+	BOOL runningRequest;
 }
 
 // Initializers
@@ -63,7 +66,11 @@
 - (void)banTrack:(LFTrack *)theTrack;
 
 // Web service methods
-- (void)dispatchNextRequest;
+- (void)dispatchNextRequestIfPossible;
+
+// Request callback methods
+- (void)requestSucceeded:(LFRequest *)theRequest;
+- (void)request:(LFRequest *)theRequest failedWithError:(NSError *)theError;
 
 @end
 

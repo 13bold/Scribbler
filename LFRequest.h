@@ -39,8 +39,13 @@ typedef enum _LFRequestType {
 @class LFTrack;
 
 @interface LFRequest : NSObject {
+	id delegate;
 	LFTrack *track;
 	LFRequestType requestType;
+	
+	NSURLConnection *connection;
+	NSURLResponse *response;
+	NSMutableData *responseData;
 }
 
 // Initializers
@@ -49,7 +54,19 @@ typedef enum _LFRequestType {
 + (id)requestWithTrack:(LFTrack *)theTrack requestType:(LFRequestType)theType;
 
 // Properties
+@property(assign) id delegate;
 @property(retain) LFTrack *track;
 @property(assign) LFRequestType type;
+@property(retain,readonly) NSURLResponse *response;
+@property(retain,readonly) NSMutableData *responseData;
+
+// Dispatch methods
+- (void)dispatch;
+
+// NSURLConnection delegate methods
+- (void)connection:(NSURLConnection *)theConnection didReceiveResponse:(NSURLResponse *)theResponse;
+- (void)connection:(NSURLConnection *)theConnection didReceiveData:(NSData *)data;
+- (void)connectionDidFinishLoading:(NSURLConnection *)theConnection;
+- (void)connection:(NSURLConnection *)theConnection didFailWithError:(NSError *)error;
 
 @end

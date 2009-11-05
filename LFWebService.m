@@ -25,6 +25,8 @@
 //
 
 #import "LFWebService.h"
+#import "LFTrack.h"
+#import "LFRequest.h"
 
 
 @implementation LFWebService
@@ -36,6 +38,8 @@
 	{
 		clientID = @"tst";
 		requestQueue = [[NSMutableArray alloc] init];
+		
+		runningRequest = NO;
 	}
 	return self;
 }
@@ -81,14 +85,36 @@
 }
 - (void)loveTrack:(LFTrack *)theTrack
 {
+	LFRequest *theRequest = [LFRequest requestWithTrack:theTrack requestType:LFRequestLove];
+	[requestQueue addObject:theRequest];
+	[self dispatchNextRequestIfPossible];
 }
 - (void)banTrack:(LFTrack *)theTrack
 {
+	LFRequest *theRequest = [LFRequest requestWithTrack:theTrack requestType:LFRequestBan];
+	[requestQueue addObject:theRequest];
+	[self dispatchNextRequestIfPossible];
 }
 
 #pragma mark Web service methods
-- (void)dispatchNextRequest
+- (void)dispatchNextRequestIfPossible
 {
+	if (!runningRequest && [requestQueue count] > 0)
+	{
+		LFRequest *nextRequest = [requestQueue objectAtIndex:0];
+		[nextRequest setDelegate:self];
+		[nextRequest dispatch];
+		runningRequest = YES;
+	}
+}
+
+#pragma mark Request callback methods
+- (void)requestSucceeded:(LFRequest *)theRequest
+{
+}
+- (void)request:(LFRequest *)theRequest failedWithError:(NSError *)theError
+{
+	[theRequest setDelegate:nil];
 }
 
 @end
