@@ -9,10 +9,15 @@
 /* Begin PBXBuildFile section */
 		8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
 		8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
+		C9CD582510A3302200AB1952 /* LFWebService.h in Headers */ = {isa = PBXBuildFile; fileRef = C9CD582310A3302200AB1952 /* LFWebService.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C9CD582610A3302200AB1952 /* LFWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = C9CD582410A3302200AB1952 /* LFWebService.m */; };
+		C9CD582B10A3327700AB1952 /* LFPlaySession.h in Headers */ = {isa = PBXBuildFile; fileRef = C9CD582910A3327700AB1952 /* LFPlaySession.h */; };
+		C9CD582C10A3327700AB1952 /* LFPlaySession.m in Sources */ = {isa = PBXBuildFile; fileRef = C9CD582A10A3327700AB1952 /* LFPlaySession.m */; };
+		C9CD583B10A3374100AB1952 /* Last.fm.h in Headers */ = {isa = PBXBuildFile; fileRef = C9CD583910A3374100AB1952 /* Last.fm.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C9D5C79410A28A4B00AFCF8A /* Last.fm.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* Last.fm.framework */; };
 		C9D5C79D10A28A8C00AFCF8A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D5C79C10A28A8C00AFCF8A /* main.m */; };
 		C9D5C7A210A28B0000AFCF8A /* Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D5C7A110A28B0000AFCF8A /* Controller.m */; };
-		C9D5C7A710A28B3500AFCF8A /* LFTrack.h in Headers */ = {isa = PBXBuildFile; fileRef = C9D5C7A510A28B3500AFCF8A /* LFTrack.h */; };
+		C9D5C7A710A28B3500AFCF8A /* LFTrack.h in Headers */ = {isa = PBXBuildFile; fileRef = C9D5C7A510A28B3500AFCF8A /* LFTrack.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C9D5C7A810A28B3500AFCF8A /* LFTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D5C7A610A28B3500AFCF8A /* LFTrack.m */; };
 		C9D5C7AE10A28B5D00AFCF8A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9D5C7AD10A28B5D00AFCF8A /* MainMenu.xib */; };
 		C9D5C7B810A28BC900AFCF8A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
@@ -24,7 +29,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 8DC2EF4F0486A6940098B216 /* Last.fm */;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
 			remoteInfo = Last.fm;
 		};
 /* End PBXContainerItemProxy section */
@@ -50,7 +55,12 @@
 		32DBCF5E0370ADEE00C91783 /* Last.fm_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Last.fm_Prefix.pch; sourceTree = "<group>"; };
 		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DC2EF5B0486A6940098B216 /* Last.fm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Last.fm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C9D5C78910A28A2500AFCF8A /* Last.fm Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "Last.fm Demo.app"; path = "build/Debug/Last.fm Demo.app"; sourceTree = "<group>"; };
+		C9CD582310A3302200AB1952 /* LFWebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFWebService.h; sourceTree = "<group>"; };
+		C9CD582410A3302200AB1952 /* LFWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFWebService.m; sourceTree = "<group>"; };
+		C9CD582910A3327700AB1952 /* LFPlaySession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFPlaySession.h; sourceTree = "<group>"; };
+		C9CD582A10A3327700AB1952 /* LFPlaySession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFPlaySession.m; sourceTree = "<group>"; };
+		C9CD583910A3374100AB1952 /* Last.fm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Last.fm.h; sourceTree = "<group>"; };
+		C9D5C78910A28A2500AFCF8A /* Last.fm Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Last.fm Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9D5C78B10A28A2500AFCF8A /* Last.fm Demo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Last.fm Demo-Info.plist"; sourceTree = "<group>"; };
 		C9D5C79C10A28A8C00AFCF8A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C9D5C7A010A28B0000AFCF8A /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
@@ -127,8 +137,12 @@
 		08FB77AEFE84172EC02AAC07 /* Classes (Framework) */ = {
 			isa = PBXGroup;
 			children = (
+				C9CD582310A3302200AB1952 /* LFWebService.h */,
+				C9CD582410A3302200AB1952 /* LFWebService.m */,
 				C9D5C7A510A28B3500AFCF8A /* LFTrack.h */,
 				C9D5C7A610A28B3500AFCF8A /* LFTrack.m */,
+				C9CD582910A3327700AB1952 /* LFPlaySession.h */,
+				C9CD582A10A3327700AB1952 /* LFPlaySession.m */,
 			);
 			name = "Classes (Framework)";
 			sourceTree = "<group>";
@@ -154,6 +168,7 @@
 		32C88DFF0371C24200C91783 /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				C9CD583910A3374100AB1952 /* Last.fm.h */,
 				C9D5C79C10A28A8C00AFCF8A /* main.m */,
 				32DBCF5E0370ADEE00C91783 /* Last.fm_Prefix.pch */,
 			);
@@ -177,6 +192,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9D5C7A710A28B3500AFCF8A /* LFTrack.h in Headers */,
+				C9CD582510A3302200AB1952 /* LFWebService.h in Headers */,
+				C9CD582B10A3327700AB1952 /* LFPlaySession.h in Headers */,
+				C9CD583B10A3374100AB1952 /* Last.fm.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +283,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9D5C7A810A28B3500AFCF8A /* LFTrack.m in Sources */,
+				C9CD582610A3302200AB1952 /* LFWebService.m in Sources */,
+				C9CD582C10A3327700AB1952 /* LFPlaySession.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

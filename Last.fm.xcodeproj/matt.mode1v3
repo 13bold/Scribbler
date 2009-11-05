@@ -229,8 +229,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -276,8 +274,9 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>19</integer>
-									<integer>17</integer>
+									<integer>11</integer>
+									<integer>10</integer>
+									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
@@ -311,12 +310,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>Controller.m</string>
+								<string>LFTrack.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -324,18 +325,18 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>Controller.m</string>
+										<string>LFTrack.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>C9D5C7C710A28BEE00AFCF8A</string>
+										<string>C9D5C7D010A28F5700AFCF8A</string>
 										<key>history</key>
 										<array>
 											<string>C9D5C7C210A28BEE00AFCF8A</string>
-											<string>C9D5C7C310A28BEE00AFCF8A</string>
-											<string>C9D5C7C410A28BEE00AFCF8A</string>
 											<string>C9D5C7C510A28BEE00AFCF8A</string>
-											<string>C9D5C7C610A28BEE00AFCF8A</string>
+											<string>C9D5C7CD10A28F5700AFCF8A</string>
+											<string>C9D5C7CE10A28F5700AFCF8A</string>
+											<string>C9D5C7CF10A28F5700AFCF8A</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -533,7 +534,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>C9D5C7C910A28BEE00AFCF8A</string>
 		<string>C9D5C7CA10A28BEE00AFCF8A</string>
 		<string>C9D5C7CB10A28BEE00AFCF8A</string>
 		<string>1C78EAAD065D492600B07095</string>
