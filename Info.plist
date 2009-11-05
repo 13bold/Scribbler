@@ -24,5 +24,9 @@
 	<string>1.0</string>
 	<key>NSPrincipalClass</key>
 	<string></string>
+	<key>LFSubmissionsURL</key>
+	<string>http://post.audioscrobbler.com:80/</string>
+	<key>LFWebServiceURL</key>
+	<string>http://ws.audioscrobbler.com/2.0/</string>
 </dict>
 </plist>
