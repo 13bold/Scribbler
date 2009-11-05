@@ -17,6 +17,7 @@
 		C9CD584E10A3553500AB1952 /* LFRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = C9CD584C10A3553500AB1952 /* LFRequest.h */; };
 		C9CD584F10A3553500AB1952 /* LFRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C9CD584D10A3553500AB1952 /* LFRequest.m */; };
 		C9CD589510A366C800AB1952 /* LFWebServicePrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = C9CD589310A366C800AB1952 /* LFWebServicePrivate.h */; };
+		C9CD589F10A367BA00AB1952 /* LFWebServiceDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = C9CD589D10A367BA00AB1952 /* LFWebServiceDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C9D5C79410A28A4B00AFCF8A /* Last.fm.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* Last.fm.framework */; };
 		C9D5C79D10A28A8C00AFCF8A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D5C79C10A28A8C00AFCF8A /* main.m */; };
 		C9D5C7A210A28B0000AFCF8A /* Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D5C7A110A28B0000AFCF8A /* Controller.m */; };
@@ -66,6 +67,7 @@
 		C9CD584C10A3553500AB1952 /* LFRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFRequest.h; sourceTree = "<group>"; };
 		C9CD584D10A3553500AB1952 /* LFRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFRequest.m; sourceTree = "<group>"; };
 		C9CD589310A366C800AB1952 /* LFWebServicePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFWebServicePrivate.h; sourceTree = "<group>"; };
+		C9CD589D10A367BA00AB1952 /* LFWebServiceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFWebServiceDelegate.h; sourceTree = "<group>"; };
 		C9D5C78910A28A2500AFCF8A /* Last.fm Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Last.fm Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9D5C78B10A28A2500AFCF8A /* Last.fm Demo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Last.fm Demo-Info.plist"; sourceTree = "<group>"; };
 		C9D5C79C10A28A8C00AFCF8A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 			children = (
 				C9CD582310A3302200AB1952 /* LFWebService.h */,
 				C9CD589310A366C800AB1952 /* LFWebServicePrivate.h */,
+				C9CD589D10A367BA00AB1952 /* LFWebServiceDelegate.h */,
 				C9CD582410A3302200AB1952 /* LFWebService.m */,
 				C9D5C7A510A28B3500AFCF8A /* LFTrack.h */,
 				C9D5C7A610A28B3500AFCF8A /* LFTrack.m */,
@@ -206,6 +209,7 @@
 				C9CD583B10A3374100AB1952 /* Last.fm.h in Headers */,
 				C9CD584E10A3553500AB1952 /* LFRequest.h in Headers */,
 				C9CD589510A366C800AB1952 /* LFWebServicePrivate.h in Headers */,
+				C9CD589F10A367BA00AB1952 /* LFWebServiceDelegate.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

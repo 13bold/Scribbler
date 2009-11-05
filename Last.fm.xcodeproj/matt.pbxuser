@@ -98,17 +98,17 @@
 	};
 	C9CD582310A3302200AB1952 /* LFWebService.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {781, 1144}}";
-			sepNavSelRange = "{79, 1146}";
-			sepNavVisRange = "{0, 1205}";
+			sepNavIntBoundsRect = "{{0, 0}, {781, 910}}";
+			sepNavSelRange = "{2073, 0}";
+			sepNavVisRange = "{1537, 536}";
 			sepNavWindowFrame = "{{84, 202}, {926, 608}}";
 		};
 	};
 	C9CD582410A3302200AB1952 /* LFWebService.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {781, 1534}}";
+			sepNavIntBoundsRect = "{{0, 0}, {781, 1456}}";
 			sepNavSelRange = "{1283, 0}";
-			sepNavVisRange = "{295, 1062}";
+			sepNavVisRange = "{376, 981}";
 			sepNavWindowFrame = "{{107, 181}, {926, 608}}";
 		};
 	};
@@ -315,9 +315,16 @@
 	};
 	C9CD589310A366C800AB1952 /* LFWebServicePrivate.h */ = {
 		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {781, 520}}";
+			sepNavSelRange = "{1258, 0}";
+			sepNavVisRange = "{736, 776}";
+		};
+	};
+	C9CD589D10A367BA00AB1952 /* LFWebServiceDelegate.h */ = {
+		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {781, 297}}";
-			sepNavSelRange = "{420, 0}";
-			sepNavVisRange = "{0, 427}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 230}";
 		};
 	};
 	C9D5C77F10A289D500AFCF8A /* Source Control */ = {
@@ -395,13 +402,13 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {781, 832}}";
 			sepNavSelRange = "{1220, 0}";
-			sepNavVisRange = "{1450, 580}";
+			sepNavVisRange = "{1434, 596}";
 			sepNavWindowFrame = "{{15, 265}, {926, 608}}";
 		};
 	};
 	C9D5C7A610A28B3500AFCF8A /* LFTrack.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {781, 1443}}";
+			sepNavIntBoundsRect = "{{0, 0}, {781, 1430}}";
 			sepNavSelRange = "{1220, 0}";
 			sepNavVisRange = "{1721, 525}";
 		};
