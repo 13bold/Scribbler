@@ -81,23 +81,34 @@
 	};
 	C9CD582310A3302200AB1952 /* LFWebService.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {781, 306}}";
-			sepNavSelRange = "{205, 0}";
-			sepNavVisRange = "{0, 214}";
+			sepNavIntBoundsRect = "{{0, 0}, {781, 871}}";
+			sepNavSelRange = "{742, 0}";
+			sepNavVisRange = "{0, 407}";
+			sepNavWindowFrame = "{{84, 202}, {926, 608}}";
 		};
 	};
 	C9CD582410A3302200AB1952 /* LFWebService.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {781, 306}}";
-			sepNavSelRange = "{0, 0}";
+			sepNavSelRange = "{198, 0}";
 			sepNavVisRange = "{0, 204}";
+			sepNavWindowFrame = "{{107, 181}, {926, 608}}";
 		};
 	};
 	C9CD582910A3327700AB1952 /* LFPlaySession.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {781, 442}}";
-			sepNavSelRange = "{506, 0}";
-			sepNavVisRange = "{168, 382}";
+			sepNavIntBoundsRect = "{{0, 0}, {781, 455}}";
+			sepNavSelRange = "{564, 0}";
+			sepNavVisRange = "{0, 457}";
+			sepNavWindowFrame = "{{38, 244}, {926, 608}}";
+		};
+	};
+	C9CD582A10A3327700AB1952 /* LFPlaySession.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {781, 1001}}";
+			sepNavSelRange = "{860, 0}";
+			sepNavVisRange = "{669, 348}";
+			sepNavWindowFrame = "{{61, 223}, {926, 608}}";
 		};
 	};
 	C9CD583910A3374100AB1952 /* Last.fm.h */ = {
@@ -173,24 +184,24 @@
 	};
 	C9D5C7A110A28B0000AFCF8A /* Controller.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {781, 315}}";
+			sepNavIntBoundsRect = "{{0, 0}, {781, 306}}";
 			sepNavSelRange = "{0, 0}";
 			sepNavVisRange = "{0, 198}";
 		};
 	};
 	C9D5C7A510A28B3500AFCF8A /* LFTrack.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {867, 533}}";
-			sepNavSelRange = "{281, 0}";
-			sepNavVisRange = "{0, 725}";
+			sepNavIntBoundsRect = "{{0, 0}, {781, 598}}";
+			sepNavSelRange = "{579, 0}";
+			sepNavVisRange = "{0, 466}";
 			sepNavWindowFrame = "{{15, 265}, {926, 608}}";
 		};
 	};
 	C9D5C7A610A28B3500AFCF8A /* LFTrack.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {781, 858}}";
-			sepNavSelRange = "{857, 0}";
-			sepNavVisRange = "{526, 416}";
+			sepNavIntBoundsRect = "{{0, 0}, {781, 1404}}";
+			sepNavSelRange = "{621, 0}";
+			sepNavVisRange = "{0, 465}";
 		};
 	};
 	C9D5C7C210A28BEE00AFCF8A /* PBXTextBookmark */ = {
@@ -248,7 +259,7 @@
 		fRef = C9D5C7A610A28B3500AFCF8A /* LFTrack.m */;
 		name = "LFTrack.m: 15";
 		rLen = 0;
-		rLoc = 1123;
+		rLoc = 1938;
 		rType = 0;
 		vrLen = 189;
 		vrLoc = 0;

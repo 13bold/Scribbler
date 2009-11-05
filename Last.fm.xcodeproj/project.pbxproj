@@ -14,6 +14,8 @@
 		C9CD582B10A3327700AB1952 /* LFPlaySession.h in Headers */ = {isa = PBXBuildFile; fileRef = C9CD582910A3327700AB1952 /* LFPlaySession.h */; };
 		C9CD582C10A3327700AB1952 /* LFPlaySession.m in Sources */ = {isa = PBXBuildFile; fileRef = C9CD582A10A3327700AB1952 /* LFPlaySession.m */; };
 		C9CD583B10A3374100AB1952 /* Last.fm.h in Headers */ = {isa = PBXBuildFile; fileRef = C9CD583910A3374100AB1952 /* Last.fm.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C9CD584E10A3553500AB1952 /* LFRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = C9CD584C10A3553500AB1952 /* LFRequest.h */; };
+		C9CD584F10A3553500AB1952 /* LFRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C9CD584D10A3553500AB1952 /* LFRequest.m */; };
 		C9D5C79410A28A4B00AFCF8A /* Last.fm.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* Last.fm.framework */; };
 		C9D5C79D10A28A8C00AFCF8A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D5C79C10A28A8C00AFCF8A /* main.m */; };
 		C9D5C7A210A28B0000AFCF8A /* Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D5C7A110A28B0000AFCF8A /* Controller.m */; };
@@ -60,6 +62,8 @@
 		C9CD582910A3327700AB1952 /* LFPlaySession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFPlaySession.h; sourceTree = "<group>"; };
 		C9CD582A10A3327700AB1952 /* LFPlaySession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFPlaySession.m; sourceTree = "<group>"; };
 		C9CD583910A3374100AB1952 /* Last.fm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Last.fm.h; sourceTree = "<group>"; };
+		C9CD584C10A3553500AB1952 /* LFRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFRequest.h; sourceTree = "<group>"; };
+		C9CD584D10A3553500AB1952 /* LFRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFRequest.m; sourceTree = "<group>"; };
 		C9D5C78910A28A2500AFCF8A /* Last.fm Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Last.fm Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9D5C78B10A28A2500AFCF8A /* Last.fm Demo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Last.fm Demo-Info.plist"; sourceTree = "<group>"; };
 		C9D5C79C10A28A8C00AFCF8A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -143,6 +147,8 @@
 				C9D5C7A610A28B3500AFCF8A /* LFTrack.m */,
 				C9CD582910A3327700AB1952 /* LFPlaySession.h */,
 				C9CD582A10A3327700AB1952 /* LFPlaySession.m */,
+				C9CD584C10A3553500AB1952 /* LFRequest.h */,
+				C9CD584D10A3553500AB1952 /* LFRequest.m */,
 			);
 			name = "Classes (Framework)";
 			sourceTree = "<group>";
@@ -195,6 +201,7 @@
 				C9CD582510A3302200AB1952 /* LFWebService.h in Headers */,
 				C9CD582B10A3327700AB1952 /* LFPlaySession.h in Headers */,
 				C9CD583B10A3374100AB1952 /* Last.fm.h in Headers */,
+				C9CD584E10A3553500AB1952 /* LFRequest.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +292,7 @@
 				C9D5C7A810A28B3500AFCF8A /* LFTrack.m in Sources */,
 				C9CD582610A3302200AB1952 /* LFWebService.m in Sources */,
 				C9CD582C10A3327700AB1952 /* LFPlaySession.m in Sources */,
+				C9CD584F10A3553500AB1952 /* LFRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
