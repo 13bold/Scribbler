@@ -1,0 +1,220 @@
+// !$*UTF8*$!
+{
+	0867D690FE84028FC02AAC07 /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = C9D5C78A10A28A2500AFCF8A /* Last.fm Demo */;
+		activeTarget = C9D5C78810A28A2500AFCF8A /* Last.fm Demo */;
+		addToTargets = (
+			C9D5C78810A28A2500AFCF8A /* Last.fm Demo */,
+		);
+		codeSenseManager = C9D5C78010A289D500AFCF8A /* Code sense */;
+		executables = (
+			C9D5C78A10A28A2500AFCF8A /* Last.fm Demo */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					603,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXConfiguration.PBXTargetDataSource.PBXTargetDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					563,
+					60,
+					20,
+					48,
+					43,
+					43,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXTargetDataSource_PrimaryAttribute,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 279087528;
+			PBXWorkspaceStateSaveDate = 279087528;
+		};
+		perUserProjectItems = {
+			C9D5C7C210A28BEE00AFCF8A /* PBXTextBookmark */ = C9D5C7C210A28BEE00AFCF8A /* PBXTextBookmark */;
+			C9D5C7C310A28BEE00AFCF8A /* PBXTextBookmark */ = C9D5C7C310A28BEE00AFCF8A /* PBXTextBookmark */;
+			C9D5C7C410A28BEE00AFCF8A /* PBXTextBookmark */ = C9D5C7C410A28BEE00AFCF8A /* PBXTextBookmark */;
+			C9D5C7C510A28BEE00AFCF8A /* PBXTextBookmark */ = C9D5C7C510A28BEE00AFCF8A /* PBXTextBookmark */;
+			C9D5C7C610A28BEE00AFCF8A /* PBXTextBookmark */ = C9D5C7C610A28BEE00AFCF8A /* PBXTextBookmark */;
+			C9D5C7C710A28BEE00AFCF8A /* PBXTextBookmark */ = C9D5C7C710A28BEE00AFCF8A /* PBXTextBookmark */;
+		};
+		sourceControlManager = C9D5C77F10A289D500AFCF8A /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	8DC2EF4F0486A6940098B216 /* Last.fm */ = {
+		activeExec = 0;
+	};
+	C9D5C77F10A289D500AFCF8A /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	C9D5C78010A289D500AFCF8A /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	C9D5C78810A28A2500AFCF8A /* Last.fm Demo */ = {
+		activeExec = 0;
+		executables = (
+			C9D5C78A10A28A2500AFCF8A /* Last.fm Demo */,
+		);
+	};
+	C9D5C78A10A28A2500AFCF8A /* Last.fm Demo */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = "Last.fm Demo";
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	C9D5C79C10A28A8C00AFCF8A /* main.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {781, 315}}";
+			sepNavSelRange = "{25, 0}";
+			sepNavVisRange = "{0, 252}";
+		};
+	};
+	C9D5C7A010A28B0000AFCF8A /* Controller.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {781, 315}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 210}";
+		};
+	};
+	C9D5C7A110A28B0000AFCF8A /* Controller.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {781, 292}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 198}";
+		};
+	};
+	C9D5C7A510A28B3500AFCF8A /* LFTrack.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {781, 315}}";
+			sepNavSelRange = "{135, 0}";
+			sepNavVisRange = "{0, 204}";
+		};
+	};
+	C9D5C7A610A28B3500AFCF8A /* LFTrack.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {781, 315}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 189}";
+		};
+	};
+	C9D5C7C210A28BEE00AFCF8A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C9D5C79C10A28A8C00AFCF8A /* main.m */;
+		name = "main.m: 3";
+		rLen = 0;
+		rLoc = 25;
+		rType = 0;
+		vrLen = 252;
+		vrLoc = 0;
+	};
+	C9D5C7C310A28BEE00AFCF8A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C9D5C7A610A28B3500AFCF8A /* LFTrack.m */;
+		name = "LFTrack.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 189;
+		vrLoc = 0;
+	};
+	C9D5C7C410A28BEE00AFCF8A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C9D5C7A510A28B3500AFCF8A /* LFTrack.h */;
+		name = "LFTrack.h: 7";
+		rLen = 0;
+		rLoc = 135;
+		rType = 0;
+		vrLen = 204;
+		vrLoc = 0;
+	};
+	C9D5C7C510A28BEE00AFCF8A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C9D5C7A010A28B0000AFCF8A /* Controller.h */;
+		name = "Controller.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 210;
+		vrLoc = 0;
+	};
+	C9D5C7C610A28BEE00AFCF8A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C9D5C7A110A28B0000AFCF8A /* Controller.m */;
+		name = "Controller.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 198;
+		vrLoc = 0;
+	};
+	C9D5C7C710A28BEE00AFCF8A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C9D5C7A110A28B0000AFCF8A /* Controller.m */;
+		name = "Controller.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 198;
+		vrLoc = 0;
+	};
+}
