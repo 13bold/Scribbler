@@ -16,14 +16,15 @@
 #pragma mark Initializers
 - (id)init
 {
-	return [self initWithTitle:nil artist:nil];
+	return [self initWithTitle:nil artist:nil duration:0.0];
 }
-- (id)initWithTitle:(NSString *)theTitle artist:(NSString *)theArtist
+- (id)initWithTitle:(NSString *)theTitle artist:(NSString *)theArtist duration:(CGFloat)theDuration
 {
 	if (self = [super init])
 	{
 		[self setTitle:theTitle];
 		[self setArtist:theArtist];
+		[self setDuration:theDuration];
 		
 		timeLog = [[NSMutableArray alloc] init];
 	}
@@ -33,9 +34,9 @@
 {
 	return [[[self alloc] init] autorelease];
 }
-+ (id)trackWithTitle:(NSString *)theTitle artist:(NSString *)theArtist
++ (id)trackWithTitle:(NSString *)theTitle artist:(NSString *)theArtist duration:(CGFloat)theDuration
 {
-	return [[[self alloc] initWithTitle:theTitle artist:theArtist] autorelease];
+	return [[[self alloc] initWithTitle:theTitle artist:theArtist duration:theDuration] autorelease];
 }
 
 #pragma mark Deallocator
@@ -50,14 +51,30 @@
 #pragma mark Properties
 @synthesize title;
 @synthesize artist;
+@synthesize duration;
 @synthesize webService = lastfm;
 
 #pragma mark Track control methods
 - (void)play
 {
+	if ([timeLog count] > 0)
+	{
+		LFPlaySession *last = [timeLog lastObject];
+		if (![last hasStopped])
+			return;
+	}
+	
+	LFPlaySession *play = [LFPlaySession session];
+	[timeLog addObject:play];
 }
 - (void)pause
 {
+	if ([timeLog count] < 1)
+		return;
+	
+	LFPlaySession *last = [timeLog lastObject];
+	if (![last hasStopped])
+		[last stop];
 }
 - (CGFloat)playingTime
 {
@@ -66,13 +83,25 @@
 		total += [ps length];
 	return total;
 }
+- (void)stop
+{
+	[self stopAndScrobble:YES];
+}
+- (void)stopAndScrobble:(BOOL)shouldScrobble
+{
+	[self pause];
+	if (shouldScrobble)
+		[lastfm scrobbleTrackIfNecessary:self];
+}
 
-#pragma mark Track attribute methods
+#pragma mark Track web service methods
 - (void)love
 {
+	[lastfm loveTrack:self];
 }
 - (void)ban
 {
+	[lastfm banTrack:self];
 }
 
 @end

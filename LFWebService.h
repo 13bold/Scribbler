@@ -17,6 +17,9 @@
 	NSString *APIKey;
 	NSString *sharedSecret;
 	NSString *clientID;
+	
+	LFTrack *currentTrack;
+	NSMutableArray *requestQueue;
 }
 
 // Initializers
@@ -27,5 +30,18 @@
 @property(copy) NSString *APIKey;
 @property(copy) NSString *sharedSecret;
 @property(copy) NSString *clientID;
+@property(retain) LFTrack *currentTrack;
+
+// Track methods
+- (void)scrobbleTrackIfNecessary:(LFTrack *)theTrack;
+- (void)loveTrack:(LFTrack *)theTrack;
+- (void)banTrack:(LFTrack *)theTrack;
+
+@end
+
+// Delegate interface
+@interface LFWebServiceDelegate
+
+
 
 @end

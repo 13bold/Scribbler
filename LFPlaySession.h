@@ -26,6 +26,7 @@
 // Control methods
 - (void)start;
 - (void)stop;
+- (BOOL)hasStopped;
 
 // Status methods
 - (CGFloat)length;

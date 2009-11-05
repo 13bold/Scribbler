@@ -57,6 +57,10 @@
 {
 	[self setStopTime:[NSDate date]];
 }
+- (BOOL)hasStopped
+{
+	return (stopTime != nil);
+}
 
 #pragma mark Status methods
 - (CGFloat)length

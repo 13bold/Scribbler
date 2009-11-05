@@ -16,25 +16,29 @@
 	LFWebService *lastfm;
 	NSString *title;
 	NSString *artist;
+	CGFloat duration;
 	NSMutableArray *timeLog;
 }
 
 // Initializers
-- (id)initWithTitle:(NSString *)theTitle artist:(NSString *)theArtist;
+- (id)initWithTitle:(NSString *)theTitle artist:(NSString *)theArtist duration:(CGFloat)theDuration;
 + (id)track;
-+ (id)trackWithTitle:(NSString *)theTitle artist:(NSString *)theArtist;
++ (id)trackWithTitle:(NSString *)theTitle artist:(NSString *)theArtist duration:(CGFloat)theDuration;
 
 // Properties
 @property(copy) NSString *title;
 @property(copy) NSString *artist;
+@property(assign) CGFloat duration;
 @property(assign) LFWebService *webService;
 
 // Track control methods
 - (void)play;
 - (void)pause;
 - (CGFloat)playingTime;
+- (void)stop;
+- (void)stopAndScrobble:(BOOL)shouldScrobble;
 
-// Track attribute methods
+// Track web service methods
 - (void)love;
 - (void)ban;
 
