@@ -1,5 +1,5 @@
 //
-//  NSString+LFHashing.h
+//  NSString+LFExtensions.h
 //  Last.fm
 //
 //  Created by Matt Patenaude on 11/6/09.

@@ -28,7 +28,7 @@
 #import "LFTrack.h"
 #import "LFWebService.h"
 #import "LFWebServicePrivate.h"
-#import "NSString+LFHashing.h"
+#import "NSString+LFExtensions.h"
 
 
 @implementation LFRequest

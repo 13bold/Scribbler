@@ -1,5 +1,5 @@
 //
-//  NSString+LFHashing.m
+//  NSString+LFExtensions.m
 //  Last.fm
 //
 //  Created by Matt Patenaude on 11/6/09.
@@ -24,7 +24,7 @@
 //  THE SOFTWARE.
 //
 
-#import "NSString+LFHashing.h"
+#import "NSString+LFExtensions.h"
 #import <CommonCrypto/CommonDigest.h>
 
 

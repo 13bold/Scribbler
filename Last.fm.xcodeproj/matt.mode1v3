@@ -320,7 +320,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>Controller.m</string>
+								<string>NSString+LFExtensions.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -328,11 +328,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>Controller.m</string>
+										<string>NSString+LFExtensions.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>C99C42B310A5D05400BE9911</string>
+										<string>C99C42C710A5D0B200BE9911</string>
 										<key>history</key>
 										<array>
 											<string>C9CD586410A35D4D00AB1952</string>
@@ -366,7 +366,9 @@
 											<string>C969737610A526FE00A9FFAD</string>
 											<string>C969737710A526FE00A9FFAD</string>
 											<string>C970535710A533C000A07DF8</string>
-											<string>C970536110A5372C00A07DF8</string>
+											<string>C99C42C410A5D0B200BE9911</string>
+											<string>C99C42C510A5D0B200BE9911</string>
+											<string>C99C42C610A5D0B200BE9911</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -564,6 +566,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>C9D5C79A10A28A6800AFCF8A</string>
 		<string>/Users/matt/Last.fm/Last.fm.xcodeproj</string>
 	</array>
@@ -584,12 +587,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string></string>
+								<string>NSString+LFExtensions.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -807,7 +812,7 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CDD528C0622207200134675</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>LFGetSessionRequest.m</string>
+										<string>LFRequest.m</string>
 										<key>StatusBarVisibility</key>
 										<true/>
 									</dict>
@@ -863,8 +868,8 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D57069F1CE1000CFCEE</string>
-				<string>C969726410A5175800A9FFAD</string>
-				<string>C969726510A5175800A9FFAD</string>
+				<string>C99C42C210A5D0B200BE9911</string>
+				<string>C99C42C310A5D0B200BE9911</string>
 				<string>1CDD528C0622207200134675</string>
 				<string>1CD0528E0623707200166675</string>
 			</array>
