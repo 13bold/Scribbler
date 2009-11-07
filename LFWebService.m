@@ -60,6 +60,7 @@
 	[APIKey release];
 	[sharedSecret release];
 	[clientID release];
+	[sessionUser release];
 	[sessionKey release];
 	[currentTrack release];
 	[requestQueue release];
@@ -176,6 +177,12 @@
 	}
 	else if (r == LFRequestGetSession)
 	{
+		if (pendingToken)
+		{
+			[pendingToken release];
+			pendingToken = nil;
+		}
+		
 		if (sessionUser)
 		{
 			[sessionUser release];
@@ -196,9 +203,7 @@
 		shouldProceed = YES;
 	}
 	else
-	{
-		
-	}
+		shouldProceed = YES;
 	
 	[requestQueue removeObject:theRequest];
 	if (shouldProceed)
@@ -207,6 +212,7 @@
 - (void)request:(LFRequest *)theRequest failedWithError:(NSError *)theError
 {
 	runningRequest = NO;
+	BOOL shouldProceed = NO;
 	
 	[theRequest setDelegate:nil];
 	
@@ -215,6 +221,9 @@
 	// if it's a communication error, leave it in the queue, but don't dispatch
 	
 	NSLog(@"%@", [theError description]);
+	
+	if (shouldProceed)
+		[self dispatchNextRequestIfPossible];
 }
 
 @end
