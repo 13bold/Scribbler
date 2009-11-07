@@ -1,5 +1,5 @@
 //
-//  NSString+LFHashing.h
+//  NSString+LFHashing.m
 //  Last.fm
 //
 //  Created by Matt Patenaude on 11/6/09.
@@ -24,12 +24,38 @@
 //  THE SOFTWARE.
 //
 
-#import <Cocoa/Cocoa.h>
+#import "NSString+LFHashing.h"
+#import <CommonCrypto/CommonDigest.h>
 
-NSString *MPHexStringFromBytes(void *bytes, NSUInteger len);
 
-@interface NSString (LFHashing)
+NSString *LFHexStringFromBytes(void *bytes, NSUInteger len)
+{
+	NSMutableString *output = [NSMutableString string];
+	
+	unsigned char *input = (unsigned char *)bytes;
+	
+	NSUInteger i;
+	for (i = 0; i < len; i++)
+		[output appendFormat:@"%02x", input[i]];
+	return output;
+}
 
-- (NSString *)MD5Hash;
+@implementation NSString (LFExtensions)
+
+- (NSString *)MD5Hash
+{
+	const char *input = [self UTF8String];
+	unsigned char result[CC_MD5_DIGEST_LENGTH];
+	CC_MD5(input, strlen(input), result);
+	return LFHexStringFromBytes(result, CC_MD5_DIGEST_LENGTH);
+}
++ (NSString *)stringWithNewUUID
+{
+    CFUUIDRef uuid = CFUUIDCreate(nil);
+    NSString *output = (NSString *)CFUUIDCreateString(nil, uuid);
+    CFRelease(uuid);
+	
+    return [output autorelease];
+}
 
 @end

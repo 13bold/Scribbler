@@ -22,8 +22,9 @@
 		C969719A10A5039E00A9FFAD /* LFGetSessionRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = C969719810A5039E00A9FFAD /* LFGetSessionRequest.h */; };
 		C969719B10A5039E00A9FFAD /* LFGetSessionRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C969719910A5039E00A9FFAD /* LFGetSessionRequest.m */; };
 		C96971A210A5044400A9FFAD /* LFRequestTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = C96971A010A5044400A9FFAD /* LFRequestTypes.h */; };
-		C969720710A50DF900A9FFAD /* NSString+LFHashing.h in Headers */ = {isa = PBXBuildFile; fileRef = C969720510A50DF900A9FFAD /* NSString+LFHashing.h */; };
-		C969720810A50DF900A9FFAD /* NSString+LFHashing.m in Sources */ = {isa = PBXBuildFile; fileRef = C969720610A50DF900A9FFAD /* NSString+LFHashing.m */; };
+		C969720710A50DF900A9FFAD /* NSString+LFExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = C969720510A50DF900A9FFAD /* NSString+LFExtensions.h */; };
+		C969720810A50DF900A9FFAD /* NSString+LFExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C969720610A50DF900A9FFAD /* NSString+LFExtensions.m */; };
+		C970535610A533B000A07DF8 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C97052A110A5338700A07DF8 /* WebKit.framework */; };
 		C9CD582510A3302200AB1952 /* LFWebService.h in Headers */ = {isa = PBXBuildFile; fileRef = C9CD582310A3302200AB1952 /* LFWebService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C9CD582610A3302200AB1952 /* LFWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = C9CD582410A3302200AB1952 /* LFWebService.m */; };
 		C9CD582B10A3327700AB1952 /* LFPlaySession.h in Headers */ = {isa = PBXBuildFile; fileRef = C9CD582910A3327700AB1952 /* LFPlaySession.h */; };
@@ -87,8 +88,9 @@
 		C969719810A5039E00A9FFAD /* LFGetSessionRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFGetSessionRequest.h; sourceTree = "<group>"; };
 		C969719910A5039E00A9FFAD /* LFGetSessionRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFGetSessionRequest.m; sourceTree = "<group>"; };
 		C96971A010A5044400A9FFAD /* LFRequestTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFRequestTypes.h; sourceTree = "<group>"; };
-		C969720510A50DF900A9FFAD /* NSString+LFHashing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+LFHashing.h"; sourceTree = "<group>"; };
-		C969720610A50DF900A9FFAD /* NSString+LFHashing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LFHashing.m"; sourceTree = "<group>"; };
+		C969720510A50DF900A9FFAD /* NSString+LFExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+LFExtensions.h"; sourceTree = "<group>"; };
+		C969720610A50DF900A9FFAD /* NSString+LFExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LFExtensions.m"; sourceTree = "<group>"; };
+		C97052A110A5338700A07DF8 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = /System/Library/Frameworks/WebKit.framework; sourceTree = "<absolute>"; };
 		C9CD582310A3302200AB1952 /* LFWebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFWebService.h; sourceTree = "<group>"; };
 		C9CD582410A3302200AB1952 /* LFWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFWebService.m; sourceTree = "<group>"; };
 		C9CD582910A3327700AB1952 /* LFPlaySession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFPlaySession.h; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9D5C7B810A28BC900AFCF8A /* Cocoa.framework in Frameworks */,
+				C970535610A533B000A07DF8 /* WebKit.framework in Frameworks */,
 				C9D5C7BC10A28BD500AFCF8A /* Last.fm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -194,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */,
+				C97052A110A5338700A07DF8 /* WebKit.framework */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";
@@ -212,8 +216,8 @@
 			isa = PBXGroup;
 			children = (
 				C9CD583910A3374100AB1952 /* Last.fm.h */,
-				C969720510A50DF900A9FFAD /* NSString+LFHashing.h */,
-				C969720610A50DF900A9FFAD /* NSString+LFHashing.m */,
+				C969720510A50DF900A9FFAD /* NSString+LFExtensions.h */,
+				C969720610A50DF900A9FFAD /* NSString+LFExtensions.m */,
 				C9D5C79C10A28A8C00AFCF8A /* main.m */,
 				32DBCF5E0370ADEE00C91783 /* Last.fm_Prefix.pch */,
 			);
@@ -270,7 +274,7 @@
 				C969719610A5039700A9FFAD /* LFGetTokenRequest.h in Headers */,
 				C969719A10A5039E00A9FFAD /* LFGetSessionRequest.h in Headers */,
 				C96971A210A5044400A9FFAD /* LFRequestTypes.h in Headers */,
-				C969720710A50DF900A9FFAD /* NSString+LFHashing.h in Headers */,
+				C969720710A50DF900A9FFAD /* NSString+LFExtensions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,7 +372,7 @@
 				C969719310A5038A00A9FFAD /* LFBanRequest.m in Sources */,
 				C969719710A5039700A9FFAD /* LFGetTokenRequest.m in Sources */,
 				C969719B10A5039E00A9FFAD /* LFGetSessionRequest.m in Sources */,
-				C969720810A50DF900A9FFAD /* NSString+LFHashing.m in Sources */,
+				C969720810A50DF900A9FFAD /* NSString+LFExtensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
