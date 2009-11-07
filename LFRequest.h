@@ -46,6 +46,8 @@ typedef enum _LFRequestType {
 	LFTrack *track;
 	LFRequestType requestType;
 	
+	NSString *identifier;
+	
 	NSURLConnection *connection;
 	NSURLResponse *response;
 	NSMutableData *responseData;
@@ -60,6 +62,7 @@ typedef enum _LFRequestType {
 @property(assign) NSObject<LFRequestDelegate> *delegate;
 @property(retain) LFTrack *track;
 @property(assign,readonly) LFRequestType requestType;
+@property(copy,readonly) NSString *identifier;
 @property(retain,readonly) NSURLResponse *response;
 @property(retain,readonly) NSMutableData *responseData;
 

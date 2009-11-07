@@ -46,6 +46,7 @@
 		requestType = LFRequestUnknown;
 		
 		responseData = [[NSMutableData alloc] init];
+		identifier = [[NSString stringWithNewUUID] copy];
 	}
 	return self;
 }
@@ -62,6 +63,7 @@
 - (void)dealloc
 {
 	[track release];
+	[identifier release];
 	[connection release];
 	[response release];
 	[responseData release];
@@ -72,6 +74,7 @@
 @synthesize delegate;
 @synthesize track;
 @synthesize requestType;
+@synthesize identifier;
 @synthesize response;
 @synthesize responseData;
 
