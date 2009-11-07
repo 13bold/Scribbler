@@ -37,7 +37,9 @@
 	NSString *sharedSecret;
 	NSString *clientID;
 	
+	NSString *pendingToken;
 	NSString *sessionKey;
+	NSString *sessionUser;
 	
 	LFTrack *currentTrack;
 	NSMutableArray *requestQueue;
@@ -54,10 +56,12 @@
 @property(copy) NSString *sharedSecret;
 @property(copy) NSString *clientID;
 @property(copy) NSString *sessionKey;
+@property(copy) NSString *sessionUser;
 @property(retain,readonly) LFTrack *currentTrack;
 
 // Session methods
 - (void)establishNewSession;
+- (void)finishSessionAuthorization;
 
 // Track methods
 - (void)startPlayingTrack:(LFTrack *)theTrack;

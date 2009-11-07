@@ -1361,7 +1361,7 @@
 						</object>
 						<object class="NSButton" id="244685893">
 							<reference key="NSNextResponder" ref="414427165"/>
-							<int key="NSvFlags">268</int>
+							<int key="NSvFlags">269</int>
 							<string key="NSFrame">{{153, 129}, {174, 32}}</string>
 							<reference key="NSSuperview" ref="414427165"/>
 							<bool key="NSEnabled">YES</bool>
@@ -1383,7 +1383,7 @@
 								<int key="NSPeriodicInterval">25</int>
 							</object>
 						</object>
-						<object class="NSProgressIndicator" id="910380171">
+						<object class="NSProgressIndicator" id="138179731">
 							<reference key="NSNextResponder" ref="414427165"/>
 							<int key="NSvFlags">1292</int>
 							<object class="NSPSMatrix" key="NSDrawMatrix"/>
@@ -2090,7 +2090,7 @@
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">authSpinner</string>
 						<reference key="source" ref="152045297"/>
-						<reference key="destination" ref="910380171"/>
+						<reference key="destination" ref="138179731"/>
 					</object>
 					<int key="connectionID">825</int>
 				</object>
@@ -2435,7 +2435,7 @@
 							<reference ref="838325125"/>
 							<reference ref="674161286"/>
 							<reference ref="244685893"/>
-							<reference ref="910380171"/>
+							<reference ref="138179731"/>
 						</object>
 						<reference key="parent" ref="513744381"/>
 					</object>
@@ -3193,7 +3193,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">824</int>
-						<reference key="object" ref="910380171"/>
+						<reference key="object" ref="138179731"/>
 						<reference key="parent" ref="414427165"/>
 					</object>
 				</object>

@@ -33,6 +33,7 @@
 }
 
 // Overridden methods
+- (id)initWithTrack:(LFTrack *)theTrack;
 - (void)dispatch;
 - (void)connectionDidFinishLoading:(NSURLConnection *)theConnection;
 

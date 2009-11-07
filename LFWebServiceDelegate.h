@@ -33,7 +33,8 @@
 @optional
 
 // Session management
-- (void)sessionStartedWithKey:(NSString *)theKey;
+- (void)sessionNeedsAuthorizationViaURL:(NSURL *)theURL;
+- (void)sessionStartedWithKey:(NSString *)theKey user:(NSString *)theUser;
 
 // Track responses
 - (void)nowPlayingSucceededForTrack:(LFTrack *)theTrack;

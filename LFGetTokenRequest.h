@@ -29,10 +29,14 @@
 
 
 @interface LFGetTokenRequest : LFRequest {
-
+	NSString *token;
 }
 
+// Properties
+@property(copy,readonly) NSString *token;
+
 // Overridden methods
+- (id)initWithTrack:(LFTrack *)theTrack;
 - (void)dispatch;
 - (void)connectionDidFinishLoading:(NSURLConnection *)theConnection;
 

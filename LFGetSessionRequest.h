@@ -29,10 +29,18 @@
 
 
 @interface LFGetSessionRequest : LFRequest {
-
+	NSString *token;
+	NSString *sessionUser;
+	NSString *sessionKey;
 }
 
+// Properties
+@property(copy) NSString *token;
+@property(copy,readonly) NSString *sessionUser;
+@property(copy,readonly) NSString *sessionKey;
+
 // Overridden methods
+- (id)initWithTrack:(LFTrack *)theTrack;
 - (void)dispatch;
 - (void)connectionDidFinishLoading:(NSURLConnection *)theConnection;
 

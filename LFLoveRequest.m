@@ -30,13 +30,21 @@
 @implementation LFLoveRequest
 
 #pragma mark Overridden methods
+- (id)initWithTrack:(LFTrack *)theTrack
+{
+	if (self = [super initWithTrack:theTrack])
+	{
+		requestType = LFRequestLove;
+	}
+	return self;
+}
 - (void)dispatch
 {
 }
 - (void)connectionDidFinishLoading:(NSURLConnection *)theConnection
 {
 	// hooray!
-	if ([delegate respondsToSelector:@selector(requestSucceeded:)])
+	if (delegate && [delegate respondsToSelector:@selector(requestSucceeded:)])
 		[delegate requestSucceeded:self];
 }
 

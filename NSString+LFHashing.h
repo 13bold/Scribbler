@@ -1,5 +1,5 @@
 //
-//  LFLoveRequest.h
+//  NSString+LFHashing.h
 //  Last.fm
 //
 //  Created by Matt Patenaude on 11/6/09.
@@ -25,16 +25,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "LFRequest.h"
 
+NSString *MPHexStringFromBytes(void *bytes, NSUInteger len);
 
-@interface LFLoveRequest : LFRequest {
+@interface NSString (LFHashing)
 
-}
-
-// Overridden methods
-- (id)initWithTrack:(LFTrack *)theTrack;
-- (void)dispatch;
-- (void)connectionDidFinishLoading:(NSURLConnection *)theConnection;
+- (NSString *)MD5Hash;
 
 @end

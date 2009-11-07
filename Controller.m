@@ -65,10 +65,44 @@
 	[authButton setEnabled:NO];
 	[authSpinner startAnimation:self];
 }
+- (IBAction)completeAuthorization:(id)sender
+{
+	// And now we finish authorization
+	[[LFWebService sharedWebService] finishSessionAuthorization];
+	
+	// While we're waiting, let's make it not clickable, and show an animation
+	[authButton setEnabled:NO];
+	[authSpinner startAnimation:self];
+}
 - (IBAction)openManagementPage:(id)sender
 {
-	// Manage third-part application access on Last.fm
+	// Manage third-party application access on Last.fm
 	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://www.last.fm/settings/applications"]];
+}
+
+#pragma mark Web service delegate methods
+- (void)sessionNeedsAuthorizationViaURL:(NSURL *)theURL
+{
+	// OK, so the first stage is done; what we need to do
+	// now is reprogram the button to "Complete" authorization,
+	// then open up the web browser to have the user allow our demo app
+	// access
+	[authButton setTitle:@"Complete Authorization"];
+	[authButton sizeToFit];
+	[authButton setAction:@selector(completeAuthorization:)];
+	[authButton setEnabled:YES];
+	[authSpinner stopAnimation:self];
+	
+	[[NSWorkspace sharedWorkspace] openURL:theURL];
+}
+- (void)sessionStartedWithKey:(NSString *)theKey user:(NSString *)theUser
+{
+	// Hooray! we're up and running
+	[authButton setTitle:@"Manage Last.fm Access"];
+	[authButton sizeToFit];
+	[authButton setAction:@selector(openManagementPage:)];
+	[authButton setEnabled:YES];
+	[authSpinner stopAnimation:self];
 }
 
 @end

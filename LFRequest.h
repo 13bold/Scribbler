@@ -39,9 +39,10 @@ typedef enum _LFRequestType {
 
 // Forward declarations
 @class LFTrack;
+@protocol LFRequestDelegate;
 
 @interface LFRequest : NSObject {
-	id delegate;
+	NSObject<LFRequestDelegate> *delegate;
 	LFTrack *track;
 	LFRequestType requestType;
 	
@@ -56,7 +57,7 @@ typedef enum _LFRequestType {
 + (id)requestWithTrack:(LFTrack *)theTrack;
 
 // Properties
-@property(assign) id delegate;
+@property(assign) NSObject<LFRequestDelegate> *delegate;
 @property(retain) LFTrack *track;
 @property(assign,readonly) LFRequestType requestType;
 @property(retain,readonly) NSURLResponse *response;
@@ -64,6 +65,10 @@ typedef enum _LFRequestType {
 
 // Dispatch methods
 - (void)dispatch;
+
+// Composition methods
+- (NSURL *)URLWithParameters:(NSDictionary *)params sign:(BOOL)shouldSign;
+- (NSString *)signatureWithParameters:(NSDictionary *)params;
 
 // NSURLConnection delegate methods
 - (void)connection:(NSURLConnection *)theConnection didReceiveResponse:(NSURLResponse *)theResponse;
@@ -75,6 +80,11 @@ typedef enum _LFRequestType {
 
 // Delegate methods
 @protocol LFRequestDelegate
+
+- (NSString *)APIKey;
+- (NSString *)sharedSecret;
+- (NSString *)clientID;
+- (NSString *)sessionKey;
 
 - (void)requestSucceeded:(LFRequest *)theRequest;
 - (void)request:(LFRequest *)theRequest failedWithError:(NSError *)theError;

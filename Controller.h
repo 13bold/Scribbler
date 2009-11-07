@@ -38,6 +38,11 @@
 
 // Authorization methods
 - (IBAction)connectWithLastFM:(id)sender;
+- (IBAction)completeAuthorization:(id)sender;
 - (IBAction)openManagementPage:(id)sender;
+
+// Web service delegate methods
+- (void)sessionNeedsAuthorizationViaURL:(NSURL *)theURL;
+- (void)sessionStartedWithKey:(NSString *)theKey user:(NSString *)theUser;
 
 @end

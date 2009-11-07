@@ -28,6 +28,7 @@
 #import "LFTrack.h"
 #import "LFWebService.h"
 #import "LFWebServicePrivate.h"
+#import "NSString+LFHashing.h"
 
 
 @implementation LFRequest
@@ -81,6 +82,49 @@
 	NSLog(@"Last.fm.framework: warning, attempt to dispatch generic request");
 }
 
+#pragma mark Composition methods
+- (NSURL *)URLWithParameters:(NSDictionary *)params sign:(BOOL)shouldSign
+{
+	// get the URL root
+	static NSString *__LFWebServiceURL = nil;
+	if (!__LFWebServiceURL)
+		__LFWebServiceURL = [[NSBundle bundleForClass:[self class]] objectForInfoDictionaryKey:@"LFWebServiceURL"];
+	
+	// compose the URL string
+	NSMutableString *output = [NSMutableString string];
+	[output appendFormat:@"%@?", __LFWebServiceURL];
+	
+	NSMutableArray *parts = [[NSMutableArray alloc] init];
+	for (NSString *key in params)
+		[parts addObject:[NSString stringWithFormat:@"%@=%@", key, [params objectForKey:key]]];
+	
+	[output appendString:[parts componentsJoinedByString:@"&"]];
+	[parts release];
+	
+	// now sign if necessary
+	if (shouldSign)
+	{
+		NSString *sig = [self signatureWithParameters:params];
+		[output appendFormat:@"&api_sig=%@", sig];
+	}
+	
+	return [NSURL URLWithString:output];
+}
+- (NSString *)signatureWithParameters:(NSDictionary *)params
+{
+	NSMutableString *paramList = [[NSMutableString alloc] init];
+	
+	NSArray *keys = [[params allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+	for (NSString *key in keys)
+		[paramList appendFormat:@"%@%@", key, [params objectForKey:key]];
+	
+	[paramList appendString:[delegate sharedSecret]];
+	
+	NSString *output = [paramList MD5Hash];
+	[paramList release];
+	return output;
+}
+
 #pragma mark NSURLConnection delegate methods
 - (void)connection:(NSURLConnection *)theConnection didReceiveResponse:(NSURLResponse *)theResponse
 {
@@ -102,14 +146,20 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)theConnection
 {
 	// hooray!
-	if ([delegate respondsToSelector:@selector(requestSucceeded:)])
+	if (delegate && [delegate respondsToSelector:@selector(requestSucceeded:)])
 		[delegate requestSucceeded:self];
+	
+	[connection release];
+	connection = nil;
 }
 - (void)connection:(NSURLConnection *)theConnection didFailWithError:(NSError *)error
 {
 	// boo!
-	if ([delegate respondsToSelector:@selector(request:failedWithError:)])
+	if (delegate && [delegate respondsToSelector:@selector(request:failedWithError:)])
 		[delegate request:self failedWithError:error];
+	
+	[connection release];
+	connection = nil;
 }
 
 @end
