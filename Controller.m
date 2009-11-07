@@ -25,8 +25,50 @@
 //
 
 #import "Controller.h"
+#import <Last.fm/Last.fm.h>
 
 
 @implementation Controller
+
+#pragma mark Application delegate methods
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+{
+	// First, let's setup the web service object
+	// You can obtain the API key and shared secret on your API info page
+	//  - http://www.last.fm/api/account
+	
+	LFWebService *lastfm = [LFWebService sharedWebService];
+	[lastfm setDelegate:self];
+	[lastfm setAPIKey:@"5b792457bd456c690c79b486ada9be36"];
+	[lastfm setSharedSecret:@"d305d74e7998346c544191206e9bb4dc"];
+	
+	// We'll also set our client ID for scrobbling
+	// You can obtain one of these by contacting Last.fm
+	//  - http://www.last.fm/api/submissions#1.1
+	// For now, we'll use the testing ID 'tst'
+	
+	[lastfm setClientID:@"tst"];
+	
+	// In order to run, we need a valid session key
+	// First, we'll check to see if we have one. If we do,
+	// we'll set it, then test it. Otherwise, we'll wait for
+	// someone to click the "Connect" button.
+}
+
+#pragma mark Authorization methods
+- (IBAction)connectWithLastFM:(id)sender
+{
+	// This means we're going to force establish a new Last.fm session
+	[[LFWebService sharedWebService] establishNewSession];
+	
+	// While we're waiting, let's make it not clickable, and show an animation
+	[authButton setEnabled:NO];
+	[authSpinner startAnimation:self];
+}
+- (IBAction)openManagementPage:(id)sender
+{
+	// Manage third-part application access on Last.fm
+	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://www.last.fm/settings/applications"]];
+}
 
 @end

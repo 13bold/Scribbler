@@ -25,10 +25,19 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <Last.fm/Last.fm.h>
 
 
-@interface Controller : NSObject {
-
+@interface Controller : NSObject<LFWebServiceDelegate> {
+	IBOutlet NSButton *authButton;
+	IBOutlet NSProgressIndicator *authSpinner;
 }
+
+// Application delegate methods
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification;
+
+// Authorization methods
+- (IBAction)connectWithLastFM:(id)sender;
+- (IBAction)openManagementPage:(id)sender;
 
 @end

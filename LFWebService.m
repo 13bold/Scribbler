@@ -28,6 +28,7 @@
 #import "LFWebServicePrivate.h"
 #import "LFTrack.h"
 #import "LFRequest.h"
+#import "LFRequestTypes.h"
 
 
 @implementation LFWebService
@@ -75,6 +76,7 @@
 #pragma mark Session methods
 - (void)establishNewSession
 {
+	
 }
 
 #pragma mark Track methods
@@ -100,7 +102,7 @@
 #pragma mark Web service methods
 - (void)dispatchNextRequestIfPossible
 {
-	if (!runningRequest && [requestQueue count] > 0)
+	if (sessionKey != nil && !runningRequest && [requestQueue count] > 0)
 	{
 		LFRequest *nextRequest = [requestQueue objectAtIndex:0];
 		runningRequest = YES;
@@ -116,6 +118,10 @@
 - (void)request:(LFRequest *)theRequest failedWithError:(NSError *)theError
 {
 	[theRequest setDelegate:nil];
+	
+	// if it's a "try again" type error, leave it in the queue, redispatch
+	// if it's not a communication error, but it's a "this request will never work" error, remove, dispatch
+	// if it's a communication error, leave it in the queue, but don't dispatch
 }
 
 @end
