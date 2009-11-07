@@ -1,8 +1,8 @@
 //
-//  Last.fm.h
+//  LFRequestTypes.h
 //  Last.fm
 //
-//  Created by Matt Patenaude on 11/5/09.
+//  Created by Matt Patenaude on 11/6/09.
 //  Copyright 2009 {13bold}. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,7 +24,9 @@
 //  THE SOFTWARE.
 //
 
-#import <Cocoa/Cocoa.h>
-#import "LFWebService.h"
-#import "LFWebServiceDelegate.h"
-#import "LFTrack.h"
+#import "LFNowPlayingRequest.h"
+#import "LFScrobbleRequest.h"
+#import "LFLoveRequest.h"
+#import "LFBanRequest.h"
+#import "LFGetTokenRequest.h"
+#import "LFGetSessionRequest.h"

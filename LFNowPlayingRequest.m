@@ -1,8 +1,8 @@
 //
-//  Last.fm.h
+//  LFNowPlayingRequest.m
 //  Last.fm
 //
-//  Created by Matt Patenaude on 11/5/09.
+//  Created by Matt Patenaude on 11/6/09.
 //  Copyright 2009 {13bold}. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,7 +24,20 @@
 //  THE SOFTWARE.
 //
 
-#import <Cocoa/Cocoa.h>
-#import "LFWebService.h"
-#import "LFWebServiceDelegate.h"
-#import "LFTrack.h"
+#import "LFNowPlayingRequest.h"
+
+
+@implementation LFNowPlayingRequest
+
+#pragma mark Overridden methods
+- (void)dispatch
+{
+}
+- (void)connectionDidFinishLoading:(NSURLConnection *)theConnection
+{
+	// hooray!
+	if ([delegate respondsToSelector:@selector(requestSucceeded:)])
+		[delegate requestSucceeded:self];
+}
+
+@end

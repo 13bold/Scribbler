@@ -26,6 +26,7 @@
 
 #import "LFRequest.h"
 #import "LFTrack.h"
+#import "LFWebService.h"
 
 
 @implementation LFRequest
@@ -33,14 +34,16 @@
 #pragma mark Initializers
 - (id)init
 {
-	return [self initWithTrack:nil requestType:LFRequestUnknown];
+	return [self initWithTrack:nil];
 }
-- (id)initWithTrack:(LFTrack *)theTrack requestType:(LFRequestType)theType
+- (id)initWithTrack:(LFTrack *)theTrack
 {
 	if (self = [super init])
 	{
 		[self setTrack:theTrack];
-		[self setType:theType];
+		type = LFRequestUnknown;
+		
+		responseData = [[NSMutableData alloc] init];
 	}
 	return self;
 }
@@ -48,9 +51,9 @@
 {
 	return [[[self alloc] init] autorelease];
 }
-+ (id)requestWithTrack:(LFTrack *)theTrack requestType:(LFRequestType)theType
++ (id)requestWithTrack:(LFTrack *)theTrack
 {
-	return [[[self alloc] initWithTrack:theTrack requestType:theType] autorelease];
+	return [[[self alloc] initWithTrack:theTrack] autorelease];
 }
 
 #pragma mark Deallocator
@@ -73,20 +76,39 @@
 #pragma mark Dispatch methods
 - (void)dispatch
 {
+	// Can't do anything
+	NSLog(@"Last.fm.framework: warning, attempt to dispatch generic request");
 }
 
 #pragma mark NSURLConnection delegate methods
 - (void)connection:(NSURLConnection *)theConnection didReceiveResponse:(NSURLResponse *)theResponse
 {
+	// clear out any data that's there
+	[responseData setLength:0];
+	
+	if (response)
+	{
+		[response release];
+		response = nil;
+	}
+	response = [theResponse retain];
 }
 - (void)connection:(NSURLConnection *)theConnection didReceiveData:(NSData *)data
 {
+	// grab that data!
+	[responseData appendData:data];
 }
 - (void)connectionDidFinishLoading:(NSURLConnection *)theConnection
 {
+	// hooray!
+	if ([delegate respondsToSelector:@selector(requestSucceeded:)])
+		[delegate requestSucceeded:self];
 }
 - (void)connection:(NSURLConnection *)theConnection didFailWithError:(NSError *)error
 {
+	// boo!
+	if ([delegate respondsToSelector:@selector(request:failedWithError:)])
+		[delegate request:self failedWithError:error];
 }
 
 @end

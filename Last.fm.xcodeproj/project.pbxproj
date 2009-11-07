@@ -9,6 +9,19 @@
 /* Begin PBXBuildFile section */
 		8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
 		8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
+		C969718610A5037500A9FFAD /* LFNowPlayingRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = C969718410A5037500A9FFAD /* LFNowPlayingRequest.h */; };
+		C969718710A5037500A9FFAD /* LFNowPlayingRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C969718510A5037500A9FFAD /* LFNowPlayingRequest.m */; };
+		C969718A10A5037E00A9FFAD /* LFScrobbleRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = C969718810A5037E00A9FFAD /* LFScrobbleRequest.h */; };
+		C969718B10A5037E00A9FFAD /* LFScrobbleRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C969718910A5037E00A9FFAD /* LFScrobbleRequest.m */; };
+		C969718E10A5038600A9FFAD /* LFLoveRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = C969718C10A5038600A9FFAD /* LFLoveRequest.h */; };
+		C969718F10A5038600A9FFAD /* LFLoveRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C969718D10A5038600A9FFAD /* LFLoveRequest.m */; };
+		C969719210A5038A00A9FFAD /* LFBanRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = C969719010A5038A00A9FFAD /* LFBanRequest.h */; };
+		C969719310A5038A00A9FFAD /* LFBanRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C969719110A5038A00A9FFAD /* LFBanRequest.m */; };
+		C969719610A5039700A9FFAD /* LFGetTokenRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = C969719410A5039700A9FFAD /* LFGetTokenRequest.h */; };
+		C969719710A5039700A9FFAD /* LFGetTokenRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C969719510A5039700A9FFAD /* LFGetTokenRequest.m */; };
+		C969719A10A5039E00A9FFAD /* LFGetSessionRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = C969719810A5039E00A9FFAD /* LFGetSessionRequest.h */; };
+		C969719B10A5039E00A9FFAD /* LFGetSessionRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C969719910A5039E00A9FFAD /* LFGetSessionRequest.m */; };
+		C96971A210A5044400A9FFAD /* LFRequestTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = C96971A010A5044400A9FFAD /* LFRequestTypes.h */; };
 		C9CD582510A3302200AB1952 /* LFWebService.h in Headers */ = {isa = PBXBuildFile; fileRef = C9CD582310A3302200AB1952 /* LFWebService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C9CD582610A3302200AB1952 /* LFWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = C9CD582410A3302200AB1952 /* LFWebService.m */; };
 		C9CD582B10A3327700AB1952 /* LFPlaySession.h in Headers */ = {isa = PBXBuildFile; fileRef = C9CD582910A3327700AB1952 /* LFPlaySession.h */; };
@@ -59,6 +72,19 @@
 		32DBCF5E0370ADEE00C91783 /* Last.fm_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Last.fm_Prefix.pch; sourceTree = "<group>"; };
 		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DC2EF5B0486A6940098B216 /* Last.fm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Last.fm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C969718410A5037500A9FFAD /* LFNowPlayingRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFNowPlayingRequest.h; sourceTree = "<group>"; };
+		C969718510A5037500A9FFAD /* LFNowPlayingRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFNowPlayingRequest.m; sourceTree = "<group>"; };
+		C969718810A5037E00A9FFAD /* LFScrobbleRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFScrobbleRequest.h; sourceTree = "<group>"; };
+		C969718910A5037E00A9FFAD /* LFScrobbleRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFScrobbleRequest.m; sourceTree = "<group>"; };
+		C969718C10A5038600A9FFAD /* LFLoveRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFLoveRequest.h; sourceTree = "<group>"; };
+		C969718D10A5038600A9FFAD /* LFLoveRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFLoveRequest.m; sourceTree = "<group>"; };
+		C969719010A5038A00A9FFAD /* LFBanRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFBanRequest.h; sourceTree = "<group>"; };
+		C969719110A5038A00A9FFAD /* LFBanRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFBanRequest.m; sourceTree = "<group>"; };
+		C969719410A5039700A9FFAD /* LFGetTokenRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFGetTokenRequest.h; sourceTree = "<group>"; };
+		C969719510A5039700A9FFAD /* LFGetTokenRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFGetTokenRequest.m; sourceTree = "<group>"; };
+		C969719810A5039E00A9FFAD /* LFGetSessionRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFGetSessionRequest.h; sourceTree = "<group>"; };
+		C969719910A5039E00A9FFAD /* LFGetSessionRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFGetSessionRequest.m; sourceTree = "<group>"; };
+		C96971A010A5044400A9FFAD /* LFRequestTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFRequestTypes.h; sourceTree = "<group>"; };
 		C9CD582310A3302200AB1952 /* LFWebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFWebService.h; sourceTree = "<group>"; };
 		C9CD582410A3302200AB1952 /* LFWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFWebService.m; sourceTree = "<group>"; };
 		C9CD582910A3327700AB1952 /* LFPlaySession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFPlaySession.h; sourceTree = "<group>"; };
@@ -155,6 +181,7 @@
 				C9CD582A10A3327700AB1952 /* LFPlaySession.m */,
 				C9CD584C10A3553500AB1952 /* LFRequest.h */,
 				C9CD584D10A3553500AB1952 /* LFRequest.m */,
+				C969718310A5034800A9FFAD /* Request Types */,
 			);
 			name = "Classes (Framework)";
 			sourceTree = "<group>";
@@ -187,6 +214,26 @@
 			name = "Other Sources";
 			sourceTree = "<group>";
 		};
+		C969718310A5034800A9FFAD /* Request Types */ = {
+			isa = PBXGroup;
+			children = (
+				C96971A010A5044400A9FFAD /* LFRequestTypes.h */,
+				C969718410A5037500A9FFAD /* LFNowPlayingRequest.h */,
+				C969718510A5037500A9FFAD /* LFNowPlayingRequest.m */,
+				C969718810A5037E00A9FFAD /* LFScrobbleRequest.h */,
+				C969718910A5037E00A9FFAD /* LFScrobbleRequest.m */,
+				C969718C10A5038600A9FFAD /* LFLoveRequest.h */,
+				C969718D10A5038600A9FFAD /* LFLoveRequest.m */,
+				C969719010A5038A00A9FFAD /* LFBanRequest.h */,
+				C969719110A5038A00A9FFAD /* LFBanRequest.m */,
+				C969719410A5039700A9FFAD /* LFGetTokenRequest.h */,
+				C969719510A5039700A9FFAD /* LFGetTokenRequest.m */,
+				C969719810A5039E00A9FFAD /* LFGetSessionRequest.h */,
+				C969719910A5039E00A9FFAD /* LFGetSessionRequest.m */,
+			);
+			name = "Request Types";
+			sourceTree = "<group>";
+		};
 		C9D5C79510A28A5A00AFCF8A /* Classes (Demo App) */ = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +257,13 @@
 				C9CD584E10A3553500AB1952 /* LFRequest.h in Headers */,
 				C9CD589510A366C800AB1952 /* LFWebServicePrivate.h in Headers */,
 				C9CD589F10A367BA00AB1952 /* LFWebServiceDelegate.h in Headers */,
+				C969718610A5037500A9FFAD /* LFNowPlayingRequest.h in Headers */,
+				C969718A10A5037E00A9FFAD /* LFScrobbleRequest.h in Headers */,
+				C969718E10A5038600A9FFAD /* LFLoveRequest.h in Headers */,
+				C969719210A5038A00A9FFAD /* LFBanRequest.h in Headers */,
+				C969719610A5039700A9FFAD /* LFGetTokenRequest.h in Headers */,
+				C969719A10A5039E00A9FFAD /* LFGetSessionRequest.h in Headers */,
+				C96971A210A5044400A9FFAD /* LFRequestTypes.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +355,12 @@
 				C9CD582610A3302200AB1952 /* LFWebService.m in Sources */,
 				C9CD582C10A3327700AB1952 /* LFPlaySession.m in Sources */,
 				C9CD584F10A3553500AB1952 /* LFRequest.m in Sources */,
+				C969718710A5037500A9FFAD /* LFNowPlayingRequest.m in Sources */,
+				C969718B10A5037E00A9FFAD /* LFScrobbleRequest.m in Sources */,
+				C969718F10A5038600A9FFAD /* LFLoveRequest.m in Sources */,
+				C969719310A5038A00A9FFAD /* LFBanRequest.m in Sources */,
+				C969719710A5039700A9FFAD /* LFGetTokenRequest.m in Sources */,
+				C969719B10A5039E00A9FFAD /* LFGetSessionRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

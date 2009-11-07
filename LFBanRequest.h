@@ -1,8 +1,8 @@
 //
-//  LFRequest.h
+//  LFBanRequest.h
 //  Last.fm
 //
-//  Created by Matt Patenaude on 11/5/09.
+//  Created by Matt Patenaude on 11/6/09.
 //  Copyright 2009 {13bold}. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -25,50 +25,15 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "LFRequest.h"
 
-// Request types
-typedef enum _LFRequestType {
-	LFRequestUnknown = 0,
-	LFRequestNowPlaying = 1,
-	LFRequestScrobble = 2,
-	LFRequestLove = 3,
-	LFRequestBan = 4,
-	LFRequestGetToken = 5,
-	LFRequestGetSession = 6
-} LFRequestType;
 
-// Forward declarations
-@class LFTrack;
+@interface LFBanRequest : LFRequest {
 
-@interface LFRequest : NSObject {
-	id delegate;
-	LFTrack *track;
-	LFRequestType requestType;
-	
-	NSURLConnection *connection;
-	NSURLResponse *response;
-	NSMutableData *responseData;
 }
 
-// Initializers
-- (id)initWithTrack:(LFTrack *)theTrack;
-+ (id)request;
-+ (id)requestWithTrack:(LFTrack *)theTrack;
-
-// Properties
-@property(assign) id delegate;
-@property(retain) LFTrack *track;
-@property(assign,readonly) LFRequestType type;
-@property(retain,readonly) NSURLResponse *response;
-@property(retain,readonly) NSMutableData *responseData;
-
-// Dispatch methods
+// Overridden methods
 - (void)dispatch;
-
-// NSURLConnection delegate methods
-- (void)connection:(NSURLConnection *)theConnection didReceiveResponse:(NSURLResponse *)theResponse;
-- (void)connection:(NSURLConnection *)theConnection didReceiveData:(NSData *)data;
 - (void)connectionDidFinishLoading:(NSURLConnection *)theConnection;
-- (void)connection:(NSURLConnection *)theConnection didFailWithError:(NSError *)error;
 
 @end
