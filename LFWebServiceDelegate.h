@@ -32,6 +32,10 @@
 // All methods are optional
 @optional
 
+// Generic responses (called first, for EVERY request)
+- (void)requestSucceeded:(NSString *)identifier;
+- (void)request:(NSString *)identifier failedWithError:(NSError *)theError;
+
 // Session management
 - (void)sessionNeedsAuthorizationViaURL:(NSURL *)theURL;
 - (void)sessionStartedWithKey:(NSString *)theKey user:(NSString *)theUser;

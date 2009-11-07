@@ -60,14 +60,14 @@
 @property(retain,readonly) LFTrack *currentTrack;
 
 // Session methods
-- (void)establishNewSession;
-- (void)finishSessionAuthorization;
+- (NSString *)establishNewSession;
+- (NSString *)finishSessionAuthorization;
 
 // Track methods
-- (void)startPlayingTrack:(LFTrack *)theTrack;
-- (void)scrobbleTrackIfNecessary:(LFTrack *)theTrack;
-- (void)loveTrack:(LFTrack *)theTrack;
-- (void)banTrack:(LFTrack *)theTrack;
+- (NSString *)startPlayingTrack:(LFTrack *)theTrack;
+- (NSString *)scrobbleTrackIfNecessary:(LFTrack *)theTrack;
+- (NSString *)loveTrack:(LFTrack *)theTrack;
+- (NSString *)banTrack:(LFTrack *)theTrack;
 
 @end
 

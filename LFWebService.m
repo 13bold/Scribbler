@@ -77,7 +77,7 @@
 @synthesize currentTrack;
 
 #pragma mark Session methods
-- (void)establishNewSession
+- (NSString *)establishNewSession
 {
 	if (pendingToken)
 	{
@@ -88,39 +88,45 @@
 	LFRequest *theRequest = [LFGetTokenRequest request];
 	[requestQueue insertObject:theRequest atIndex:0];
 	[self dispatchNextRequestIfPossible];
+	return [theRequest identifier];
 }
-- (void)finishSessionAuthorization
+- (NSString *)finishSessionAuthorization
 {
 	if (!pendingToken)
 	{
 		NSLog(@"Last.fm.framework: warning, session authorization was not pending");
-		return;
+		return nil;
 	}
 	
 	LFGetSessionRequest *theRequest = [LFGetSessionRequest request];
 	[theRequest setToken:pendingToken];
 	[requestQueue insertObject:theRequest atIndex:0];
 	[self dispatchNextRequestIfPossible];
+	return [theRequest identifier];
 }
 
 #pragma mark Track methods
-- (void)startPlayingTrack:(LFTrack *)theTrack
+- (NSString *)startPlayingTrack:(LFTrack *)theTrack
 {
+	return @"";
 }
-- (void)scrobbleTrackIfNecessary:(LFTrack *)theTrack
+- (NSString *)scrobbleTrackIfNecessary:(LFTrack *)theTrack
 {
+	return @"";
 }
-- (void)loveTrack:(LFTrack *)theTrack
+- (NSString *)loveTrack:(LFTrack *)theTrack
 {
 	LFRequest *theRequest = [LFLoveRequest requestWithTrack:theTrack];
 	[requestQueue addObject:theRequest];
 	[self dispatchNextRequestIfPossible];
+	return [theRequest identifier];
 }
-- (void)banTrack:(LFTrack *)theTrack
+- (NSString *)banTrack:(LFTrack *)theTrack
 {
 	LFRequest *theRequest = [LFBanRequest requestWithTrack:theTrack];
 	[requestQueue addObject:theRequest];
 	[self dispatchNextRequestIfPossible];
+	return [theRequest identifier];
 }
 
 #pragma mark Web service methods
@@ -144,6 +150,9 @@
 {
 	runningRequest = NO;
 	BOOL shouldProceed = NO;
+	
+	if (delegate && [delegate respondsToSelector:@selector(requestSucceeded:)])
+		[delegate requestSucceeded:[theRequest identifier]];
 	
 	LFRequestType r = [theRequest requestType];
 	if (r == LFRequestNowPlaying)
@@ -213,6 +222,9 @@
 {
 	runningRequest = NO;
 	BOOL shouldProceed = NO;
+	
+	if (delegate && [delegate respondsToSelector:@selector(request:failedWithError:)])
+		[delegate request:[theRequest identifier] failedWithError:theError];
 	
 	[theRequest setDelegate:nil];
 	
