@@ -25,9 +25,10 @@
 //
 
 #import "LFWebService.h"
+#import "LFRequest.h"
 
 
-@interface LFWebService()
+@interface LFWebService()<LFRequestDelegate>
 
 // Web service methods
 - (void)dispatchNextRequestIfPossible;

@@ -88,13 +88,13 @@
 }
 - (void)loveTrack:(LFTrack *)theTrack
 {
-	LFRequest *theRequest = [LFRequest requestWithTrack:theTrack requestType:LFRequestLove];
+	LFRequest *theRequest = [LFLoveRequest requestWithTrack:theTrack];
 	[requestQueue addObject:theRequest];
 	[self dispatchNextRequestIfPossible];
 }
 - (void)banTrack:(LFTrack *)theTrack
 {
-	LFRequest *theRequest = [LFRequest requestWithTrack:theTrack requestType:LFRequestBan];
+	LFRequest *theRequest = [LFBanRequest requestWithTrack:theTrack];
 	[requestQueue addObject:theRequest];
 	[self dispatchNextRequestIfPossible];
 }

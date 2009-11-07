@@ -58,7 +58,7 @@ typedef enum _LFRequestType {
 // Properties
 @property(assign) id delegate;
 @property(retain) LFTrack *track;
-@property(assign,readonly) LFRequestType type;
+@property(assign,readonly) LFRequestType requestType;
 @property(retain,readonly) NSURLResponse *response;
 @property(retain,readonly) NSMutableData *responseData;
 
@@ -72,3 +72,13 @@ typedef enum _LFRequestType {
 - (void)connection:(NSURLConnection *)theConnection didFailWithError:(NSError *)error;
 
 @end
+
+// Delegate methods
+@protocol LFRequestDelegate
+
+- (void)requestSucceeded:(LFRequest *)theRequest;
+- (void)request:(LFRequest *)theRequest failedWithError:(NSError *)theError;
+
+@end
+
+

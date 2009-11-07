@@ -27,6 +27,7 @@
 #import "LFRequest.h"
 #import "LFTrack.h"
 #import "LFWebService.h"
+#import "LFWebServicePrivate.h"
 
 
 @implementation LFRequest
@@ -41,7 +42,7 @@
 	if (self = [super init])
 	{
 		[self setTrack:theTrack];
-		type = LFRequestUnknown;
+		requestType = LFRequestUnknown;
 		
 		responseData = [[NSMutableData alloc] init];
 	}
@@ -69,7 +70,7 @@
 #pragma mark Properties
 @synthesize delegate;
 @synthesize track;
-@synthesize type;
+@synthesize requestType;
 @synthesize response;
 @synthesize responseData;
 
