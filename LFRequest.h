@@ -89,6 +89,7 @@ typedef enum _LFRequestType {
 - (NSString *)sharedSecret;
 - (NSString *)clientID;
 - (NSString *)sessionKey;
+- (NSString *)sessionUser;
 
 - (void)requestSucceeded:(LFRequest *)theRequest;
 - (void)request:(LFRequest *)theRequest failedWithError:(NSError *)theError;
