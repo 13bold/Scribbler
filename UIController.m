@@ -25,6 +25,7 @@
 //
 
 #import "UIController.h"
+#import "Controller.h"
 
 
 @implementation UIController
@@ -35,6 +36,18 @@
 	[authInstructionText setStringValue:@"In order to use Last.fm within this application, you first need to connect it with your account. Click the button below to get started."];
 	[authStatus setHidden:YES];
 	[authSpinner stopAnimation:self];
+	
+	[authConnectButton setTitle:@"Connect with Last.fm"];
+	
+	// get frame, set size, and center
+	CGRect buttonFrame = [authConnectButton frame];
+	buttonFrame.size.width = 174.0; // taken from IB
+	
+	CGFloat parentWidth = [[authConnectButton superview] frame].size.width;
+	buttonFrame.origin.x = (parentWidth / 2.0) - (buttonFrame.size.width / 2.0);
+	[authConnectButton setFrame:buttonFrame];
+	
+	[authConnectButton setAction:@selector(connectWithLastFM:)];
 	[authConnectButton setHidden:NO];
 }
 - (void)showAuthPreAuthPane
@@ -42,6 +55,30 @@
 	[authInstructionText setStringValue:@"In order to use Last.fm within this application, you first need to connect it with your account. Click the button below to get started."];
 	[authConnectButton setHidden:YES];
 	[authStatus setStringValue:@"Making Authorization Request…"];
+	
+	// measure the gap
+	CGRect statusFrame = [authStatus frame];
+	CGRect spinFrame = [authSpinner frame];
+	CGFloat gap = spinFrame.origin.x - (statusFrame.origin.x + statusFrame.size.width);
+	
+	// adjust the size of the status field
+	[authStatus sizeToFit];
+	
+	// reposition the spinner
+	statusFrame = [authStatus frame];
+	spinFrame.origin.x = statusFrame.origin.x + statusFrame.size.width + gap;
+	[authSpinner setFrame:spinFrame];
+	
+	// now center both of them
+	CGFloat totalWidth = statusFrame.size.width + gap + spinFrame.size.width;
+	CGFloat parentWidth = [[authStatus superview] frame].size.width;
+	CGFloat adjustment = statusFrame.origin.x - ((parentWidth / 2.0) - (totalWidth / 2.0));
+	
+	statusFrame.origin.x -= adjustment;
+	spinFrame.origin.x -= adjustment;
+	[authStatus setFrame:statusFrame];
+	[authSpinner setFrame:spinFrame];
+	
 	[authStatus setHidden:NO];
 	[authSpinner startAnimation:self];
 }
@@ -50,6 +87,30 @@
 	[authInstructionText setStringValue:@"You will now need to provide authorization to Last.fm in your web browser, which should open for you. Once you've finished, return here and wait for authorization to complete."];
 	[authConnectButton setHidden:YES];
 	[authStatus setStringValue:@"Awaiting Authorization…"];
+	
+	// measure the gap
+	CGRect statusFrame = [authStatus frame];
+	CGRect spinFrame = [authSpinner frame];
+	CGFloat gap = spinFrame.origin.x - (statusFrame.origin.x + statusFrame.size.width);
+	
+	// adjust the size of the status field
+	[authStatus sizeToFit];
+	
+	// reposition the spinner
+	statusFrame = [authStatus frame];
+	spinFrame.origin.x = statusFrame.origin.x + statusFrame.size.width + gap;
+	[authSpinner setFrame:spinFrame];
+	
+	// now center both of them
+	CGFloat totalWidth = statusFrame.size.width + gap + spinFrame.size.width;
+	CGFloat parentWidth = [[authStatus superview] frame].size.width;
+	CGFloat adjustment = statusFrame.origin.x - ((parentWidth / 2.0) - (totalWidth / 2.0));
+	
+	statusFrame.origin.x -= adjustment;
+	spinFrame.origin.x -= adjustment;
+	[authStatus setFrame:statusFrame];
+	[authSpinner setFrame:spinFrame];
+	
 	[authStatus setHidden:NO];
 	[authSpinner startAnimation:self];
 }
@@ -58,16 +119,56 @@
 	[authInstructionText setStringValue:@"Please wait while I validate the credentials from your last authorization with Last.fm."];
 	[authConnectButton setHidden:YES];
 	[authStatus setStringValue:@"Checking Authorization…"];
+	
+	// measure the gap
+	CGRect statusFrame = [authStatus frame];
+	CGRect spinFrame = [authSpinner frame];
+	CGFloat gap = spinFrame.origin.x - (statusFrame.origin.x + statusFrame.size.width);
+	
+	// adjust the size of the status field
+	[authStatus sizeToFit];
+	
+	// reposition the spinner
+	statusFrame = [authStatus frame];
+	spinFrame.origin.x = statusFrame.origin.x + statusFrame.size.width + gap;
+	[authSpinner setFrame:spinFrame];
+	
+	// now center both of them
+	CGFloat totalWidth = statusFrame.size.width + gap + spinFrame.size.width;
+	CGFloat parentWidth = [[authStatus superview] frame].size.width;
+	CGFloat adjustment = statusFrame.origin.x - ((parentWidth / 2.0) - (totalWidth / 2.0));
+	
+	statusFrame.origin.x -= adjustment;
+	spinFrame.origin.x -= adjustment;
+	[authStatus setFrame:statusFrame];
+	[authSpinner setFrame:spinFrame];
+	
 	[authStatus setHidden:NO];
 	[authSpinner startAnimation:self];
 }
-- (void)showAuthConnectedPane
+- (void)showAuthConnectedPaneWithUser:(NSString *)username
 {
-	[authInstructionText setStringValue:@"Connected!"];
-	[authConnectButton setHidden:YES];
-	[authStatus setStringValue:@"Connected!"];
-	[authStatus setHidden:NO];
+	NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Hello, %@! You have successfully connected your Last.fm account with this application. You can now Love and Ban tracks, as well as scrobble your plays to Last.fm.", username]];
+	[str addAttribute:NSFontAttributeName value:[NSFont boldSystemFontOfSize:12.0] range:NSMakeRange(7, [username length])];
+	
+	[authInstructionText setAttributedStringValue:str];
+	[str release];
+	
 	[authSpinner stopAnimation:self];
+	[authStatus setHidden:YES];
+	
+	[authConnectButton setTitle:@"Disconnect from Last.fm"];
+	
+	// get frame, set size, and center
+	CGRect buttonFrame = [authConnectButton frame];
+	buttonFrame.size.width = 195.0; // taken from IB
+	
+	CGFloat parentWidth = [[authConnectButton superview] frame].size.width;
+	buttonFrame.origin.x = (parentWidth / 2.0) - (buttonFrame.size.width / 2.0);
+	[authConnectButton setFrame:buttonFrame];
+	
+	[authConnectButton setAction:@selector(disconnectFromLastFM:)];
+	[authConnectButton setHidden:NO];
 }
 
 @end

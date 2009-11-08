@@ -47,6 +47,7 @@
 // Authorization methods
 - (void)connectWithStoredCredentials;
 - (IBAction)connectWithLastFM:(id)sender;
+- (IBAction)disconnectFromLastFM:(id)sender;
 - (IBAction)completeAuthorization:(id)sender;
 - (IBAction)openManagementPage:(id)sender;
 

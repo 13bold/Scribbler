@@ -3735,7 +3735,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">881</int>
+			<int key="maxID">883</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -3749,10 +3749,12 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>completeAuthorization:</string>
 							<string>connectWithLastFM:</string>
+							<string>disconnectFromLastFM:</string>
 							<string>openManagementPage:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>

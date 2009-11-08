@@ -116,6 +116,29 @@
 	// Adjust the UI to show status
 	[uiController showAuthPreAuthPane];
 }
+- (IBAction)disconnectFromLastFM:(id)sender
+{
+	// We need to get the username
+	NSString *theUser = [[NSUserDefaults standardUserDefaults] objectForKey:@"LastFMUsername"];
+	
+	// We need to delete the user default information
+	[[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"LastFMConfigured"];
+	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"LastFMUsername"];
+	
+	// And clear the Keychain info
+	NSString *keychainService = [NSString stringWithFormat:@"Last.fm (%@)", [[NSBundle mainBundle] bundleIdentifier]];
+	EMGenericKeychainItem *keyItem = [[EMKeychainProxy sharedProxy] genericKeychainItemForService:keychainService withUsername:theUser];
+	if (keyItem)
+		[keyItem setPassword:@""];
+	
+	// Finally, clear out the web service...
+	LFWebService *lastfm = [LFWebService sharedWebService];
+	[lastfm setSessionUser:nil];
+	[lastfm setSessionKey:nil];
+	
+	// ... and update the UI
+	[uiController showAuthConnectPane];
+}
 - (IBAction)completeAuthorization:(id)sender
 {
 	// And now we finish authorization
@@ -160,7 +183,7 @@
 	// the key in the Keychain for future use.
 	
 	[[NSUserDefaults standardUserDefaults] setObject:theUser forKey:@"LastFMUsername"];
-	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:@"LastFMConfigured"];
+	[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"LastFMConfigured"];
 	
 	NSString *keychainService = [NSString stringWithFormat:@"Last.fm (%@)", [[NSBundle mainBundle] bundleIdentifier]];
 	EMGenericKeychainItem *keyItem = [[EMKeychainProxy sharedProxy] genericKeychainItemForService:keychainService withUsername:theUser];
@@ -170,13 +193,13 @@
 		[[EMKeychainProxy sharedProxy] addGenericKeychainItemForService:keychainService withUsername:theUser password:theKey];
 	
 	// Hooray! we're up and running
-	[uiController showAuthConnectedPane];
+	[uiController showAuthConnectedPaneWithUser:theUser];
 }
 
 - (void)sessionValidatedForUser:(NSString *)theUser
 {
 	// Hooray! we're up and running
-	[uiController showAuthConnectedPane];
+	[uiController showAuthConnectedPaneWithUser:theUser];
 }
 - (void)sessionInvalidForUser:(NSString *)theUser
 {

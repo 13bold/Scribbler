@@ -39,6 +39,6 @@
 - (void)showAuthPreAuthPane;
 - (void)showAuthWaitingPane;
 - (void)showAuthValidatingPane;
-- (void)showAuthConnectedPane;
+- (void)showAuthConnectedPaneWithUser:(NSString *)username;
 
 @end

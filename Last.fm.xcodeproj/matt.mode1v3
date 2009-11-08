@@ -276,7 +276,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>3</integer>
+									<integer>8</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
@@ -319,7 +319,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>Controller.m</string>
+								<string>UIController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -327,11 +327,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>Controller.m</string>
+										<string>UIController.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>C96852CE10A7629A003816A7</string>
+										<string>C96852FE10A769D8003816A7</string>
 										<key>history</key>
 										<array>
 											<string>C9CD586410A35D4D00AB1952</string>
@@ -372,10 +372,10 @@
 											<string>C968525A10A75711003816A7</string>
 											<string>C968525B10A75711003816A7</string>
 											<string>C968526510A75788003816A7</string>
-											<string>C968526F10A757DF003816A7</string>
-											<string>C968527C10A7593C003816A7</string>
 											<string>C96852B910A75FB4003816A7</string>
-											<string>C96852BA10A75FB4003816A7</string>
+											<string>C96852DA10A76463003816A7</string>
+											<string>C96852DB10A76463003816A7</string>
+											<string>C96852DC10A76463003816A7</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -573,12 +573,13 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>C96852FF10A769D8003816A7</string>
 		<string>C968529D10A75D62003816A7</string>
 		<string>C968529E10A75D62003816A7</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>C9D5C79A10A28A6800AFCF8A</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/matt/Last.fm/Last.fm.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -816,6 +817,8 @@
 							<key>Dock</key>
 							<array>
 								<dict>
+									<key>BecomeActive</key>
+									<true/>
 									<key>ContentConfiguration</key>
 									<dict>
 										<key>PBXProjectModuleGUID</key>
@@ -842,8 +845,6 @@
 							<string>212pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -955,7 +956,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>Identifier</key>
