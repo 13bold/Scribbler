@@ -25,14 +25,28 @@
 //
 
 #import "Controller.h"
+#import "UIController.h"
 #import <Last.fm/Last.fm.h>
+#import "EMKeychainProxy.h"
+#import "EMKeychainItem.h"
 
 
 @implementation Controller
 
+#pragma mark Initializers
++ (void)initialize
+{
+	NSDictionary *defaults = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:NO], @"LastFMConfigured", @"", @"LastFMUsername", nil];
+	[[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
+}
+
 #pragma mark Application delegate methods
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+	// We'll use this variable for when we need to switch back and
+	// forth between the web browser
+	authorizationPending = NO;
+	
 	// First, let's setup the web service object
 	// You can obtain the API key and shared secret on your API info page
 	//  - http://www.last.fm/api/account
@@ -53,26 +67,53 @@
 	// First, we'll check to see if we have one. If we do,
 	// we'll set it, then test it. Otherwise, we'll wait for
 	// someone to click the "Connect" button.
+	[self connectWithStoredCredentials];
+}
+- (void)applicationDidBecomeActive:(NSNotification *)aNotification
+{
+	// If we have a pending authorization, this is our
+	// cue to start trying to validate it
+	if (authorizationPending)
+	{
+		authorizationPending = NO;
+		[self completeAuthorization:aNotification];
+	}
 }
 
 #pragma mark Authorization methods
+- (void)connectWithStoredCredentials
+{
+	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"LastFMConfigured"])
+	{
+		NSString *theUser = [[NSUserDefaults standardUserDefaults] objectForKey:@"LastFMUsername"];
+		
+		NSString *keychainService = [NSString stringWithFormat:@"Last.fm (%@)", [[NSBundle mainBundle] bundleIdentifier]];
+		EMGenericKeychainItem *keyItem = [[EMKeychainProxy sharedProxy] genericKeychainItemForService:keychainService withUsername:theUser];
+		if (keyItem)
+		{
+			LFWebService *lastfm = [LFWebService sharedWebService];
+			[lastfm setSessionUser:theUser];
+			[lastfm setSessionKey:[keyItem password]];
+			
+			[lastfm validateSessionCredentials];
+			
+			// Adjust the UI
+			[uiController showAuthValidatingPane];
+		}
+	}
+}
 - (IBAction)connectWithLastFM:(id)sender
 {
 	// This means we're going to force establish a new Last.fm session
 	[[LFWebService sharedWebService] establishNewSession];
 	
-	// While we're waiting, let's make it not clickable, and show an animation
-	[authButton setEnabled:NO];
-	[authSpinner startAnimation:self];
+	// Adjust the UI to show status
+	[uiController showAuthPreAuthPane];
 }
 - (IBAction)completeAuthorization:(id)sender
 {
 	// And now we finish authorization
 	[[LFWebService sharedWebService] finishSessionAuthorization];
-	
-	// While we're waiting, let's make it not clickable, and show an animation
-	[authButton setEnabled:NO];
-	[authSpinner startAnimation:self];
 }
 - (IBAction)openManagementPage:(id)sender
 {
@@ -83,26 +124,58 @@
 #pragma mark Web service delegate methods
 - (void)sessionNeedsAuthorizationViaURL:(NSURL *)theURL
 {
-	// OK, so the first stage is done; what we need to do
-	// now is reprogram the button to "Complete" authorization,
+	// OK, so the first stage is done; we'll update the
+	// UI to match the current status,
 	// then open up the web browser to have the user allow our demo app
 	// access
-	[authButton setTitle:@"Complete Authorization"];
-	[authButton sizeToFit];
-	[authButton setAction:@selector(completeAuthorization:)];
-	[authButton setEnabled:YES];
-	[authSpinner stopAnimation:self];
+	[uiController showAuthWaitingPane];
 	
 	[[NSWorkspace sharedWorkspace] openURL:theURL];
+	authorizationPending = YES;
 }
-- (void)sessionStartedWithKey:(NSString *)theKey user:(NSString *)theUser
+- (void)sessionAuthorizationStillPending
+{
+	// We tried to authorize the session, but the user
+	// isn't done in the web browser yet. Wait 5 seconds,
+	// then try again.
+	
+	[NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(completeAuthorization:) userInfo:nil repeats:NO];
+}
+- (void)sessionAuthorizationFailed
+{
+	// We failed. Epically.
+	[uiController showAuthConnectPane];
+}
+- (void)sessionCreatedWithKey:(NSString *)theKey user:(NSString *)theUser
+{
+	// The session key will be valid for future uses -- it never
+	// expires unless explicitly revoked by the Last.fm user.
+	// Therefore, we can store the user as a default, and then store
+	// the key in the Keychain for future use.
+	
+	[[NSUserDefaults standardUserDefaults] setObject:theUser forKey:@"LastFMUsername"];
+	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:@"LastFMConfigured"];
+	
+	NSString *keychainService = [NSString stringWithFormat:@"Last.fm (%@)", [[NSBundle mainBundle] bundleIdentifier]];
+	EMGenericKeychainItem *keyItem = [[EMKeychainProxy sharedProxy] genericKeychainItemForService:keychainService withUsername:theUser];
+	if (keyItem)
+		[keyItem setPassword:theKey];
+	else
+		[[EMKeychainProxy sharedProxy] addGenericKeychainItemForService:keychainService withUsername:theUser password:theKey];
+	
+	// Hooray! we're up and running
+	[uiController showAuthConnectedPane];
+}
+
+- (void)sessionValidatedForUser:(NSString *)theUser
 {
 	// Hooray! we're up and running
-	[authButton setTitle:@"Manage Last.fm Access"];
-	[authButton sizeToFit];
-	[authButton setAction:@selector(openManagementPage:)];
-	[authButton setEnabled:YES];
-	[authSpinner stopAnimation:self];
+	[uiController showAuthConnectedPane];
+}
+- (void)sessionInvalidForUser:(NSString *)theUser
+{
+	// We failed. Epically.
+	[uiController showAuthConnectPane];
 }
 
 @end

@@ -34,7 +34,8 @@ typedef enum _LFRequestType {
 	LFRequestLove = 3,
 	LFRequestBan = 4,
 	LFRequestGetToken = 5,
-	LFRequestGetSession = 6
+	LFRequestGetSession = 6,
+	LFRequestValidateSession = 7
 } LFRequestType;
 
 // Forward declarations

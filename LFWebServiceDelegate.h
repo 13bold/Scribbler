@@ -36,9 +36,15 @@
 - (void)requestSucceeded:(NSString *)identifier;
 - (void)request:(NSString *)identifier failedWithError:(NSError *)theError;
 
-// Session management
+// Session management (new sessions)
 - (void)sessionNeedsAuthorizationViaURL:(NSURL *)theURL;
-- (void)sessionStartedWithKey:(NSString *)theKey user:(NSString *)theUser;
+- (void)sessionAuthorizationStillPending;
+- (void)sessionAuthorizationFailed;
+- (void)sessionCreatedWithKey:(NSString *)theKey user:(NSString *)theUser;
+
+// Session management (existing sessions)
+- (void)sessionValidatedForUser:(NSString *)theUser;
+- (void)sessionInvalidForUser:(NSString *)theUser;
 
 // Track responses
 - (void)nowPlayingSucceededForTrack:(LFTrack *)theTrack;

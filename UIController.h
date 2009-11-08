@@ -1,8 +1,8 @@
 //
-//  LFRequestTypes.h
+//  UIController.h
 //  Last.fm
 //
-//  Created by Matt Patenaude on 11/6/09.
+//  Created by Matt Patenaude on 11/8/09.
 //  Copyright (C) 2009 {13bold}.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,10 +24,21 @@
 //  THE SOFTWARE.
 //
 
-#import "LFNowPlayingRequest.h"
-#import "LFScrobbleRequest.h"
-#import "LFLoveRequest.h"
-#import "LFBanRequest.h"
-#import "LFGetTokenRequest.h"
-#import "LFGetSessionRequest.h"
-#import "LFValidateSessionRequest.h"
+#import <Cocoa/Cocoa.h>
+
+
+@interface UIController : NSObject {
+	IBOutlet NSTextField *authInstructionText;
+	IBOutlet NSButton *authConnectButton;
+	IBOutlet NSTextField *authStatus;
+	IBOutlet NSProgressIndicator *authSpinner;
+}
+
+// UI methods
+- (void)showAuthConnectPane;
+- (void)showAuthPreAuthPane;
+- (void)showAuthWaitingPane;
+- (void)showAuthValidatingPane;
+- (void)showAuthConnectedPane;
+
+@end

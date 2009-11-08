@@ -76,7 +76,7 @@
 @synthesize sessionUser;
 @synthesize currentTrack;
 
-#pragma mark Session methods
+#pragma mark Session methods (new sessions)
 - (NSString *)establishNewSession
 {
 	if (pendingToken)
@@ -100,6 +100,15 @@
 	
 	LFGetSessionRequest *theRequest = [LFGetSessionRequest request];
 	[theRequest setToken:pendingToken];
+	[requestQueue insertObject:theRequest atIndex:0];
+	[self dispatchNextRequestIfPossible];
+	return [theRequest identifier];
+}
+
+#pragma mark Session methods (existing sessions)
+- (NSString *)validateSessionCredentials
+{
+	LFValidateSessionRequest *theRequest = [LFValidateSessionRequest request];
 	[requestQueue insertObject:theRequest atIndex:0];
 	[self dispatchNextRequestIfPossible];
 	return [theRequest identifier];
@@ -206,8 +215,15 @@
 		}
 		sessionKey = [[(LFGetSessionRequest *)theRequest sessionKey] copy];
 		
-		if (delegate && [delegate respondsToSelector:@selector(sessionStartedWithKey:user:)])
-			[delegate sessionStartedWithKey:sessionKey user:sessionUser];
+		if (delegate && [delegate respondsToSelector:@selector(sessionCreatedWithKey:user:)])
+			[delegate sessionCreatedWithKey:sessionKey user:sessionUser];
+		
+		shouldProceed = YES;
+	}
+	else if (r == LFRequestValidateSession)
+	{
+		if (delegate && [delegate respondsToSelector:@selector(sessionValidatedForUser:)])
+			[delegate sessionValidatedForUser:sessionUser];
 		
 		shouldProceed = YES;
 	}
@@ -232,7 +248,91 @@
 	// if it's not a communication error, but it's a "this request will never work" error, remove, dispatch
 	// if it's a communication error, leave it in the queue, but don't dispatch
 	
-	NSLog(@"%@", [theError description]);
+	LFRequestType r = [theRequest requestType];
+	if (r == LFRequestNowPlaying)
+	{
+		if (![[theError domain] isEqualToString:@"Last.fm"])
+		{
+			NSLog(@"Last.fm.framework: error, %@", [theError localizedDescription]);
+			if (delegate && [delegate respondsToSelector:@selector(nowPlayingFailedForTrack:error:willRetry:)])
+				[delegate nowPlayingFailedForTrack:[theRequest track] error:theError willRetry:YES];
+		}
+		else
+		{
+			
+		}
+	}
+	else if (r == LFRequestScrobble)
+	{
+		if (![[theError domain] isEqualToString:@"Last.fm"])
+		{
+			NSLog(@"Last.fm.framework: error, %@", [theError localizedDescription]);
+			if (delegate && [delegate respondsToSelector:@selector(scrobbleFailedForTrack:error:willRetry:)])
+				[delegate scrobbleFailedForTrack:[theRequest track] error:theError willRetry:YES];
+		}
+		else
+		{
+			
+		}
+	}
+	else if (r == LFRequestLove)
+	{
+		if (![[theError domain] isEqualToString:@"Last.fm"])
+		{
+			NSLog(@"Last.fm.framework: error, %@", [theError localizedDescription]);
+			if (delegate && [delegate respondsToSelector:@selector(loveFailedForTrack:error:willRetry:)])
+				[delegate loveFailedForTrack:[theRequest track] error:theError willRetry:YES];
+		}
+		else
+		{
+			
+		}
+	}
+	else if (r == LFRequestBan)
+	{
+		if (![[theError domain] isEqualToString:@"Last.fm"])
+		{
+			NSLog(@"Last.fm.framework: error, %@", [theError localizedDescription]);
+			if (delegate && [delegate respondsToSelector:@selector(banFailedForTrack:error:willRetry:)])
+				[delegate banFailedForTrack:[theRequest track] error:theError willRetry:YES];
+		}
+		else
+		{
+			
+		}
+	}
+	else if (r == LFRequestGetToken)
+	{
+		
+	}
+	else if (r == LFRequestGetSession)
+	{
+		if (![[theError domain] isEqualToString:@"Last.fm"] || [theError code] != 14)
+		{
+			NSLog(@"Last.fm.framework: error, %@", [theError localizedDescription]);
+			if (delegate && [delegate respondsToSelector:@selector(sessionAuthorizationFailed)])
+				[delegate sessionAuthorizationFailed];
+		}
+		else if ([theError code] == 14)	// token not yet authorized
+		{
+			if (delegate && [delegate respondsToSelector:@selector(sessionAuthorizationStillPending)])
+				[delegate sessionAuthorizationStillPending];
+		}
+		
+		[requestQueue removeObject:theRequest];
+	}
+	else if (r == LFRequestValidateSession)
+	{
+		if (delegate && [delegate respondsToSelector:@selector(sessionInvalidForUser:)])
+			[delegate sessionInvalidForUser:sessionUser];
+		
+		[requestQueue removeObject:theRequest];
+	}
+	else
+	{
+		NSLog(@"Last.fm.framework: error, %@", [theError description]);
+		shouldProceed = YES;
+	}
 	
 	if (shouldProceed)
 		[self dispatchNextRequestIfPossible];

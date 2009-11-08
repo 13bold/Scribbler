@@ -28,21 +28,35 @@
 #import <Last.fm/Last.fm.h>
 
 
+// Forward declarations
+@class UIController;
+
 @interface Controller : NSObject<LFWebServiceDelegate> {
+	IBOutlet UIController *uiController;
+	
 	IBOutlet NSButton *authButton;
 	IBOutlet NSProgressIndicator *authSpinner;
+	
+	BOOL authorizationPending;
 }
 
 // Application delegate methods
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification;
+- (void)applicationDidBecomeActive:(NSNotification *)aNotification;
 
 // Authorization methods
+- (void)connectWithStoredCredentials;
 - (IBAction)connectWithLastFM:(id)sender;
 - (IBAction)completeAuthorization:(id)sender;
 - (IBAction)openManagementPage:(id)sender;
 
 // Web service delegate methods
 - (void)sessionNeedsAuthorizationViaURL:(NSURL *)theURL;
-- (void)sessionStartedWithKey:(NSString *)theKey user:(NSString *)theUser;
+- (void)sessionAuthorizationStillPending;
+- (void)sessionAuthorizationFailed;
+- (void)sessionCreatedWithKey:(NSString *)theKey user:(NSString *)theUser;
+
+- (void)sessionValidatedForUser:(NSString *)theUser;
+- (void)sessionInvalidForUser:(NSString *)theUser;
 
 @end

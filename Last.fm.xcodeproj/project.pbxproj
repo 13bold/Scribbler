@@ -11,6 +11,11 @@
 		8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
 		C9684F7A10A7414B003816A7 /* EMKeychainItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C9684F7710A7414B003816A7 /* EMKeychainItem.m */; };
 		C9684F7B10A7414B003816A7 /* EMKeychainProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = C9684F7910A7414B003816A7 /* EMKeychainProxy.m */; };
+		C9684FA410A7483E003816A7 /* UIController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9684FA310A7483E003816A7 /* UIController.m */; };
+		C968513110A74E8E003816A7 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C968513010A74E8E003816A7 /* Carbon.framework */; };
+		C96851EF10A74E95003816A7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C96851EE10A74E95003816A7 /* Security.framework */; };
+		C968524610A7514F003816A7 /* LFValidateSessionRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = C968524410A7514F003816A7 /* LFValidateSessionRequest.h */; };
+		C968524710A7514F003816A7 /* LFValidateSessionRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C968524510A7514F003816A7 /* LFValidateSessionRequest.m */; };
 		C969718610A5037500A9FFAD /* LFNowPlayingRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = C969718410A5037500A9FFAD /* LFNowPlayingRequest.h */; };
 		C969718710A5037500A9FFAD /* LFNowPlayingRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C969718510A5037500A9FFAD /* LFNowPlayingRequest.m */; };
 		C969718A10A5037E00A9FFAD /* LFScrobbleRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = C969718810A5037E00A9FFAD /* LFScrobbleRequest.h */; };
@@ -26,7 +31,6 @@
 		C96971A210A5044400A9FFAD /* LFRequestTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = C96971A010A5044400A9FFAD /* LFRequestTypes.h */; };
 		C969720710A50DF900A9FFAD /* NSString+LFExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = C969720510A50DF900A9FFAD /* NSString+LFExtensions.h */; };
 		C969720810A50DF900A9FFAD /* NSString+LFExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C969720610A50DF900A9FFAD /* NSString+LFExtensions.m */; };
-		C970535610A533B000A07DF8 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C97052A110A5338700A07DF8 /* WebKit.framework */; };
 		C9CD582510A3302200AB1952 /* LFWebService.h in Headers */ = {isa = PBXBuildFile; fileRef = C9CD582310A3302200AB1952 /* LFWebService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C9CD582610A3302200AB1952 /* LFWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = C9CD582410A3302200AB1952 /* LFWebService.m */; };
 		C9CD582B10A3327700AB1952 /* LFPlaySession.h in Headers */ = {isa = PBXBuildFile; fileRef = C9CD582910A3327700AB1952 /* LFPlaySession.h */; };
@@ -81,6 +85,12 @@
 		C9684F7710A7414B003816A7 /* EMKeychainItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMKeychainItem.m; sourceTree = "<group>"; };
 		C9684F7810A7414B003816A7 /* EMKeychainProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMKeychainProxy.h; sourceTree = "<group>"; };
 		C9684F7910A7414B003816A7 /* EMKeychainProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMKeychainProxy.m; sourceTree = "<group>"; };
+		C9684FA210A7483E003816A7 /* UIController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIController.h; sourceTree = "<group>"; };
+		C9684FA310A7483E003816A7 /* UIController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIController.m; sourceTree = "<group>"; };
+		C968513010A74E8E003816A7 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		C96851EE10A74E95003816A7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
+		C968524410A7514F003816A7 /* LFValidateSessionRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFValidateSessionRequest.h; sourceTree = "<group>"; };
+		C968524510A7514F003816A7 /* LFValidateSessionRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFValidateSessionRequest.m; sourceTree = "<group>"; };
 		C969718410A5037500A9FFAD /* LFNowPlayingRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFNowPlayingRequest.h; sourceTree = "<group>"; };
 		C969718510A5037500A9FFAD /* LFNowPlayingRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFNowPlayingRequest.m; sourceTree = "<group>"; };
 		C969718810A5037E00A9FFAD /* LFScrobbleRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFScrobbleRequest.h; sourceTree = "<group>"; };
@@ -96,7 +106,6 @@
 		C96971A010A5044400A9FFAD /* LFRequestTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFRequestTypes.h; sourceTree = "<group>"; };
 		C969720510A50DF900A9FFAD /* NSString+LFExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+LFExtensions.h"; sourceTree = "<group>"; };
 		C969720610A50DF900A9FFAD /* NSString+LFExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LFExtensions.m"; sourceTree = "<group>"; };
-		C97052A110A5338700A07DF8 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = /System/Library/Frameworks/WebKit.framework; sourceTree = "<absolute>"; };
 		C9CD582310A3302200AB1952 /* LFWebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFWebService.h; sourceTree = "<group>"; };
 		C9CD582410A3302200AB1952 /* LFWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFWebService.m; sourceTree = "<group>"; };
 		C9CD582910A3327700AB1952 /* LFPlaySession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFPlaySession.h; sourceTree = "<group>"; };
@@ -131,8 +140,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9D5C7B810A28BC900AFCF8A /* Cocoa.framework in Frameworks */,
-				C970535610A533B000A07DF8 /* WebKit.framework in Frameworks */,
 				C9D5C7BC10A28BD500AFCF8A /* Last.fm.framework in Frameworks */,
+				C968513110A74E8E003816A7 /* Carbon.framework in Frameworks */,
+				C96851EF10A74E95003816A7 /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,7 +213,8 @@
 			isa = PBXGroup;
 			children = (
 				1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */,
-				C97052A110A5338700A07DF8 /* WebKit.framework */,
+				C96851EE10A74E95003816A7 /* Security.framework */,
+				C968513010A74E8E003816A7 /* Carbon.framework */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";
@@ -246,6 +257,8 @@
 				C969719510A5039700A9FFAD /* LFGetTokenRequest.m */,
 				C969719810A5039E00A9FFAD /* LFGetSessionRequest.h */,
 				C969719910A5039E00A9FFAD /* LFGetSessionRequest.m */,
+				C968524410A7514F003816A7 /* LFValidateSessionRequest.h */,
+				C968524510A7514F003816A7 /* LFValidateSessionRequest.m */,
 			);
 			name = "Request Types";
 			sourceTree = "<group>";
@@ -255,6 +268,8 @@
 			children = (
 				C9D5C7A010A28B0000AFCF8A /* Controller.h */,
 				C9D5C7A110A28B0000AFCF8A /* Controller.m */,
+				C9684FA210A7483E003816A7 /* UIController.h */,
+				C9684FA310A7483E003816A7 /* UIController.m */,
 				C9684F7610A7414B003816A7 /* EMKeychainItem.h */,
 				C9684F7710A7414B003816A7 /* EMKeychainItem.m */,
 				C9684F7810A7414B003816A7 /* EMKeychainProxy.h */,
@@ -285,6 +300,7 @@
 				C969719A10A5039E00A9FFAD /* LFGetSessionRequest.h in Headers */,
 				C96971A210A5044400A9FFAD /* LFRequestTypes.h in Headers */,
 				C969720710A50DF900A9FFAD /* NSString+LFExtensions.h in Headers */,
+				C968524610A7514F003816A7 /* LFValidateSessionRequest.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,6 +399,7 @@
 				C969719710A5039700A9FFAD /* LFGetTokenRequest.m in Sources */,
 				C969719B10A5039E00A9FFAD /* LFGetSessionRequest.m in Sources */,
 				C969720810A50DF900A9FFAD /* NSString+LFExtensions.m in Sources */,
+				C968524710A7514F003816A7 /* LFValidateSessionRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,6 +411,7 @@
 				C9D5C7A210A28B0000AFCF8A /* Controller.m in Sources */,
 				C9684F7A10A7414B003816A7 /* EMKeychainItem.m in Sources */,
 				C9684F7B10A7414B003816A7 /* EMKeychainProxy.m in Sources */,
+				C9684FA410A7483E003816A7 /* UIController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

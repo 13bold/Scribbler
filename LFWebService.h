@@ -59,9 +59,12 @@
 @property(copy) NSString *sessionUser;
 @property(retain,readonly) LFTrack *currentTrack;
 
-// Session methods
+// Session methods (new sessions)
 - (NSString *)establishNewSession;
 - (NSString *)finishSessionAuthorization;
+
+// Session methods (existing sessions)
+- (NSString *)validateSessionCredentials;
 
 // Track methods
 - (NSString *)startPlayingTrack:(LFTrack *)theTrack;
