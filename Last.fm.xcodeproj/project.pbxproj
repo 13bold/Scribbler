@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
 		8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
+		C9684F7A10A7414B003816A7 /* EMKeychainItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C9684F7710A7414B003816A7 /* EMKeychainItem.m */; };
+		C9684F7B10A7414B003816A7 /* EMKeychainProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = C9684F7910A7414B003816A7 /* EMKeychainProxy.m */; };
 		C969718610A5037500A9FFAD /* LFNowPlayingRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = C969718410A5037500A9FFAD /* LFNowPlayingRequest.h */; };
 		C969718710A5037500A9FFAD /* LFNowPlayingRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C969718510A5037500A9FFAD /* LFNowPlayingRequest.m */; };
 		C969718A10A5037E00A9FFAD /* LFScrobbleRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = C969718810A5037E00A9FFAD /* LFScrobbleRequest.h */; };
@@ -75,6 +77,10 @@
 		32DBCF5E0370ADEE00C91783 /* Last.fm_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Last.fm_Prefix.pch; sourceTree = "<group>"; };
 		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DC2EF5B0486A6940098B216 /* Last.fm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Last.fm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9684F7610A7414B003816A7 /* EMKeychainItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMKeychainItem.h; sourceTree = "<group>"; };
+		C9684F7710A7414B003816A7 /* EMKeychainItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMKeychainItem.m; sourceTree = "<group>"; };
+		C9684F7810A7414B003816A7 /* EMKeychainProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMKeychainProxy.h; sourceTree = "<group>"; };
+		C9684F7910A7414B003816A7 /* EMKeychainProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMKeychainProxy.m; sourceTree = "<group>"; };
 		C969718410A5037500A9FFAD /* LFNowPlayingRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFNowPlayingRequest.h; sourceTree = "<group>"; };
 		C969718510A5037500A9FFAD /* LFNowPlayingRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFNowPlayingRequest.m; sourceTree = "<group>"; };
 		C969718810A5037E00A9FFAD /* LFScrobbleRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFScrobbleRequest.h; sourceTree = "<group>"; };
@@ -249,6 +255,10 @@
 			children = (
 				C9D5C7A010A28B0000AFCF8A /* Controller.h */,
 				C9D5C7A110A28B0000AFCF8A /* Controller.m */,
+				C9684F7610A7414B003816A7 /* EMKeychainItem.h */,
+				C9684F7710A7414B003816A7 /* EMKeychainItem.m */,
+				C9684F7810A7414B003816A7 /* EMKeychainProxy.h */,
+				C9684F7910A7414B003816A7 /* EMKeychainProxy.m */,
 			);
 			name = "Classes (Demo App)";
 			sourceTree = "<group>";
@@ -382,6 +392,8 @@
 			files = (
 				C9D5C79D10A28A8C00AFCF8A /* main.m in Sources */,
 				C9D5C7A210A28B0000AFCF8A /* Controller.m in Sources */,
+				C9684F7A10A7414B003816A7 /* EMKeychainItem.m in Sources */,
+				C9684F7B10A7414B003816A7 /* EMKeychainProxy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
