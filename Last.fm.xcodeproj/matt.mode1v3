@@ -276,12 +276,14 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>53</integer>
-									<integer>52</integer>
+									<integer>36</integer>
+									<integer>21</integer>
+									<integer>10</integer>
+									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 445}, {186, 599}}</string>
+							<string>{{0, 404}, {186, 599}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -330,7 +332,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>C968532D10A76FA7003816A7</string>
+										<string>C968533210A7704A003816A7</string>
 										<key>history</key>
 										<array>
 											<string>C9CD586410A35D4D00AB1952</string>
@@ -345,8 +347,6 @@
 											<string>C96972A210A51A1700A9FFAD</string>
 											<string>C96972A910A51A1700A9FFAD</string>
 											<string>C969730710A51DCF00A9FFAD</string>
-											<string>C969737010A526FE00A9FFAD</string>
-											<string>C969737110A526FE00A9FFAD</string>
 											<string>C969737310A526FE00A9FFAD</string>
 											<string>C969737410A526FE00A9FFAD</string>
 											<string>C99C42C510A5D0B200BE9911</string>
@@ -365,7 +365,6 @@
 											<string>C968525310A75711003816A7</string>
 											<string>C968525410A75711003816A7</string>
 											<string>C968525510A75711003816A7</string>
-											<string>C968525610A75711003816A7</string>
 											<string>C968525810A75711003816A7</string>
 											<string>C968525910A75711003816A7</string>
 											<string>C968525A10A75711003816A7</string>
@@ -374,7 +373,10 @@
 											<string>C96852DA10A76463003816A7</string>
 											<string>C96852DB10A76463003816A7</string>
 											<string>C968531C10A76CEC003816A7</string>
-											<string>C968531D10A76CEC003816A7</string>
+											<string>C968532E10A7704A003816A7</string>
+											<string>C968532F10A7704A003816A7</string>
+											<string>C968533010A7704A003816A7</string>
+											<string>C968533110A7704A003816A7</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
