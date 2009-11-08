@@ -53,6 +53,7 @@
 - (void)play;
 - (void)pause;
 - (CGFloat)playingTime;
+- (void)forcePlayingTime:(CGFloat)pTime;
 - (void)stop;
 - (void)stopAndScrobble:(BOOL)shouldScrobble;
 

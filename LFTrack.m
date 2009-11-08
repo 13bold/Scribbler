@@ -101,6 +101,17 @@
 		total += [ps length];
 	return total;
 }
+- (void)forcePlayingTime:(CGFloat)pTime
+{
+	[timeLog removeAllObjects];
+	LFPlaySession *ps = [LFPlaySession session];
+	
+	NSDate *now = [NSDate date];
+	NSDate *then = [NSDate dateWithTimeIntervalSince1970:([now timeIntervalSince1970] - pTime)];
+	[ps setStartTime:then];
+	[ps setStopTime:now];
+	[timeLog addObject:ps];
+}
 - (void)stop
 {
 	[self stopAndScrobble:YES];
