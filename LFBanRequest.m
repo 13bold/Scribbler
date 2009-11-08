@@ -3,7 +3,7 @@
 //  Last.fm
 //
 //  Created by Matt Patenaude on 11/6/09.
-//  Copyright 2009 {13bold}. All rights reserved.
+//  Copyright (C) 2009 {13bold}.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
