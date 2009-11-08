@@ -99,7 +99,7 @@
 	CGFloat total = 0.0;
 	for (LFPlaySession *ps in timeLog)
 		total += [ps length];
-	return total;
+	return (total <= duration) ? total : duration;
 }
 - (void)forcePlayingTime:(CGFloat)pTime
 {
