@@ -72,7 +72,6 @@
 			if (delegate && [delegate respondsToSelector:@selector(request:failedWithError:)])
 				[delegate request:self failedWithError:[NSError errorWithDomain:@"LFMFramework" code:0 userInfo:[NSDictionary dictionaryWithObject:@"An unknown error occurred." forKey:NSLocalizedDescriptionKey]]];
 		}
-
 	}
 	else if ([status isEqualToString:@"failed"])
 	{
