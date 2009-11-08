@@ -72,7 +72,8 @@
 - (void)applicationDidBecomeActive:(NSNotification *)aNotification
 {
 	// If we have a pending authorization, this is our
-	// cue to start trying to validate it
+	// cue to start trying to validate it, since the user likely
+	// just switched back from the browser window
 	if (authorizationPending)
 	{
 		authorizationPending = NO;
@@ -83,6 +84,9 @@
 #pragma mark Authorization methods
 - (void)connectWithStoredCredentials
 {
+	// we have stored credentials, so we'll grab the user from the defaults,
+	// then grab the session key from the keychain...
+	
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"LastFMConfigured"])
 	{
 		NSString *theUser = [[NSUserDefaults standardUserDefaults] objectForKey:@"LastFMUsername"];
@@ -91,10 +95,12 @@
 		EMGenericKeychainItem *keyItem = [[EMKeychainProxy sharedProxy] genericKeychainItemForService:keychainService withUsername:theUser];
 		if (keyItem)
 		{
+			// we'll set both the user and session key in the web service
 			LFWebService *lastfm = [LFWebService sharedWebService];
 			[lastfm setSessionUser:theUser];
 			[lastfm setSessionKey:[keyItem password]];
 			
+			// and then attempt to validate the credentials
 			[lastfm validateSessionCredentials];
 			
 			// Adjust the UI
