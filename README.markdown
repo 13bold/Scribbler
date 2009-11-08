@@ -4,6 +4,10 @@ Last.fm.framework
 
 `Last.fm.framework` **IS NOT** backwards-compatible with `LFScrobbler`.
 
+A Note on Garbage Collection
+----------------------------
+For the sake of compatibility, `Last.fm.framework` supports living inside an application with Garbage Collection enabled. However, it is designed most stringently using reference counting. I don't anticipate there being any problems with `Last.fm.framework` in a Garbage Collected-environment; however, I have not been able to provide ample testing. If any GC-related issues should come up, please submit a bug report.
+
 Licensing
 ---------
 `Last.fm.framework` is licensed under the MIT license, excerpted below.
