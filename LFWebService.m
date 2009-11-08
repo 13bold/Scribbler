@@ -85,7 +85,7 @@
 		pendingToken = nil;
 	}
 	
-	LFRequest *theRequest = [LFGetTokenRequest request];
+	LFGetTokenRequest *theRequest = [LFGetTokenRequest request];
 	[requestQueue insertObject:theRequest atIndex:0];
 	[self dispatchNextRequestIfPossible];
 	return [theRequest identifier];
@@ -117,22 +117,72 @@
 #pragma mark Track methods
 - (NSString *)startPlayingTrack:(LFTrack *)theTrack
 {
-	return @"";
+	if (currentTrack)
+		[currentTrack stop];
+	
+	if (currentTrack)
+	{
+		[currentTrack release];
+		currentTrack = nil;
+	}
+	currentTrack = [theTrack retain];
+	
+	if (!theTrack)
+		return nil;
+	
+	LFNowPlayingRequest *theRequest = [LFNowPlayingRequest requestWithTrack:theTrack];
+	[requestQueue addObject:theRequest];
+	[self dispatchNextRequestIfPossible];
+	return [theRequest identifier];
 }
 - (NSString *)scrobbleTrackIfNecessary:(LFTrack *)theTrack
 {
-	return @"";
+	if (!theTrack)
+	{
+		if (currentTrack)
+			theTrack = currentTrack;
+		else
+			return nil;
+	}
+	
+	LFScrobbleRequest *theRequest = [LFScrobbleRequest requestWithTrack:theTrack];
+	[requestQueue addObject:theRequest];
+	[self dispatchNextRequestIfPossible];
+	
+	if (currentTrack)
+	{
+		[currentTrack release];
+		currentTrack = nil;
+	}
+	
+	return [theRequest identifier];
 }
 - (NSString *)loveTrack:(LFTrack *)theTrack
 {
-	LFRequest *theRequest = [LFLoveRequest requestWithTrack:theTrack];
+	if (!theTrack)
+	{
+		if (currentTrack)
+			theTrack = currentTrack;
+		else
+			return nil;
+	}
+	
+	LFLoveRequest *theRequest = [LFLoveRequest requestWithTrack:theTrack];
 	[requestQueue addObject:theRequest];
 	[self dispatchNextRequestIfPossible];
 	return [theRequest identifier];
 }
 - (NSString *)banTrack:(LFTrack *)theTrack
 {
-	LFRequest *theRequest = [LFBanRequest requestWithTrack:theTrack];
+	if (!theTrack)
+	{
+		if (currentTrack)
+			theTrack = currentTrack;
+		else
+			return nil;
+	}
+	
+	LFBanRequest *theRequest = [LFBanRequest requestWithTrack:theTrack];
 	[requestQueue addObject:theRequest];
 	[self dispatchNextRequestIfPossible];
 	return [theRequest identifier];
@@ -166,15 +216,31 @@
 	LFRequestType r = [theRequest requestType];
 	if (r == LFRequestNowPlaying)
 	{
+		if (delegate && [delegate respondsToSelector:@selector(nowPlayingSucceededForTrack:)])
+			[delegate nowPlayingSucceededForTrack:[theRequest track]];
+		
+		shouldProceed = YES;
 	}
 	else if (r == LFRequestScrobble)
 	{
+		if (delegate && [delegate respondsToSelector:@selector(scrobbleSucceededForTrack:)])
+			[delegate scrobbleSucceededForTrack:[theRequest track]];
+		
+		shouldProceed = YES;
 	}
 	else if (r == LFRequestLove)
 	{
+		if (delegate && [delegate respondsToSelector:@selector(loveSucceededForTrack:)])
+			[delegate loveSucceededForTrack:[theRequest track]];
+		
+		shouldProceed = YES;
 	}
 	else if (r == LFRequestBan)
 	{
+		if (delegate && [delegate respondsToSelector:@selector(banSucceededForTrack:)])
+			[delegate banSucceededForTrack:[theRequest track]];
+		
+		shouldProceed = YES;
 	}
 	else if (r == LFRequestGetToken)
 	{
@@ -227,6 +293,11 @@
 		
 		shouldProceed = YES;
 	}
+	else if (r == LFRequestScrobblerHandshake)
+	{
+		
+		shouldProceed = YES;
+	}
 	else
 		shouldProceed = YES;
 	
@@ -259,7 +330,15 @@
 		}
 		else
 		{
+			// this means we need to rehandshake, so add a handshake to the front of
+			// the queue, and being redispatching
 			
+			if (delegate && [delegate respondsToSelector:@selector(nowPlayingFailedForTrack:error:willRetry:)])
+				[delegate nowPlayingFailedForTrack:[theRequest track] error:theError willRetry:YES];
+			
+			LFScrobblerHandshakeRequest *theRequest = [LFScrobblerHandshakeRequest request];
+			[requestQueue insertObject:theRequest atIndex:0];
+			shouldProceed = YES;
 		}
 	}
 	else if (r == LFRequestScrobble)
@@ -272,7 +351,19 @@
 		}
 		else
 		{
+			// 1 = BADSESSION, 2 = FAILED <reason>
+			// if this is a badsession, rehandshake and begin redispatching
+			// otherwise, halt redispatching but leave in queue
 			
+			if (delegate && [delegate respondsToSelector:@selector(nowPlayingFailedForTrack:error:willRetry:)])
+				[delegate nowPlayingFailedForTrack:[theRequest track] error:theError willRetry:YES];
+			
+			if ([theError code] == 1)
+			{
+				LFScrobblerHandshakeRequest *theRequest = [LFScrobblerHandshakeRequest request];
+				[requestQueue insertObject:theRequest atIndex:0];
+				shouldProceed = YES;
+			}
 		}
 	}
 	else if (r == LFRequestLove)
@@ -285,7 +376,20 @@
 		}
 		else
 		{
-			
+			if ([theError code] == 6)	// invalid track name
+			{
+				if (delegate && [delegate respondsToSelector:@selector(loveFailedForTrack:error:willRetry:)])
+					[delegate loveFailedForTrack:[theRequest track] error:theError willRetry:NO];
+				
+				[requestQueue removeObject:theRequest];
+				shouldProceed = YES;
+			}
+			else
+			{
+				// halt redispatching, try later
+				if (delegate && [delegate respondsToSelector:@selector(loveFailedForTrack:error:willRetry:)])
+					[delegate loveFailedForTrack:[theRequest track] error:theError willRetry:YES];
+			}
 		}
 	}
 	else if (r == LFRequestBan)
@@ -298,12 +402,27 @@
 		}
 		else
 		{
-			
+			if ([theError code] == 6)	// invalid track name
+			{
+				if (delegate && [delegate respondsToSelector:@selector(banFailedForTrack:error:willRetry:)])
+					[delegate banFailedForTrack:[theRequest track] error:theError willRetry:NO];
+				
+				[requestQueue removeObject:theRequest];
+				shouldProceed = YES;
+			}
+			else
+			{
+				// halt redispatching, try later
+				if (delegate && [delegate respondsToSelector:@selector(banFailedForTrack:error:willRetry:)])
+					[delegate banFailedForTrack:[theRequest track] error:theError willRetry:YES];
+			}
 		}
 	}
 	else if (r == LFRequestGetToken)
 	{
-		
+		// we'll just try again later on this one
+		if (delegate && [delegate respondsToSelector:@selector(sessionRequestCouldNotBeMade)])
+			[delegate sessionRequestCouldNotBeMade];
 	}
 	else if (r == LFRequestGetSession)
 	{
@@ -327,6 +446,10 @@
 			[delegate sessionInvalidForUser:sessionUser];
 		
 		[requestQueue removeObject:theRequest];
+	}
+	else if (r == LFScrobblerHandshakeRequest)
+	{
+		
 	}
 	else
 	{

@@ -37,6 +37,7 @@
 - (void)request:(NSString *)identifier failedWithError:(NSError *)theError;
 
 // Session management (new sessions)
+- (void)sessionRequestCouldNotBeMade;
 - (void)sessionNeedsAuthorizationViaURL:(NSURL *)theURL;
 - (void)sessionAuthorizationStillPending;
 - (void)sessionAuthorizationFailed;
