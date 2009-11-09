@@ -93,9 +93,12 @@
 	if (!__LFWebServiceURL)
 		__LFWebServiceURL = [[NSBundle bundleForClass:[self class]] objectForInfoDictionaryKey:@"LFWebServiceURL"];
 	
+	return [NSURL URLWithString:[__LFWebServiceURL stringByAppendingFormat:@"?%@", [self queryStringWithParameters:params sign:shouldSign]]];
+}
+- (NSString *)queryStringWithParameters:(NSDictionary *)params sign:(BOOL)shouldSign
+{
 	// compose the URL string
 	NSMutableString *output = [NSMutableString string];
-	[output appendFormat:@"%@?", __LFWebServiceURL];
 	
 	NSMutableArray *parts = [[NSMutableArray alloc] init];
 	for (NSString *key in params)
@@ -111,7 +114,7 @@
 		[output appendFormat:@"&api_sig=%@", sig];
 	}
 	
-	return [NSURL URLWithString:output];
+	return output;
 }
 - (NSString *)signatureWithParameters:(NSDictionary *)params
 {

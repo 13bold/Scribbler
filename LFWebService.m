@@ -43,6 +43,7 @@
 		requestQueue = [[NSMutableArray alloc] init];
 		
 		runningRequest = NO;
+		autoScrobble = YES;
 	}
 	return self;
 }
@@ -74,6 +75,7 @@
 @synthesize clientID;
 @synthesize sessionKey;
 @synthesize sessionUser;
+@synthesize autoScrobble;
 @synthesize currentTrack;
 
 #pragma mark Session methods (new sessions)
@@ -117,7 +119,7 @@
 #pragma mark Track methods
 - (NSString *)startPlayingTrack:(LFTrack *)theTrack
 {
-	if (currentTrack)
+	if (autoScrobble && currentTrack)
 		[currentTrack stop];
 	
 	if (currentTrack)
@@ -447,7 +449,7 @@
 		
 		[requestQueue removeObject:theRequest];
 	}
-	else if (r == LFScrobblerHandshakeRequest)
+	else if (r == LFRequestScrobblerHandshake)
 	{
 		
 	}

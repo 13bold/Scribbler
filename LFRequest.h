@@ -73,6 +73,7 @@ typedef enum _LFRequestType {
 
 // Composition methods
 - (NSURL *)URLWithParameters:(NSDictionary *)params sign:(BOOL)shouldSign;
+- (NSString *)queryStringWithParameters:(NSDictionary *)params sign:(BOOL)shouldSign;
 - (NSString *)signatureWithParameters:(NSDictionary *)params;
 
 // NSURLConnection delegate methods

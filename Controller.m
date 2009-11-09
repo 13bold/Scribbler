@@ -63,6 +63,11 @@
 	
 	[lastfm setClientID:@"tst"];
 	
+	// We're also going to turn off autoscrobble, which
+	// scrobbles the last playing track automatically
+	// whenever a new track starts playing
+	[lastfm setAutoScrobble:NO];
+	
 	// In order to run, we need a valid session key
 	// First, we'll check to see if we have one. If we do,
 	// we'll set it, then test it. Otherwise, we'll wait for
@@ -148,6 +153,34 @@
 {
 	// Manage third-party application access on Last.fm
 	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://www.last.fm/settings/applications"]];
+}
+
+#pragma mark Track methods
+- (IBAction)startPlayingTrack:(id)sender
+{
+	LFTrack *track = [LFTrack trackWithTitle:[trackName stringValue] artist:[trackArtist stringValue] duration:[trackDuration floatValue]];
+	[track forcePlayingTime:[trackPlayTime floatValue]];
+	[[LFWebService sharedWebService] startPlayingTrack:track];
+}
+- (IBAction)scrobbleTrack:(id)sender
+{
+	LFTrack *track = [LFTrack trackWithTitle:[trackName stringValue] artist:[trackArtist stringValue] duration:[trackDuration floatValue]];
+	[track forcePlayingTime:[trackPlayTime floatValue]];
+	[[LFWebService sharedWebService] scrobbleTrackIfNecessary:track];
+}
+- (IBAction)loveTrack:(id)sender
+{
+	LFTrack *track = [LFTrack trackWithTitle:[trackName stringValue] artist:[trackArtist stringValue] duration:[trackDuration floatValue]];
+	[track forcePlayingTime:[trackPlayTime floatValue]];
+	[track love];
+	[track stop]; // forces a scrobble
+}
+- (IBAction)banTrack:(id)sender
+{
+	LFTrack *track = [LFTrack trackWithTitle:[trackName stringValue] artist:[trackArtist stringValue] duration:[trackDuration floatValue]];
+	[track forcePlayingTime:[trackPlayTime floatValue]];
+	[track ban];
+	[track stop]; // forces a scrobble
 }
 
 #pragma mark Web service delegate methods

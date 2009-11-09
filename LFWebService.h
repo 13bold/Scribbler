@@ -45,6 +45,7 @@
 	NSMutableArray *requestQueue;
 	
 	BOOL runningRequest;
+	BOOL autoScrobble;
 }
 
 // Initializers
@@ -57,6 +58,7 @@
 @property(copy) NSString *clientID;
 @property(copy) NSString *sessionKey;
 @property(copy) NSString *sessionUser;
+@property(assign) BOOL autoScrobble;
 @property(retain,readonly) LFTrack *currentTrack;
 
 // Session methods (new sessions)

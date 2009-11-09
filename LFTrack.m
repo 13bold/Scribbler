@@ -71,6 +71,8 @@
 @synthesize artist;
 @synthesize duration;
 @synthesize webService = lastfm;
+@synthesize shouldLoveTrack;
+@synthesize shouldBanTrack;
 
 #pragma mark Track control methods
 - (void)play
@@ -127,10 +129,14 @@
 - (void)love
 {
 	[lastfm loveTrack:self];
+	shouldLoveTrack = YES;
+	shouldBanTrack = NO;
 }
 - (void)ban
 {
 	[lastfm banTrack:self];
+	shouldBanTrack = YES;
+	shouldLoveTrack = NO;
 }
 
 @end

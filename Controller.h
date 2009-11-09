@@ -33,11 +33,12 @@
 
 @interface Controller : NSObject<LFWebServiceDelegate> {
 	IBOutlet UIController *uiController;
-	
-	IBOutlet NSButton *authButton;
-	IBOutlet NSProgressIndicator *authSpinner;
-	
 	BOOL authorizationPending;
+	
+	IBOutlet NSTextField *trackName;
+	IBOutlet NSTextField *trackArtist;
+	IBOutlet NSTextField *trackDuration;
+	IBOutlet NSTextField *trackPlayTime;
 }
 
 // Application delegate methods
@@ -50,6 +51,12 @@
 - (IBAction)disconnectFromLastFM:(id)sender;
 - (IBAction)completeAuthorization:(id)sender;
 - (IBAction)openManagementPage:(id)sender;
+
+// Track methods
+- (IBAction)startPlayingTrack:(id)sender;
+- (IBAction)scrobbleTrack:(id)sender;
+- (IBAction)loveTrack:(id)sender;
+- (IBAction)banTrack:(id)sender;
 
 // Web service delegate methods
 - (void)sessionNeedsAuthorizationViaURL:(NSURL *)theURL;
