@@ -36,10 +36,16 @@
 	NSString *APIKey;
 	NSString *sharedSecret;
 	NSString *clientID;
+	NSString *clientVersion;
 	
 	NSString *pendingToken;
 	NSString *sessionKey;
 	NSString *sessionUser;
+	
+	NSString *scrobbleSessionID;
+	NSString *scrobbleNPURL;
+	NSString *scrobbleSubmissionURL;
+	BOOL handshakeInProgress;
 	
 	LFTrack *currentTrack;
 	NSMutableArray *requestQueue;
@@ -56,8 +62,12 @@
 @property(copy) NSString *APIKey;
 @property(copy) NSString *sharedSecret;
 @property(copy) NSString *clientID;
+@property(copy) NSString *clientVersion;
 @property(copy) NSString *sessionKey;
 @property(copy) NSString *sessionUser;
+@property(copy,readonly) NSString *scrobbleSessionID;
+@property(copy,readonly) NSString *scrobbleNPURL;
+@property(copy,readonly) NSString *scrobbleSubmissionURL;
 @property(assign) BOOL autoScrobble;
 @property(retain,readonly) LFTrack *currentTrack;
 

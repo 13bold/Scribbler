@@ -28,9 +28,19 @@
 #import "LFRequest.h"
 
 
-@interface LFScrobblerHandshakeRequest : LFRequest {
+// Constants
+#define LFSubmissionsAPISupportedVersion @"1.2.1"
 
+@interface LFScrobblerHandshakeRequest : LFRequest {
+	NSString *sessionID;
+	NSString *nowPlayingURL;
+	NSString *submissionURL;
 }
+
+// Properties
+@property(copy,readonly) NSString *sessionID;
+@property(copy,readonly) NSString *nowPlayingURL;
+@property(copy,readonly) NSString *submissionURL;
 
 // Overridden methods
 - (id)initWithTrack:(LFTrack *)theTrack;

@@ -61,6 +61,7 @@
 	//  - http://www.last.fm/api/submissions#1.1
 	// For now, we'll use the testing ID 'tst'
 	[lastfm setClientID:@"tst"];
+	[lastfm setClientVersion:@"1.0"];
 	
 	// We're also going to turn off autoscrobble, which
 	// scrobbles the last playing track automatically

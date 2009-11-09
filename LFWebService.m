@@ -40,10 +40,12 @@
 	if (self = [super init])
 	{
 		clientID = @"tst";
+		clientVersion = @"1.0";
 		requestQueue = [[NSMutableArray alloc] init];
 		
 		runningRequest = NO;
 		autoScrobble = YES;
+		handshakeInProgress = NO;
 	}
 	return self;
 }
@@ -61,8 +63,12 @@
 	[APIKey release];
 	[sharedSecret release];
 	[clientID release];
+	[clientVersion release];
 	[sessionUser release];
 	[sessionKey release];
+	[scrobbleSessionID release];
+	[scrobbleNPURL release];
+	[scrobbleSubmissionURL release];
 	[currentTrack release];
 	[requestQueue release];
 	[super dealloc];
@@ -73,8 +79,12 @@
 @synthesize APIKey;
 @synthesize sharedSecret;
 @synthesize clientID;
+@synthesize clientVersion;
 @synthesize sessionKey;
 @synthesize sessionUser;
+@synthesize scrobbleSessionID;
+@synthesize scrobbleNPURL;
+@synthesize scrobbleSubmissionURL;
 @synthesize autoScrobble;
 @synthesize currentTrack;
 
@@ -116,9 +126,23 @@
 	return [theRequest identifier];
 }
 
+#pragma mark Scrobbler methods
+- (NSString *)performScrobblerHandshake
+{
+	handshakeInProgress = YES;
+	
+	LFScrobblerHandshakeRequest *theRequest = [LFScrobblerHandshakeRequest request];
+	[requestQueue insertObject:theRequest atIndex:0];
+	[self dispatchNextRequestIfPossible];
+	return [theRequest identifier];
+}
+
 #pragma mark Track methods
 - (NSString *)startPlayingTrack:(LFTrack *)theTrack
 {
+	if (!scrobbleSessionID && !handshakeInProgress)
+		[self performScrobblerHandshake];
+	
 	if (autoScrobble && currentTrack)
 		[currentTrack stop];
 	
@@ -139,6 +163,9 @@
 }
 - (NSString *)scrobbleTrackIfNecessary:(LFTrack *)theTrack
 {
+	if (!scrobbleSessionID && !handshakeInProgress)
+		[self performScrobblerHandshake];
+	
 	if (!theTrack)
 	{
 		if (currentTrack)
@@ -297,6 +324,31 @@
 	}
 	else if (r == LFRequestScrobblerHandshake)
 	{
+		handshakeInProgress = NO;
+		
+		if (scrobbleSessionID)
+		{
+			[scrobbleSessionID release];
+			scrobbleSessionID = nil;
+		}
+		scrobbleSessionID = [[(LFScrobblerHandshakeRequest *)theRequest sessionID] copy];
+		
+		if (scrobbleNPURL)
+		{
+			[scrobbleNPURL release];
+			scrobbleNPURL = nil;
+		}
+		scrobbleNPURL = [[(LFScrobblerHandshakeRequest *)theRequest nowPlayingURL] copy];
+		
+		if (scrobbleSubmissionURL)
+		{
+			[scrobbleSubmissionURL release];
+			scrobbleSubmissionURL = nil;
+		}
+		scrobbleSubmissionURL = [[(LFScrobblerHandshakeRequest *)theRequest submissionURL] copy];
+		
+		if (delegate && [delegate respondsToSelector:@selector(scrobblerHandshakeSucceeded)])
+			[delegate scrobblerHandshakeSucceeded];
 		
 		shouldProceed = YES;
 	}
@@ -340,6 +392,7 @@
 			
 			LFScrobblerHandshakeRequest *theRequest = [LFScrobblerHandshakeRequest request];
 			[requestQueue insertObject:theRequest atIndex:0];
+			handshakeInProgress = YES;
 			shouldProceed = YES;
 		}
 	}
@@ -364,6 +417,7 @@
 			{
 				LFScrobblerHandshakeRequest *theRequest = [LFScrobblerHandshakeRequest request];
 				[requestQueue insertObject:theRequest atIndex:0];
+				handshakeInProgress = YES;
 				shouldProceed = YES;
 			}
 		}
@@ -451,7 +505,51 @@
 	}
 	else if (r == LFRequestScrobblerHandshake)
 	{
-		
+		if (![[theError domain] isEqualToString:@"Last.fm"])
+		{
+			NSLog(@"Last.fm.framework: error, %@", [theError localizedDescription]);
+			if (delegate && [delegate respondsToSelector:@selector(scrobblerHandshakeFailed:willRetry:)])
+				[delegate scrobblerHandshakeFailed:theError willRetry:YES];
+		}
+		else
+		{
+			// 1 = BANNED, 2 = BADAUTH, 3 = BADTIME, 4 = FAILED <reason>
+			switch ([theError code])
+			{
+				case 1:
+					if (delegate && [delegate respondsToSelector:@selector(scrobblerHandshakeFailed:willRetry:)])
+						[delegate scrobblerHandshakeFailed:theError willRetry:NO];
+					if (delegate && [delegate respondsToSelector:@selector(scrobblerClient:bannedForVersion:)])
+						[delegate scrobblerClient:clientID bannedForVersion:clientVersion];
+					[requestQueue removeObject:theRequest];
+					handshakeInProgress = NO;
+					break;
+					
+				case 2:
+					if (delegate && [delegate respondsToSelector:@selector(scrobblerHandshakeFailed:willRetry:)])
+						[delegate scrobblerHandshakeFailed:theError willRetry:NO];
+					if (delegate && [delegate respondsToSelector:@selector(scrobblerRejectedCredentials)])
+						[delegate scrobblerRejectedCredentials];
+					[requestQueue removeObject:theRequest];
+					handshakeInProgress = NO;
+					break;
+					
+				case 3:
+					if (delegate && [delegate respondsToSelector:@selector(scrobblerHandshakeFailed:willRetry:)])
+						[delegate scrobblerHandshakeFailed:theError willRetry:NO];
+					if (delegate && [delegate respondsToSelector:@selector(scrobblerRejectedSystemTime)])
+						[delegate scrobblerRejectedSystemTime];
+					[requestQueue removeObject:theRequest];
+					handshakeInProgress = NO;
+					break;
+					
+				case 4:
+				default:
+					if (delegate && [delegate respondsToSelector:@selector(scrobblerHandshakeFailed:willRetry:)])
+						[delegate scrobblerHandshakeFailed:theError willRetry:YES];
+					break;
+			}
+		}
 	}
 	else
 	{

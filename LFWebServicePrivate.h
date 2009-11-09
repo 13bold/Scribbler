@@ -30,6 +30,9 @@
 
 @interface LFWebService()<LFRequestDelegate>
 
+// Scrobbler methods
+- (NSString *)performScrobblerHandshake;
+
 // Web service methods
 - (void)dispatchNextRequestIfPossible;
 

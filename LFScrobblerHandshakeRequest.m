@@ -25,9 +25,15 @@
 //
 
 #import "LFScrobblerHandshakeRequest.h"
+#import "NSString+LFExtensions.h"
 
 
 @implementation LFScrobblerHandshakeRequest
+
+#pragma mark Properties
+@synthesize sessionID;
+@synthesize nowPlayingURL;
+@synthesize submissionURL;
 
 #pragma mark Overridden methods
 - (id)initWithTrack:(LFTrack *)theTrack
@@ -38,14 +44,107 @@
 	}
 	return self;
 }
+- (void)dealloc
+{
+	[sessionID release];
+	[nowPlayingURL release];
+	[submissionURL release];
+	[super dealloc];
+}
 - (void)dispatch
 {
+	// get the URL root
+	static NSString *__LFSubmissionsURL = nil;
+	if (!__LFSubmissionsURL)
+		__LFSubmissionsURL = [[NSBundle bundleForClass:[self class]] objectForInfoDictionaryKey:@"LFSubmissionsURL"];
+	
+	NSDate *requestTime = [NSDate date];
+	NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
+							@"true", @"hs",
+							LFSubmissionsAPISupportedVersion, @"p",
+							[delegate clientID], @"c",
+							[delegate clientVersion], @"v",
+							[delegate sessionUser], @"u",
+							[requestTime timeIntervalSince1970], @"t",
+							[[NSString stringWithFormat:@"%@%d", [delegate sharedSecret], [requestTime timeIntervalSince1970]] MD5Hash], @"a",
+							[delegate APIKey], @"api_key",
+							[delegate sessionKey], @"sk",
+							nil];
+	
+	NSString *queryString = [self queryStringWithParameters:params sign:NO];
+	NSURL *theURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@?%@", __LFSubmissionsURL, queryString]];
+	[params release];
+	
+	NSURLRequest *theRequest = [NSURLRequest requestWithURL:theURL];
+	
+	if (connection)
+	{
+		[connection release];
+		connection = nil;
+	}
+	connection = [[NSURLConnection connectionWithRequest:theRequest delegate:self] retain];
 }
 - (void)connectionDidFinishLoading:(NSURLConnection *)theConnection
 {
-	// hooray!
-	if (delegate && [delegate respondsToSelector:@selector(requestSucceeded:)])
-		[delegate requestSucceeded:self];
+	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+	
+	if (responseString)
+	{
+		NSArray *rLines = [responseString componentsSeparatedByString:@"\n"];
+		
+		if ([[[rLines objectAtIndex:0] lowercaseString] hasPrefix:@"ok"])
+		{
+			if (sessionID)
+			{
+				[sessionID release];
+				sessionID = nil;
+			}
+			sessionID = [[rLines objectAtIndex:1] copy];
+			
+			if (nowPlayingURL)
+			{
+				[nowPlayingURL release];
+				nowPlayingURL = nil;
+			}
+			nowPlayingURL = [[rLines objectAtIndex:2] copy];
+			
+			if (submissionURL)
+			{
+				[submissionURL release];
+				submissionURL = nil;
+			}
+			submissionURL = [[rLines objectAtIndex:3] copy];
+			
+			if (delegate && [delegate respondsToSelector:@selector(requestSucceeded:)])
+				[delegate requestSucceeded:self];
+		}
+		else
+		{
+			NSString *errString = [rLines objectAtIndex:0];
+			NSUInteger code = 0;
+			if ([[errString lowercaseString] hasPrefix:@"banned"])
+				code = 1;
+			else if ([[errString lowercaseString] hasPrefix:@"badauth"])
+				code = 2;
+			else if ([[errString lowercaseString] hasPrefix:@"badtime"])
+				code = 3;
+			if ([[errString lowercaseString] hasPrefix:@"failed"])
+				code = 4;
+			
+			NSError *theError = [NSError errorWithDomain:@"Last.fm" code:code userInfo:[NSDictionary dictionaryWithObject:errString forKey:NSLocalizedDescriptionKey]];
+			if (delegate && [delegate respondsToSelector:@selector(request:failedWithError:)])
+				[delegate request:self failedWithError:theError];
+		}
+	}
+	else
+	{
+		if (delegate && [delegate respondsToSelector:@selector(request:failedWithError:)])
+			[delegate request:self failedWithError:[NSError errorWithDomain:@"LFMFramework" code:0 userInfo:[NSDictionary dictionaryWithObject:@"An unknown error occurred." forKey:NSLocalizedDescriptionKey]]];
+	}
+	
+	[responseString release];
+	[connection release];
+	connection = nil;
 }
 
 @end

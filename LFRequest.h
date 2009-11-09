@@ -90,8 +90,12 @@ typedef enum _LFRequestType {
 - (NSString *)APIKey;
 - (NSString *)sharedSecret;
 - (NSString *)clientID;
+- (NSString *)clientVersion;
 - (NSString *)sessionKey;
 - (NSString *)sessionUser;
+- (NSString *)scrobbleSessionID;
+- (NSString *)scrobbleNPURL;
+- (NSString *)scrobbleSubmissionURL;
 
 - (void)requestSucceeded:(LFRequest *)theRequest;
 - (void)request:(LFRequest *)theRequest failedWithError:(NSError *)theError;
