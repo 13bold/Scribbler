@@ -410,8 +410,8 @@
 			// if this is a badsession, rehandshake and begin redispatching
 			// otherwise, halt redispatching but leave in queue
 			
-			if (delegate && [delegate respondsToSelector:@selector(nowPlayingFailedForTrack:error:willRetry:)])
-				[delegate nowPlayingFailedForTrack:[theRequest track] error:theError willRetry:YES];
+			if (delegate && [delegate respondsToSelector:@selector(scrobbleFailedForTrack:error:willRetry:)])
+				[delegate scrobbleFailedForTrack:[theRequest track] error:theError willRetry:YES];
 			
 			if ([theError code] == 1)
 			{

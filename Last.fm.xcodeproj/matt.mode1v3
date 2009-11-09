@@ -276,13 +276,14 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>16</integer>
+									<integer>26</integer>
+									<integer>21</integer>
 									<integer>10</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 96}, {186, 599}}</string>
+							<string>{{0, 0}, {186, 599}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -312,12 +313,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>LFTrack.m</string>
+								<string>LFScrobbleRequest.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -325,45 +328,35 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>LFTrack.m</string>
+										<string>LFScrobbleRequest.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>C91EB96810A8BA1000731192</string>
+										<string>C91EB9FF10A8C2F900731192</string>
 										<key>history</key>
 										<array>
 											<string>C9CD586410A35D4D00AB1952</string>
 											<string>C9CD586F10A35D4D00AB1952</string>
 											<string>C9CD587010A35D4D00AB1952</string>
 											<string>C9CD587110A35D4D00AB1952</string>
-											<string>C9370C0B10A4C636007B8438</string>
 											<string>C96971B710A5076800A9FFAD</string>
 											<string>C96971B910A5076800A9FFAD</string>
 											<string>C969720D10A50E9D00A9FFAD</string>
 											<string>C969724710A5145400A9FFAD</string>
 											<string>C96972A210A51A1700A9FFAD</string>
-											<string>C96972A910A51A1700A9FFAD</string>
 											<string>C99C42C510A5D0B200BE9911</string>
 											<string>C99C42CB10A5D1A100BE9911</string>
-											<string>C99C42DA10A5D3A100BE9911</string>
 											<string>C9684F8510A74212003816A7</string>
 											<string>C9684F8610A74212003816A7</string>
-											<string>C968524C10A75711003816A7</string>
-											<string>C968525010A75711003816A7</string>
 											<string>C968525110A75711003816A7</string>
 											<string>C968525410A75711003816A7</string>
-											<string>C968525510A75711003816A7</string>
 											<string>C968525810A75711003816A7</string>
 											<string>C968531C10A76CEC003816A7</string>
 											<string>C968532E10A7704A003816A7</string>
 											<string>C968535510A778A1003816A7</string>
 											<string>C968536F10A78CA8003816A7</string>
-											<string>C968538710A7904D003816A7</string>
-											<string>C91EB8ED10A8B08800731192</string>
-											<string>C91EB8EE10A8B08800731192</string>
 											<string>C91EB8F110A8B08800731192</string>
 											<string>C91EB8F410A8B08800731192</string>
-											<string>C91EB8F510A8B08800731192</string>
 											<string>C91EB8F710A8B08800731192</string>
 											<string>C91EB8F810A8B08800731192</string>
 											<string>C91EB91410A8B24D00731192</string>
@@ -371,11 +364,21 @@
 											<string>C91EB91610A8B24D00731192</string>
 											<string>C91EB91710A8B24D00731192</string>
 											<string>C91EB92610A8B58200731192</string>
-											<string>C91EB92710A8B58200731192</string>
-											<string>C91EB95510A8B9C500731192</string>
-											<string>C91EB95610A8B9C500731192</string>
 											<string>C91EB95710A8B9C500731192</string>
-											<string>C91EB95810A8B9C500731192</string>
+											<string>C91EB96B10A8BA8A00731192</string>
+											<string>C91EB96D10A8BA8A00731192</string>
+											<string>C91EB98810A8BC5500731192</string>
+											<string>C91EB98910A8BC5500731192</string>
+											<string>C91EB98A10A8BC5500731192</string>
+											<string>C91EB99F10A8BD7500731192</string>
+											<string>C91EB9B310A8BE5400731192</string>
+											<string>C91EB9D410A8BFF500731192</string>
+											<string>C91EB9DD10A8C1B000731192</string>
+											<string>C91EB9DE10A8C1B000731192</string>
+											<string>C91EB9EA10A8C22500731192</string>
+											<string>C91EB9EB10A8C22500731192</string>
+											<string>C91EB9F110A8C24B00731192</string>
+											<string>C91EB9F210A8C24B00731192</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -397,8 +400,6 @@
 							<string>311pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -575,6 +576,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>C91EB9D710A8BFF500731192</string>
 		<string>C9CD58BB10A368C800AB1952</string>
 		<string>C91EB8B010A8A15400731192</string>
 		<string>C91EB8B110A8A15400731192</string>
@@ -605,7 +607,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>EMKeychainProxy.m</string>
+								<string>LFScrobblerHandshakeRequest.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -910,6 +912,8 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>

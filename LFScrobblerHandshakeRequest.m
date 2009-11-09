@@ -53,6 +53,7 @@
 }
 - (void)dispatch
 {
+	NSLog(@"Performing handshake");
 	// get the URL root
 	static NSString *__LFSubmissionsURL = nil;
 	if (!__LFSubmissionsURL)
@@ -65,8 +66,8 @@
 							[delegate clientID], @"c",
 							[delegate clientVersion], @"v",
 							[delegate sessionUser], @"u",
-							[requestTime timeIntervalSince1970], @"t",
-							[[NSString stringWithFormat:@"%@%d", [delegate sharedSecret], [requestTime timeIntervalSince1970]] MD5Hash], @"a",
+							[NSString stringWithFormat:@"%0.0f", [requestTime timeIntervalSince1970]], @"t",
+							[[NSString stringWithFormat:@"%@%0.0f", [delegate sharedSecret], [requestTime timeIntervalSince1970]] MD5Hash], @"a",
 							[delegate APIKey], @"api_key",
 							[delegate sessionKey], @"sk",
 							nil];

@@ -45,16 +45,16 @@
 							[delegate scrobbleSessionID], @"s",
 							([track artist] != nil) ? [track artist] : @"", @"a[0]",
 							([track title] != nil) ? [track title] : @"", @"t[0]",
-							[NSString stringWithFormat:@"%d", [track startTime]], @"i[0]",
-							@"P", @"s",
+							[NSString stringWithFormat:@"%0.0f", [track startTime]], @"i[0]",
+							@"P", @"o[0]",
 							(([track shouldLoveTrack]) ? @"L" : (([track shouldBanTrack]) ? @"B" : @"")), @"r[0]",
 							([track album] != nil) ? [track album] : @"", @"b[0]",
-							[NSString stringWithFormat:@"%d", [track duration]], @"l[0]",
+							[NSString stringWithFormat:@"%0.0f", [track duration]], @"l[0]",
 							([track albumPosition] > 0) ? [NSString stringWithFormat:@"%u", [track albumPosition]] : @"", @"n[0]",
 							([track mbID] != nil) ? [track mbID] : @"", @"m[0]",
 							nil];
 	
-	NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[delegate scrobbleNPURL]]];
+	NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[delegate scrobbleSubmissionURL]]];
 	[theRequest setHTTPMethod:@"POST"];
 	[theRequest setHTTPBody:[[self queryStringWithParameters:params sign:NO] dataUsingEncoding:NSUTF8StringEncoding]];
 	[params release];

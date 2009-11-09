@@ -46,7 +46,7 @@
 							([track artist] != nil) ? [track artist] : @"", @"a",
 							([track title] != nil) ? [track title] : @"", @"t",
 							([track album] != nil) ? [track album] : @"", @"b",
-							[NSString stringWithFormat:@"%d", [track duration]], @"l",
+							[NSString stringWithFormat:@"%0.0f", [track duration]], @"l",
 							([track albumPosition] > 0) ? [NSString stringWithFormat:@"%u", [track albumPosition]] : @"", @"n",
 							([track mbID] != nil) ? [track mbID] : @"", @"m",
 							nil];

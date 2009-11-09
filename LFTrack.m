@@ -46,6 +46,8 @@
 		
 		timeLog = [[NSMutableArray alloc] init];
 		albumPosition = 0;
+		
+		lastfm = [LFWebService sharedWebService];
 	}
 	return self;
 }
@@ -92,6 +94,8 @@
 	
 	LFPlaySession *play = [LFPlaySession session];
 	[timeLog addObject:play];
+	
+	[lastfm startPlayingTrack:self];
 }
 - (void)pause
 {

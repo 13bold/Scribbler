@@ -239,4 +239,59 @@
 	[uiController showAuthConnectPane];
 }
 
+- (void)scrobblerHandshakeSucceeded
+{
+	NSLog(@"Handshake succeeded");
+}
+- (void)scrobblerHandshakeFailed:(NSError *)theError willRetry:(BOOL)willRetry
+{
+	NSLog(@"Handshake failed (retry=%d): %@", willRetry, [theError localizedDescription]);
+}
+- (void)scrobblerClient:(NSString *)theClientID bannedForVersion:(NSString *)theClientVersion
+{
+	NSLog(@"Client banned");
+}
+- (void)scrobblerRejectedCredentials
+{
+	NSLog(@"Credentials rejected");
+}
+- (void)scrobblerRejectedSystemTime
+{
+	NSLog(@"Time rejected");
+}
+
+- (void)nowPlayingSucceededForTrack:(LFTrack *)theTrack
+{
+	NSLog(@"Now playing succeeded: %@ (%@)", [theTrack title], [theTrack artist]);
+}
+- (void)scrobbleSucceededForTrack:(LFTrack *)theTrack
+{
+	NSLog(@"Scrobble succeeded: %@ (%@)", [theTrack title], [theTrack artist]);
+}
+- (void)loveSucceededForTrack:(LFTrack *)theTrack
+{
+	NSLog(@"Love succeeded: %@ (%@)", [theTrack title], [theTrack artist]);
+}
+- (void)banSucceededForTrack:(LFTrack *)theTrack
+{
+	NSLog(@"Ban succeeded: %@ (%@)", [theTrack title], [theTrack artist]);
+}
+
+- (void)nowPlayingFailedForTrack:(LFTrack *)theTrack error:(NSError *)theError willRetry:(BOOL)willRetry
+{
+	NSLog(@"Now playing failed (retry=%d): %@ (%@) - %@", willRetry, [theTrack title], [theTrack artist], [theError localizedDescription]);
+}
+- (void)scrobbleFailedForTrack:(LFTrack *)theTrack error:(NSError *)theError willRetry:(BOOL)willRetry
+{
+	NSLog(@"Scrobble failed (retry=%d): %@ (%@) - %@", willRetry, [theTrack title], [theTrack artist], [theError localizedDescription]);
+}
+- (void)loveFailedForTrack:(LFTrack *)theTrack error:(NSError *)theError willRetry:(BOOL)willRetry
+{
+	NSLog(@"Love failed (retry=%d): %@ (%@) - %@", willRetry, [theTrack title], [theTrack artist], [theError localizedDescription]);
+}
+- (void)banFailedForTrack:(LFTrack *)theTrack error:(NSError *)theError willRetry:(BOOL)willRetry
+{
+	NSLog(@"Ban failed (retry=%d): %@ (%@) - %@", willRetry, [theTrack title], [theTrack artist], [theError localizedDescription]);
+}
+
 @end

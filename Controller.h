@@ -67,4 +67,20 @@
 - (void)sessionValidatedForUser:(NSString *)theUser;
 - (void)sessionInvalidForUser:(NSString *)theUser;
 
+- (void)scrobblerHandshakeSucceeded;
+- (void)scrobblerHandshakeFailed:(NSError *)theError willRetry:(BOOL)willRetry;
+- (void)scrobblerClient:(NSString *)theClientID bannedForVersion:(NSString *)theClientVersion;
+- (void)scrobblerRejectedCredentials;
+- (void)scrobblerRejectedSystemTime;
+
+- (void)nowPlayingSucceededForTrack:(LFTrack *)theTrack;
+- (void)scrobbleSucceededForTrack:(LFTrack *)theTrack;
+- (void)loveSucceededForTrack:(LFTrack *)theTrack;
+- (void)banSucceededForTrack:(LFTrack *)theTrack;
+
+- (void)nowPlayingFailedForTrack:(LFTrack *)theTrack error:(NSError *)theError willRetry:(BOOL)willRetry;
+- (void)scrobbleFailedForTrack:(LFTrack *)theTrack error:(NSError *)theError willRetry:(BOOL)willRetry;
+- (void)loveFailedForTrack:(LFTrack *)theTrack error:(NSError *)theError willRetry:(BOOL)willRetry;
+- (void)banFailedForTrack:(LFTrack *)theTrack error:(NSError *)theError willRetry:(BOOL)willRetry;
+
 @end
