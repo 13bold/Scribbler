@@ -159,12 +159,7 @@
 {
 	LFTrack *track = [LFTrack trackWithTitle:[trackName stringValue] artist:[trackArtist stringValue] duration:[trackDuration floatValue]];
 	[track setPlayingTime:[trackPlayTime floatValue]];
-	[[LFWebService sharedWebService] startPlayingTrack:track];
-	
-	// We don't use the "play" method here, because we already
-	// forced a playing time, and we don't want to mess with that
-	// We're doing our own time tracking, so we just need to tell
-	// LFWebService what to do, rather than let it handle things
+	[track play];
 }
 - (IBAction)scrobbleTrack:(id)sender
 {
