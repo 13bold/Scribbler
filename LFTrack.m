@@ -124,6 +124,14 @@
 	[ps setStopTime:now];
 	[timeLog addObject:ps];
 }
+- (NSTimeInterval)startTime
+{
+	if ([timeLog count] < 1)
+		return 0;
+	
+	LFPlaySession *ps = [timeLog objectAtIndex:0];
+	return [[ps startTime] timeIntervalSince1970];
+}
 - (void)stop
 {
 	[self stopAndScrobble:YES];

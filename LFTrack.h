@@ -66,6 +66,7 @@
 - (CGFloat)playingTime;
 - (void)setPlayingTime:(CGFloat)pTime;
 - (void)addPlayingTime:(CGFloat)pTime;
+- (NSTimeInterval)startTime;
 - (void)stop;
 - (void)stopAndScrobble:(BOOL)shouldScrobble;
 
