@@ -62,6 +62,8 @@
 {
 	[title release];
 	[artist release];
+	[album release];
+	[mbID release];
 	[timeLog release];
 	[super dealloc];
 }
@@ -69,7 +71,9 @@
 #pragma mark Properties
 @synthesize title;
 @synthesize artist;
+@synthesize album;
 @synthesize duration;
+@synthesize mbID;
 @synthesize webService = lastfm;
 @synthesize shouldLoveTrack;
 @synthesize shouldBanTrack;

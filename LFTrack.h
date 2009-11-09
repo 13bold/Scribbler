@@ -34,7 +34,9 @@
 	LFWebService *lastfm;
 	NSString *title;
 	NSString *artist;
+	NSString *album;
 	CGFloat duration;
+	NSString *mbID;
 	NSMutableArray *timeLog;
 	
 	BOOL shouldLoveTrack;
@@ -49,6 +51,8 @@
 // Properties
 @property(copy) NSString *title;
 @property(copy) NSString *artist;
+@property(copy) NSString *album;
+@property(copy) NSString *mbID;
 @property(assign) CGFloat duration;
 @property(assign) LFWebService *webService;
 @property(assign,readonly) BOOL shouldLoveTrack;
