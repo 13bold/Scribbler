@@ -158,7 +158,6 @@
 - (IBAction)startPlayingTrack:(id)sender
 {
 	LFTrack *track = [LFTrack trackWithTitle:[trackName stringValue] artist:[trackArtist stringValue] duration:[trackDuration floatValue]];
-	[track setPlayingTime:[trackPlayTime floatValue]];
 	[track play];
 }
 - (IBAction)scrobbleTrack:(id)sender
