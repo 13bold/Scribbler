@@ -102,7 +102,7 @@
 	
 	NSMutableArray *parts = [[NSMutableArray alloc] init];
 	for (NSString *key in params)
-		[parts addObject:[NSString stringWithFormat:@"%@=%@", key, [params objectForKey:key]]];
+		[parts addObject:[NSString stringWithFormat:@"%@=%@", key, [[params objectForKey:key] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
 	
 	[output appendString:[parts componentsJoinedByString:@"&"]];
 	[parts release];
