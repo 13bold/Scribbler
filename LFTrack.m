@@ -103,9 +103,13 @@
 		total += [ps length];
 	return (total <= duration) ? total : duration;
 }
-- (void)forcePlayingTime:(CGFloat)pTime
+- (void)setPlayingTime:(CGFloat)pTime
 {
 	[timeLog removeAllObjects];
+	[self addPlayingTime:pTime];
+}
+- (void)addPlayingTime:(CGFloat)pTime
+{
 	LFPlaySession *ps = [LFPlaySession session];
 	
 	NSDate *now = [NSDate date];
