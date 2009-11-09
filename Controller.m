@@ -60,7 +60,6 @@
 	// You can obtain one of these by contacting Last.fm
 	//  - http://www.last.fm/api/submissions#1.1
 	// For now, we'll use the testing ID 'tst'
-	
 	[lastfm setClientID:@"tst"];
 	
 	// We're also going to turn off autoscrobble, which
@@ -159,26 +158,31 @@
 - (IBAction)startPlayingTrack:(id)sender
 {
 	LFTrack *track = [LFTrack trackWithTitle:[trackName stringValue] artist:[trackArtist stringValue] duration:[trackDuration floatValue]];
-	[track forcePlayingTime:[trackPlayTime floatValue]];
+	[track setPlayingTime:[trackPlayTime floatValue]];
 	[[LFWebService sharedWebService] startPlayingTrack:track];
+	
+	// We don't use the "play" method here, because we already
+	// forced a playing time, and we don't want to mess with that
+	// We're doing our own time tracking, so we just need to tell
+	// LFWebService what to do, rather than let it handle things
 }
 - (IBAction)scrobbleTrack:(id)sender
 {
 	LFTrack *track = [LFTrack trackWithTitle:[trackName stringValue] artist:[trackArtist stringValue] duration:[trackDuration floatValue]];
-	[track forcePlayingTime:[trackPlayTime floatValue]];
-	[[LFWebService sharedWebService] scrobbleTrackIfNecessary:track];
+	[track setPlayingTime:[trackPlayTime floatValue]];
+	[track stop]; // forces a scrobble
 }
 - (IBAction)loveTrack:(id)sender
 {
 	LFTrack *track = [LFTrack trackWithTitle:[trackName stringValue] artist:[trackArtist stringValue] duration:[trackDuration floatValue]];
-	[track forcePlayingTime:[trackPlayTime floatValue]];
+	[track setPlayingTime:[trackPlayTime floatValue]];
 	[track love];
 	[track stop]; // forces a scrobble
 }
 - (IBAction)banTrack:(id)sender
 {
 	LFTrack *track = [LFTrack trackWithTitle:[trackName stringValue] artist:[trackArtist stringValue] duration:[trackDuration floatValue]];
-	[track forcePlayingTime:[trackPlayTime floatValue]];
+	[track setPlayingTime:[trackPlayTime floatValue]];
 	[track ban];
 	[track stop]; // forces a scrobble
 }
