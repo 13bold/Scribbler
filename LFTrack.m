@@ -45,6 +45,7 @@
 		[self setDuration:theDuration];
 		
 		timeLog = [[NSMutableArray alloc] init];
+		albumPosition = 0;
 	}
 	return self;
 }
@@ -72,6 +73,7 @@
 @synthesize title;
 @synthesize artist;
 @synthesize album;
+@synthesize albumPosition;
 @synthesize duration;
 @synthesize mbID;
 @synthesize webService = lastfm;

@@ -35,6 +35,7 @@
 	NSString *title;
 	NSString *artist;
 	NSString *album;
+	NSUInteger albumPosition;
 	CGFloat duration;
 	NSString *mbID;
 	NSMutableArray *timeLog;
@@ -52,6 +53,7 @@
 @property(copy) NSString *title;
 @property(copy) NSString *artist;
 @property(copy) NSString *album;
+@property(assign) NSUInteger albumPosition;
 @property(copy) NSString *mbID;
 @property(assign) CGFloat duration;
 @property(assign) LFWebService *webService;
