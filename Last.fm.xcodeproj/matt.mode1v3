@@ -276,14 +276,13 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>36</integer>
-									<integer>21</integer>
+									<integer>16</integer>
 									<integer>10</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 101}, {186, 599}}</string>
+							<string>{{0, 96}, {186, 599}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -313,14 +312,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>LFScrobblerHandshakeRequest.m</string>
+								<string>LFTrack.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -328,11 +325,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>LFScrobblerHandshakeRequest.m</string>
+										<string>LFTrack.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>C91EB92510A8B44000731192</string>
+										<string>C91EB96810A8BA1000731192</string>
 										<key>history</key>
 										<array>
 											<string>C9CD586410A35D4D00AB1952</string>
@@ -362,12 +359,8 @@
 											<string>C968535510A778A1003816A7</string>
 											<string>C968536F10A78CA8003816A7</string>
 											<string>C968538710A7904D003816A7</string>
-											<string>C96853A810A79670003816A7</string>
-											<string>C96853AE10A79719003816A7</string>
 											<string>C91EB8ED10A8B08800731192</string>
 											<string>C91EB8EE10A8B08800731192</string>
-											<string>C91EB8EF10A8B08800731192</string>
-											<string>C91EB8F010A8B08800731192</string>
 											<string>C91EB8F110A8B08800731192</string>
 											<string>C91EB8F410A8B08800731192</string>
 											<string>C91EB8F510A8B08800731192</string>
@@ -377,8 +370,12 @@
 											<string>C91EB91510A8B24D00731192</string>
 											<string>C91EB91610A8B24D00731192</string>
 											<string>C91EB91710A8B24D00731192</string>
-											<string>C91EB91810A8B24D00731192</string>
-											<string>C91EB91910A8B24D00731192</string>
+											<string>C91EB92610A8B58200731192</string>
+											<string>C91EB92710A8B58200731192</string>
+											<string>C91EB95510A8B9C500731192</string>
+											<string>C91EB95610A8B9C500731192</string>
+											<string>C91EB95710A8B9C500731192</string>
+											<string>C91EB95810A8B9C500731192</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -400,6 +397,8 @@
 							<string>311pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -606,7 +605,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>LFScrobblerHandshakeRequest.m</string>
+								<string>EMKeychainProxy.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>

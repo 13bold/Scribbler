@@ -25,6 +25,7 @@
 //
 
 #import "LFScrobbleRequest.h"
+#import "LFTrack.h"
 
 
 @implementation LFScrobbleRequest
@@ -40,12 +41,67 @@
 }
 - (void)dispatch
 {
+	NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
+							[delegate scrobbleSessionID], @"s",
+							([track artist] != nil) ? [track artist] : @"", @"a[0]",
+							([track title] != nil) ? [track title] : @"", @"t[0]",
+							[NSString stringWithFormat:@"%d", [track startTime]], @"i[0]",
+							@"P", @"s",
+							(([track shouldLoveTrack]) ? @"L" : (([track shouldBanTrack]) ? @"B" : @"")), @"r[0]",
+							([track album] != nil) ? [track album] : @"", @"b[0]",
+							[NSString stringWithFormat:@"%d", [track duration]], @"l[0]",
+							([track albumPosition] > 0) ? [NSString stringWithFormat:@"%u", [track albumPosition]] : @"", @"n[0]",
+							([track mbID] != nil) ? [track mbID] : @"", @"m[0]",
+							nil];
+	
+	NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[delegate scrobbleNPURL]]];
+	[theRequest setHTTPMethod:@"POST"];
+	[theRequest setHTTPBody:[[self queryStringWithParameters:params sign:NO] dataUsingEncoding:NSUTF8StringEncoding]];
+	[params release];
+	
+	if (connection)
+	{
+		[connection release];
+		connection = nil;
+	}
+	connection = [[NSURLConnection connectionWithRequest:theRequest delegate:self] retain];
 }
 - (void)connectionDidFinishLoading:(NSURLConnection *)theConnection
 {
-	// hooray!
-	if (delegate && [delegate respondsToSelector:@selector(requestSucceeded:)])
-		[delegate requestSucceeded:self];
+	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+	
+	if (responseString)
+	{
+		NSArray *rLines = [responseString componentsSeparatedByString:@"\n"];
+		
+		if ([[[rLines objectAtIndex:0] lowercaseString] hasPrefix:@"ok"])
+		{
+			if (delegate && [delegate respondsToSelector:@selector(requestSucceeded:)])
+				[delegate requestSucceeded:self];
+		}
+		else
+		{
+			NSString *errString = [rLines objectAtIndex:0];
+			NSUInteger code = 0;
+			if ([[errString lowercaseString] hasPrefix:@"badsession"])
+				code = 1;
+			else if ([[errString lowercaseString] hasPrefix:@"failed"])
+				code = 2;
+			
+			NSError *theError = [NSError errorWithDomain:@"Last.fm" code:code userInfo:[NSDictionary dictionaryWithObject:errString forKey:NSLocalizedDescriptionKey]];
+			if (delegate && [delegate respondsToSelector:@selector(request:failedWithError:)])
+				[delegate request:self failedWithError:theError];
+		}
+	}
+	else
+	{
+		if (delegate && [delegate respondsToSelector:@selector(request:failedWithError:)])
+			[delegate request:self failedWithError:[NSError errorWithDomain:@"LFMFramework" code:0 userInfo:[NSDictionary dictionaryWithObject:@"An unknown error occurred." forKey:NSLocalizedDescriptionKey]]];
+	}
+	
+	[responseString release];
+	[connection release];
+	connection = nil;
 }
 
 @end

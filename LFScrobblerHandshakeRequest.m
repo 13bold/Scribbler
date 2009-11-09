@@ -128,7 +128,7 @@
 				code = 2;
 			else if ([[errString lowercaseString] hasPrefix:@"badtime"])
 				code = 3;
-			if ([[errString lowercaseString] hasPrefix:@"failed"])
+			else if ([[errString lowercaseString] hasPrefix:@"failed"])
 				code = 4;
 			
 			NSError *theError = [NSError errorWithDomain:@"Last.fm" code:code userInfo:[NSDictionary dictionaryWithObject:errString forKey:NSLocalizedDescriptionKey]];
