@@ -40,7 +40,7 @@
 	[authConnectButton setTitle:@"Connect with Last.fm"];
 	
 	// get frame, set size, and center
-	CGRect buttonFrame = [authConnectButton frame];
+	NSRect buttonFrame = [authConnectButton frame];
 	buttonFrame.size.width = 174.0; // taken from IB
 	
 	CGFloat parentWidth = [[authConnectButton superview] frame].size.width;
@@ -57,8 +57,8 @@
 	[authStatus setStringValue:@"Making Authorization Request…"];
 	
 	// measure the gap
-	CGRect statusFrame = [authStatus frame];
-	CGRect spinFrame = [authSpinner frame];
+	NSRect statusFrame = [authStatus frame];
+	NSRect spinFrame = [authSpinner frame];
 	CGFloat gap = spinFrame.origin.x - (statusFrame.origin.x + statusFrame.size.width);
 	
 	// adjust the size of the status field
@@ -89,8 +89,8 @@
 	[authStatus setStringValue:@"Awaiting Authorization…"];
 	
 	// measure the gap
-	CGRect statusFrame = [authStatus frame];
-	CGRect spinFrame = [authSpinner frame];
+	NSRect statusFrame = [authStatus frame];
+	NSRect spinFrame = [authSpinner frame];
 	CGFloat gap = spinFrame.origin.x - (statusFrame.origin.x + statusFrame.size.width);
 	
 	// adjust the size of the status field
@@ -121,8 +121,8 @@
 	[authStatus setStringValue:@"Checking Authorization…"];
 	
 	// measure the gap
-	CGRect statusFrame = [authStatus frame];
-	CGRect spinFrame = [authSpinner frame];
+	NSRect statusFrame = [authStatus frame];
+	NSRect spinFrame = [authSpinner frame];
 	CGFloat gap = spinFrame.origin.x - (statusFrame.origin.x + statusFrame.size.width);
 	
 	// adjust the size of the status field
@@ -160,7 +160,7 @@
 	[authConnectButton setTitle:@"Disconnect from Last.fm"];
 	
 	// get frame, set size, and center
-	CGRect buttonFrame = [authConnectButton frame];
+	NSRect buttonFrame = [authConnectButton frame];
 	buttonFrame.size.width = 195.0; // taken from IB
 	
 	CGFloat parentWidth = [[authConnectButton superview] frame].size.width;
