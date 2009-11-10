@@ -75,7 +75,6 @@
 - (void)scrobblerHandshakeSucceeded;
 - (void)scrobblerHandshakeFailed:(NSError *)theError willRetry:(BOOL)willRetry;
 - (void)scrobblerClient:(NSString *)theClientID bannedForVersion:(NSString *)theClientVersion;
-- (void)scrobblerRejectedCredentials;
 - (void)scrobblerRejectedSystemTime;
 
 - (void)nowPlayingSucceededForTrack:(LFTrack *)theTrack;

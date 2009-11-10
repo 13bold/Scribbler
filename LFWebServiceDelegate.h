@@ -46,12 +46,12 @@
 // Session management (existing sessions)
 - (void)sessionValidatedForUser:(NSString *)theUser;
 - (void)sessionInvalidForUser:(NSString *)theUser;
+- (void)sessionKeyRevoked:(NSString *)theKey forUser:(NSString *)theUser;
 
 // Scrobbling sessions
 - (void)scrobblerHandshakeSucceeded;
 - (void)scrobblerHandshakeFailed:(NSError *)theError willRetry:(BOOL)willRetry;
 - (void)scrobblerClient:(NSString *)theClientID bannedForVersion:(NSString *)theClientVersion;
-- (void)scrobblerRejectedCredentials;
 - (void)scrobblerRejectedSystemTime;
 
 // Track responses

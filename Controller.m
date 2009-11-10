@@ -252,6 +252,11 @@
 	// We failed. Epically.
 	[uiController showAuthConnectPane];
 }
+- (void)sessionKeyRevoked:(NSString *)theKey forUser:(NSString *)theUser
+{
+	// The key was revoked, so we disconnect from Last.fm permanently
+	[self disconnectFromLastFM:self];
+}
 
 - (void)scrobblerHandshakeSucceeded
 {
@@ -264,10 +269,6 @@
 - (void)scrobblerClient:(NSString *)theClientID bannedForVersion:(NSString *)theClientVersion
 {
 	[self log:@"Client banned"];
-}
-- (void)scrobblerRejectedCredentials
-{
-	[self log:@"Credentials rejected"];
 }
 - (void)scrobblerRejectedSystemTime
 {

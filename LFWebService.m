@@ -469,6 +469,15 @@
 				[requestQueue removeObject:theRequest];
 				shouldProceed = YES;
 			}
+			else if ([theError code] == 9)	// invalid session key
+			{
+				if (delegate && [delegate respondsToSelector:@selector(loveFailedForTrack:error:willRetry:)])
+					[delegate loveFailedForTrack:[theRequest track] error:theError willRetry:YES];
+				
+				// session key was revoked
+				if (delegate && [delegate respondsToSelector:@selector(sessionKeyRevoked:forUser:)])
+					[delegate sessionKeyRevoked:sessionKey forUser:sessionUser];
+			}
 			else
 			{
 				// halt redispatching, try later
@@ -494,6 +503,15 @@
 				
 				[requestQueue removeObject:theRequest];
 				shouldProceed = YES;
+			}
+			else if ([theError code] == 9)	// invalid session key
+			{
+				if (delegate && [delegate respondsToSelector:@selector(banFailedForTrack:error:willRetry:)])
+					[delegate banFailedForTrack:[theRequest track] error:theError willRetry:YES];
+				
+				// session key was revoked
+				if (delegate && [delegate respondsToSelector:@selector(sessionKeyRevoked:forUser:)])
+					[delegate sessionKeyRevoked:sessionKey forUser:sessionUser];
 			}
 			else
 			{
@@ -530,6 +548,13 @@
 		if (delegate && [delegate respondsToSelector:@selector(sessionInvalidForUser:)])
 			[delegate sessionInvalidForUser:sessionUser];
 		
+		if ([[theError domain] isEqualToString:@"Last.fm"])	// eg, not a communication error
+		{
+			// session key was revoked
+			if (delegate && [delegate respondsToSelector:@selector(sessionKeyRevoked:forUser:)])
+				[delegate sessionKeyRevoked:sessionKey forUser:sessionUser];
+		}
+		
 		[requestQueue removeObject:theRequest];
 	}
 	else if (r == LFRequestScrobblerHandshake)
@@ -557,8 +582,9 @@
 				case 2:
 					if (delegate && [delegate respondsToSelector:@selector(scrobblerHandshakeFailed:willRetry:)])
 						[delegate scrobblerHandshakeFailed:theError willRetry:NO];
-					if (delegate && [delegate respondsToSelector:@selector(scrobblerRejectedCredentials)])
-						[delegate scrobblerRejectedCredentials];
+					// session key was revoked
+					if (delegate && [delegate respondsToSelector:@selector(sessionKeyRevoked:forUser:)])
+						[delegate sessionKeyRevoked:sessionKey forUser:sessionUser];
 					[requestQueue removeObject:theRequest];
 					handshakeInProgress = NO;
 					break;
