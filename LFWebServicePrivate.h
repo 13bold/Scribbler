@@ -35,6 +35,7 @@
 
 // Web service methods
 - (void)dispatchNextRequestIfPossible;
+- (void)dispatchTimerCalled:(NSTimer *)theTimer;
 
 // Request callback methods
 - (void)requestSucceeded:(LFRequest *)theRequest;

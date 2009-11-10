@@ -52,6 +52,8 @@
 	
 	BOOL runningRequest;
 	BOOL autoScrobble;
+	
+	NSTimer *queueTimer;
 }
 
 // Initializers

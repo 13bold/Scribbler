@@ -71,6 +71,7 @@
 	[scrobbleSubmissionURL release];
 	[currentTrack release];
 	[requestQueue release];
+	[queueTimer release];
 	[super dealloc];
 }
 
@@ -229,6 +230,13 @@
 {
 	if (!runningRequest && [requestQueue count] > 0)
 	{
+		if (queueTimer)
+		{
+			[queueTimer invalidate];
+			[queueTimer release];
+			queueTimer = nil;
+		}
+		
 		LFRequest *nextRequest = [requestQueue objectAtIndex:0];
 		
 		if (([nextRequest requestType] != LFRequestGetToken && [nextRequest requestType] != LFRequestGetSession) && sessionKey == nil)
@@ -238,6 +246,10 @@
 		[nextRequest setDelegate:self];
 		[nextRequest dispatch];
 	}
+}
+- (void)dispatchTimerCalled:(NSTimer *)theTimer
+{
+	[self dispatchNextRequestIfPossible];
 }
 
 #pragma mark Request callback methods
@@ -365,6 +377,16 @@
 	[requestQueue removeObject:theRequest];
 	if (shouldProceed)
 		[self dispatchNextRequestIfPossible];
+	else
+	{
+		if (queueTimer)
+		{
+			[queueTimer invalidate];
+			[queueTimer release];
+			queueTimer = nil;
+		}
+		queueTimer = [[NSTimer scheduledTimerWithTimeInterval:150.0 target:self selector:@selector(dispatchTimerCalled:) userInfo:nil repeats:NO] retain];
+	}
 }
 - (void)request:(LFRequest *)theRequest failedWithError:(NSError *)theError
 {
@@ -566,6 +588,16 @@
 	
 	if (shouldProceed)
 		[self dispatchNextRequestIfPossible];
+	else
+	{
+		if (queueTimer)
+		{
+			[queueTimer invalidate];
+			[queueTimer release];
+			queueTimer = nil;
+		}
+		queueTimer = [[NSTimer scheduledTimerWithTimeInterval:150.0 target:self selector:@selector(dispatchTimerCalled:) userInfo:nil repeats:NO] retain];
+	}
 }
 
 @end
