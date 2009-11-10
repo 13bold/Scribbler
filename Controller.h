@@ -39,11 +39,16 @@
 	IBOutlet NSTextField *trackArtist;
 	IBOutlet NSTextField *trackDuration;
 	IBOutlet NSTextField *trackPlayTime;
+	
+	IBOutlet NSTextField *activityLog;
 }
 
 // Application delegate methods
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification;
 - (void)applicationDidBecomeActive:(NSNotification *)aNotification;
+
+// Log methods
+- (void)log:(NSString *)format, ...;
 
 // Authorization methods
 - (void)connectWithStoredCredentials;

@@ -86,6 +86,20 @@
 	}
 }
 
+#pragma mark Log methods
+- (void)log:(NSString *)format, ...
+{
+	// log out to the activity display
+	va_list argList;
+	va_start(argList, format);
+	NSString *output = [[NSString alloc] initWithFormat:format arguments:argList];
+	va_end(argList);
+	
+	[activityLog setStringValue:output];
+	
+	[output release];
+}
+
 #pragma mark Authorization methods
 - (void)connectWithStoredCredentials
 {
@@ -241,57 +255,57 @@
 
 - (void)scrobblerHandshakeSucceeded
 {
-	NSLog(@"Handshake succeeded");
+	[self log:@"Handshake succeeded"];
 }
 - (void)scrobblerHandshakeFailed:(NSError *)theError willRetry:(BOOL)willRetry
 {
-	NSLog(@"Handshake failed (retry=%d): %@", willRetry, [theError localizedDescription]);
+	[self log:@"Handshake failed (retry=%d): %@", willRetry, [theError localizedDescription]];
 }
 - (void)scrobblerClient:(NSString *)theClientID bannedForVersion:(NSString *)theClientVersion
 {
-	NSLog(@"Client banned");
+	[self log:@"Client banned"];
 }
 - (void)scrobblerRejectedCredentials
 {
-	NSLog(@"Credentials rejected");
+	[self log:@"Credentials rejected"];
 }
 - (void)scrobblerRejectedSystemTime
 {
-	NSLog(@"Time rejected");
+	[self log:@"Time rejected"];
 }
 
 - (void)nowPlayingSucceededForTrack:(LFTrack *)theTrack
 {
-	NSLog(@"Now playing succeeded: %@ (%@)", [theTrack title], [theTrack artist]);
+	[self log:@"Now playing succeeded: %@ (%@)", [theTrack title], [theTrack artist]];
 }
 - (void)scrobbleSucceededForTrack:(LFTrack *)theTrack
 {
-	NSLog(@"Scrobble succeeded: %@ (%@)", [theTrack title], [theTrack artist]);
+	[self log:@"Scrobble succeeded: %@ (%@)", [theTrack title], [theTrack artist]];
 }
 - (void)loveSucceededForTrack:(LFTrack *)theTrack
 {
-	NSLog(@"Love succeeded: %@ (%@)", [theTrack title], [theTrack artist]);
+	[self log:@"Love succeeded: %@ (%@)", [theTrack title], [theTrack artist]];
 }
 - (void)banSucceededForTrack:(LFTrack *)theTrack
 {
-	NSLog(@"Ban succeeded: %@ (%@)", [theTrack title], [theTrack artist]);
+	[self log:@"Ban succeeded: %@ (%@)", [theTrack title], [theTrack artist]];
 }
 
 - (void)nowPlayingFailedForTrack:(LFTrack *)theTrack error:(NSError *)theError willRetry:(BOOL)willRetry
 {
-	NSLog(@"Now playing failed (retry=%d): %@ (%@) - %@", willRetry, [theTrack title], [theTrack artist], [theError localizedDescription]);
+	[self log:@"Now playing failed (retry=%d): %@ (%@) - %@", willRetry, [theTrack title], [theTrack artist], [theError localizedDescription]];
 }
 - (void)scrobbleFailedForTrack:(LFTrack *)theTrack error:(NSError *)theError willRetry:(BOOL)willRetry
 {
-	NSLog(@"Scrobble failed (retry=%d): %@ (%@) - %@", willRetry, [theTrack title], [theTrack artist], [theError localizedDescription]);
+	[self log:@"Scrobble failed (retry=%d): %@ (%@) - %@", willRetry, [theTrack title], [theTrack artist], [theError localizedDescription]];
 }
 - (void)loveFailedForTrack:(LFTrack *)theTrack error:(NSError *)theError willRetry:(BOOL)willRetry
 {
-	NSLog(@"Love failed (retry=%d): %@ (%@) - %@", willRetry, [theTrack title], [theTrack artist], [theError localizedDescription]);
+	[self log:@"Love failed (retry=%d): %@ (%@) - %@", willRetry, [theTrack title], [theTrack artist], [theError localizedDescription]];
 }
 - (void)banFailedForTrack:(LFTrack *)theTrack error:(NSError *)theError willRetry:(BOOL)willRetry
 {
-	NSLog(@"Ban failed (retry=%d): %@ (%@) - %@", willRetry, [theTrack title], [theTrack artist], [theError localizedDescription]);
+	[self log:@"Ban failed (retry=%d): %@ (%@) - %@", willRetry, [theTrack title], [theTrack artist], [theError localizedDescription]];
 }
 
 @end
