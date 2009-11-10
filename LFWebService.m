@@ -174,17 +174,24 @@
 			return nil;
 	}
 	
-	LFScrobbleRequest *theRequest = [LFScrobbleRequest requestWithTrack:theTrack];
-	[requestQueue addObject:theRequest];
-	[self dispatchNextRequestIfPossible];
-	
-	if (currentTrack)
+	// track must be longer than 30 seconds, and it must
+	// have played for either greater than 240 seconds, or
+	// greater than half its length, whichever comes first
+	if ([theTrack duration] > 30.0 && ([theTrack playingTime] > 240.0 || [theTrack playingTime] > ([theTrack duration] / 2.0)))
 	{
-		[currentTrack release];
-		currentTrack = nil;
+		LFScrobbleRequest *theRequest = [LFScrobbleRequest requestWithTrack:theTrack];
+		[requestQueue addObject:theRequest];
+		[self dispatchNextRequestIfPossible];
+		
+		if (currentTrack)
+		{
+			[currentTrack release];
+			currentTrack = nil;
+		}
+		
+		return [theRequest identifier];
 	}
-	
-	return [theRequest identifier];
+	return nil;
 }
 - (NSString *)loveTrack:(LFTrack *)theTrack
 {
