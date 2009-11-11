@@ -27,6 +27,13 @@
 #import <Cocoa/Cocoa.h>
 
 
+// Connection states
+typedef enum _LFConnectionState {
+	LFNotConnected = 0,
+	LFConnected = 1,
+	LFConnecting = 2
+} LFConnectionState;
+
 // Forward declarations
 @class LFTrack;
 @class LFRequest;
@@ -54,6 +61,8 @@
 	BOOL autoScrobble;
 	
 	NSTimer *queueTimer;
+	
+	LFConnectionState state;
 }
 
 // Initializers
@@ -61,15 +70,13 @@
 
 // Properties
 @property(assign) id delegate;
+@property(assign,readonly) LFConnectionState state;
 @property(copy) NSString *APIKey;
 @property(copy) NSString *sharedSecret;
 @property(copy) NSString *clientID;
 @property(copy) NSString *clientVersion;
 @property(copy) NSString *sessionKey;
 @property(copy) NSString *sessionUser;
-@property(copy,readonly) NSString *scrobbleSessionID;
-@property(copy,readonly) NSString *scrobbleNPURL;
-@property(copy,readonly) NSString *scrobbleSubmissionURL;
 @property(assign) BOOL autoScrobble;
 @property(retain,readonly) LFTrack *currentTrack;
 

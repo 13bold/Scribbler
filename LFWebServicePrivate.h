@@ -30,6 +30,11 @@
 
 @interface LFWebService()<LFRequestDelegate>
 
+// Properties
+@property(copy,readonly) NSString *scrobbleSessionID;
+@property(copy,readonly) NSString *scrobbleNPURL;
+@property(copy,readonly) NSString *scrobbleSubmissionURL;
+
 // Scrobbler methods
 - (NSString *)performScrobblerHandshake;
 

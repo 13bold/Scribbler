@@ -46,6 +46,8 @@
 		runningRequest = NO;
 		autoScrobble = YES;
 		handshakeInProgress = NO;
+		
+		state = LFNotConnected;
 	}
 	return self;
 }
@@ -77,6 +79,7 @@
 
 #pragma mark Properties
 @synthesize delegate;
+@synthesize state;
 @synthesize APIKey;
 @synthesize sharedSecret;
 @synthesize clientID;
@@ -242,6 +245,10 @@
 		if (([nextRequest requestType] != LFRequestGetToken && [nextRequest requestType] != LFRequestGetSession) && sessionKey == nil)
 			return;
 		
+		LFRequestType t = [nextRequest requestType];
+		if (t == LFRequestGetToken || t == LFRequestGetSession || t == LFRequestValidateSession)
+			state = LFConnecting;
+		
 		runningRequest = YES;
 		[nextRequest setDelegate:self];
 		[nextRequest dispatch];
@@ -315,19 +322,10 @@
 			pendingToken = nil;
 		}
 		
-		if (sessionUser)
-		{
-			[sessionUser release];
-			sessionUser = nil;
-		}
-		sessionUser = [[(LFGetSessionRequest *)theRequest sessionUser] copy];
+		[self setSessionUser:[(LFGetSessionRequest *)theRequest sessionUser]];
+		[self setSessionKey:[(LFGetSessionRequest *)theRequest sessionKey]];
 		
-		if (sessionKey)
-		{
-			[sessionKey release];
-			sessionKey = nil;
-		}
-		sessionKey = [[(LFGetSessionRequest *)theRequest sessionKey] copy];
+		state = LFConnected;
 		
 		if (delegate && [delegate respondsToSelector:@selector(sessionCreatedWithKey:user:)])
 			[delegate sessionCreatedWithKey:sessionKey user:sessionUser];
@@ -336,6 +334,8 @@
 	}
 	else if (r == LFRequestValidateSession)
 	{
+		state = LFConnected;
+		
 		if (delegate && [delegate respondsToSelector:@selector(sessionValidatedForUser:)])
 			[delegate sessionValidatedForUser:sessionUser];
 		
@@ -474,9 +474,14 @@
 				if (delegate && [delegate respondsToSelector:@selector(loveFailedForTrack:error:willRetry:)])
 					[delegate loveFailedForTrack:[theRequest track] error:theError willRetry:YES];
 				
+				state = LFNotConnected;
+				
 				// session key was revoked
 				if (delegate && [delegate respondsToSelector:@selector(sessionKeyRevoked:forUser:)])
 					[delegate sessionKeyRevoked:sessionKey forUser:sessionUser];
+				
+				[self setSessionKey:nil];
+				[self setSessionUser:nil];
 			}
 			else
 			{
@@ -509,9 +514,14 @@
 				if (delegate && [delegate respondsToSelector:@selector(banFailedForTrack:error:willRetry:)])
 					[delegate banFailedForTrack:[theRequest track] error:theError willRetry:YES];
 				
+				state = LFNotConnected;
+				
 				// session key was revoked
 				if (delegate && [delegate respondsToSelector:@selector(sessionKeyRevoked:forUser:)])
 					[delegate sessionKeyRevoked:sessionKey forUser:sessionUser];
+				
+				[self setSessionKey:nil];
+				[self setSessionUser:nil];
 			}
 			else
 			{
@@ -523,6 +533,8 @@
 	}
 	else if (r == LFRequestGetToken)
 	{
+		state = LFNotConnected;
+		
 		// we'll just try again later on this one
 		if (delegate && [delegate respondsToSelector:@selector(sessionRequestCouldNotBeMade)])
 			[delegate sessionRequestCouldNotBeMade];
@@ -531,6 +543,8 @@
 	{
 		if (![[theError domain] isEqualToString:@"Last.fm"] || [theError code] != 14)
 		{
+			state = LFNotConnected;
+			
 			NSLog(@"Last.fm.framework: error, %@", [theError localizedDescription]);
 			if (delegate && [delegate respondsToSelector:@selector(sessionAuthorizationFailed)])
 				[delegate sessionAuthorizationFailed];
@@ -545,6 +559,8 @@
 	}
 	else if (r == LFRequestValidateSession)
 	{
+		state = LFNotConnected;
+		
 		if (delegate && [delegate respondsToSelector:@selector(sessionInvalidForUser:)])
 			[delegate sessionInvalidForUser:sessionUser];
 		
@@ -553,6 +569,9 @@
 			// session key was revoked
 			if (delegate && [delegate respondsToSelector:@selector(sessionKeyRevoked:forUser:)])
 				[delegate sessionKeyRevoked:sessionKey forUser:sessionUser];
+			
+			[self setSessionKey:nil];
+			[self setSessionUser:nil];
 		}
 		
 		[requestQueue removeObject:theRequest];
@@ -582,9 +601,16 @@
 				case 2:
 					if (delegate && [delegate respondsToSelector:@selector(scrobblerHandshakeFailed:willRetry:)])
 						[delegate scrobblerHandshakeFailed:theError willRetry:NO];
+					
+					state = LFNotConnected;
+					
 					// session key was revoked
 					if (delegate && [delegate respondsToSelector:@selector(sessionKeyRevoked:forUser:)])
 						[delegate sessionKeyRevoked:sessionKey forUser:sessionUser];
+					
+					[self setSessionKey:nil];
+					[self setSessionUser:nil];
+					
 					[requestQueue removeObject:theRequest];
 					handshakeInProgress = NO;
 					break;
