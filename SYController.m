@@ -100,10 +100,6 @@
 		[self completeAuthorization];
 	}
 }
-- (void)applicationWillBecomeActive:(NSNotification *)aNotification
-{
-	[mainWindow makeKeyAndOrderFront:self];
-}
 - (BOOL)applicationOpenUntitledFile:(NSApplication *)theApplication
 {
 	[mainWindow makeKeyAndOrderFront:self];
