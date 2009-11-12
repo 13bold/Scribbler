@@ -33,6 +33,25 @@
 		C96971A210A5044400A9FFAD /* LFRequestTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = C96971A010A5044400A9FFAD /* LFRequestTypes.h */; };
 		C969720710A50DF900A9FFAD /* NSString+LFExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = C969720510A50DF900A9FFAD /* NSString+LFExtensions.h */; };
 		C969720810A50DF900A9FFAD /* NSString+LFExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C969720610A50DF900A9FFAD /* NSString+LFExtensions.m */; };
+		C97DBFFD10AB9D1F00B0F18D /* Last.fm.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* Last.fm.framework */; };
+		C97DC00510AB9D2600B0F18D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
+		C97DC00A10AB9D2C00B0F18D /* Last.fm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* Last.fm.framework */; };
+		C97DC01510AB9D3B00B0F18D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C968513010A74E8E003816A7 /* Carbon.framework */; };
+		C97DC0D110AB9D4300B0F18D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C96851EE10A74E95003816A7 /* Security.framework */; };
+		C97DC11710AB9D7500B0F18D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D5C79C10A28A8C00AFCF8A /* main.m */; };
+		C97DC11810AB9D8500B0F18D /* EMKeychainItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C9684F7710A7414B003816A7 /* EMKeychainItem.m */; };
+		C97DC11910AB9D8C00B0F18D /* EMKeychainProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = C9684F7910A7414B003816A7 /* EMKeychainProxy.m */; };
+		C97DC11B10AB9D9800B0F18D /* Scrobbly.xib in Resources */ = {isa = PBXBuildFile; fileRef = C97DC11A10AB9D9800B0F18D /* Scrobbly.xib */; };
+		C97DC12E10AB9EE900B0F18D /* SYController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97DC12D10AB9EE900B0F18D /* SYController.m */; };
+		C97DC13310AB9EF100B0F18D /* SYUIController.m in Sources */ = {isa = PBXBuildFile; fileRef = C97DC13210AB9EF100B0F18D /* SYUIController.m */; };
+		C97DC16D10ABA45B00B0F18D /* lcd.png in Resources */ = {isa = PBXBuildFile; fileRef = C97DC16C10ABA45B00B0F18D /* lcd.png */; };
+		C97DC17210ABA51700B0F18D /* SYLCDView.m in Sources */ = {isa = PBXBuildFile; fileRef = C97DC17110ABA51700B0F18D /* SYLCDView.m */; };
+		C97DC18710ABA5CD00B0F18D /* SYWhiteView.m in Sources */ = {isa = PBXBuildFile; fileRef = C97DC18610ABA5CD00B0F18D /* SYWhiteView.m */; };
+		C97DC1BB10ABAC6F00B0F18D /* love.png in Resources */ = {isa = PBXBuildFile; fileRef = C97DC1B910ABAC6F00B0F18D /* love.png */; };
+		C97DC1BC10ABAC6F00B0F18D /* ban.png in Resources */ = {isa = PBXBuildFile; fileRef = C97DC1BA10ABAC6F00B0F18D /* ban.png */; };
+		C97DC1F910ABB2B700B0F18D /* MPFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = C97DC1F310ABB2B700B0F18D /* MPFunctions.m */; };
+		C97DC1FA10ABB2B700B0F18D /* NSCollections+MPTidbits.m in Sources */ = {isa = PBXBuildFile; fileRef = C97DC1F610ABB2B700B0F18D /* NSCollections+MPTidbits.m */; };
+		C97DC1FB10ABB2B700B0F18D /* NSString+MPTidbits.m in Sources */ = {isa = PBXBuildFile; fileRef = C97DC1F810ABB2B700B0F18D /* NSString+MPTidbits.m */; };
 		C9CD582510A3302200AB1952 /* LFWebService.h in Headers */ = {isa = PBXBuildFile; fileRef = C9CD582310A3302200AB1952 /* LFWebService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C9CD582610A3302200AB1952 /* LFWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = C9CD582410A3302200AB1952 /* LFWebService.m */; };
 		C9CD582B10A3327700AB1952 /* LFPlaySession.h in Headers */ = {isa = PBXBuildFile; fileRef = C9CD582910A3327700AB1952 /* LFPlaySession.h */; };
@@ -53,6 +72,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		C97DBFF710AB9D0900B0F18D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216 /* Last.fm */;
+			remoteInfo = Last.fm;
+		};
 		C9D5C79110A28A3900AFCF8A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
@@ -63,6 +89,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		C97DC11410AB9D6100B0F18D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C97DBFFD10AB9D1F00B0F18D /* Last.fm.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C9D5C79610A28A5A00AFCF8A /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -110,6 +146,27 @@
 		C96971A010A5044400A9FFAD /* LFRequestTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFRequestTypes.h; sourceTree = "<group>"; };
 		C969720510A50DF900A9FFAD /* NSString+LFExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+LFExtensions.h"; sourceTree = "<group>"; };
 		C969720610A50DF900A9FFAD /* NSString+LFExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LFExtensions.m"; sourceTree = "<group>"; };
+		C97DBFF110AB9D0200B0F18D /* Scrobbly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Scrobbly.app; path = build/Release/Scrobbly.app; sourceTree = "<group>"; };
+		C97DBFF310AB9D0200B0F18D /* Scrobbly-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Scrobbly-Info.plist"; sourceTree = "<group>"; };
+		C97DC11510AB9D6F00B0F18D /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/Scrobbly.xib; sourceTree = "<group>"; };
+		C97DC12C10AB9EE900B0F18D /* SYController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYController.h; sourceTree = "<group>"; };
+		C97DC12D10AB9EE900B0F18D /* SYController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYController.m; sourceTree = "<group>"; };
+		C97DC13110AB9EF100B0F18D /* SYUIController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYUIController.h; sourceTree = "<group>"; };
+		C97DC13210AB9EF100B0F18D /* SYUIController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYUIController.m; sourceTree = "<group>"; };
+		C97DC16C10ABA45B00B0F18D /* lcd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lcd.png; sourceTree = "<group>"; };
+		C97DC17010ABA51700B0F18D /* SYLCDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYLCDView.h; sourceTree = "<group>"; };
+		C97DC17110ABA51700B0F18D /* SYLCDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYLCDView.m; sourceTree = "<group>"; };
+		C97DC18510ABA5CD00B0F18D /* SYWhiteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYWhiteView.h; sourceTree = "<group>"; };
+		C97DC18610ABA5CD00B0F18D /* SYWhiteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYWhiteView.m; sourceTree = "<group>"; };
+		C97DC1B910ABAC6F00B0F18D /* love.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = love.png; sourceTree = "<group>"; };
+		C97DC1BA10ABAC6F00B0F18D /* ban.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ban.png; sourceTree = "<group>"; };
+		C97DC1F210ABB2B700B0F18D /* MPFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPFunctions.h; sourceTree = "<group>"; };
+		C97DC1F310ABB2B700B0F18D /* MPFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPFunctions.m; sourceTree = "<group>"; };
+		C97DC1F410ABB2B700B0F18D /* MPTidbits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPTidbits.h; sourceTree = "<group>"; };
+		C97DC1F510ABB2B700B0F18D /* NSCollections+MPTidbits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCollections+MPTidbits.h"; sourceTree = "<group>"; };
+		C97DC1F610ABB2B700B0F18D /* NSCollections+MPTidbits.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSCollections+MPTidbits.m"; sourceTree = "<group>"; };
+		C97DC1F710ABB2B700B0F18D /* NSString+MPTidbits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MPTidbits.h"; sourceTree = "<group>"; };
+		C97DC1F810ABB2B700B0F18D /* NSString+MPTidbits.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MPTidbits.m"; sourceTree = "<group>"; };
 		C9CD582310A3302200AB1952 /* LFWebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFWebService.h; sourceTree = "<group>"; };
 		C9CD582410A3302200AB1952 /* LFWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFWebService.m; sourceTree = "<group>"; };
 		C9CD582910A3327700AB1952 /* LFPlaySession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFPlaySession.h; sourceTree = "<group>"; };
@@ -139,6 +196,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C97DBFEF10AB9D0200B0F18D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C97DC00510AB9D2600B0F18D /* Cocoa.framework in Frameworks */,
+				C97DC00A10AB9D2C00B0F18D /* Last.fm.framework in Frameworks */,
+				C97DC01510AB9D3B00B0F18D /* Carbon.framework in Frameworks */,
+				C97DC0D110AB9D4300B0F18D /* Security.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C9D5C78710A28A2500AFCF8A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -158,6 +226,7 @@
 			children = (
 				8DC2EF5B0486A6940098B216 /* Last.fm.framework */,
 				C9D5C78910A28A2500AFCF8A /* Last.fm Demo.app */,
+				C97DBFF110AB9D0200B0F18D /* Scrobbly.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -165,6 +234,7 @@
 		0867D691FE84028FC02AAC07 /* Last.fm */ = {
 			isa = PBXGroup;
 			children = (
+				C97DC12910AB9ED400B0F18D /* Classes (Scrobbly) */,
 				C9D5C79510A28A5A00AFCF8A /* Classes (Demo App) */,
 				08FB77AEFE84172EC02AAC07 /* Classes (Framework) */,
 				32C88DFF0371C24200C91783 /* Other Sources */,
@@ -172,6 +242,7 @@
 				0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */,
 				034768DFFF38A50411DB9C8B /* Products */,
 				C9D5C78B10A28A2500AFCF8A /* Last.fm Demo-Info.plist */,
+				C97DBFF310AB9D0200B0F18D /* Scrobbly-Info.plist */,
 			);
 			name = Last.fm;
 			sourceTree = "<group>";
@@ -188,9 +259,13 @@
 		089C1665FE841158C02AAC07 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C97DC1B910ABAC6F00B0F18D /* love.png */,
+				C97DC1BA10ABAC6F00B0F18D /* ban.png */,
+				C97DC16C10ABA45B00B0F18D /* lcd.png */,
 				8DC2EF5A0486A6940098B216 /* Info.plist */,
 				089C1666FE841158C02AAC07 /* InfoPlist.strings */,
 				C9D5C7AD10A28B5D00AFCF8A /* MainMenu.xib */,
+				C97DC11A10AB9D9800B0F18D /* Scrobbly.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -241,6 +316,13 @@
 				C969720610A50DF900A9FFAD /* NSString+LFExtensions.m */,
 				C9D5C79C10A28A8C00AFCF8A /* main.m */,
 				32DBCF5E0370ADEE00C91783 /* Last.fm_Prefix.pch */,
+				C97DC1F210ABB2B700B0F18D /* MPFunctions.h */,
+				C97DC1F310ABB2B700B0F18D /* MPFunctions.m */,
+				C97DC1F410ABB2B700B0F18D /* MPTidbits.h */,
+				C97DC1F510ABB2B700B0F18D /* NSCollections+MPTidbits.h */,
+				C97DC1F610ABB2B700B0F18D /* NSCollections+MPTidbits.m */,
+				C97DC1F710ABB2B700B0F18D /* NSString+MPTidbits.h */,
+				C97DC1F810ABB2B700B0F18D /* NSString+MPTidbits.m */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -267,6 +349,21 @@
 				C968534910A776F8003816A7 /* LFScrobblerHandshakeRequest.m */,
 			);
 			name = "Request Types";
+			sourceTree = "<group>";
+		};
+		C97DC12910AB9ED400B0F18D /* Classes (Scrobbly) */ = {
+			isa = PBXGroup;
+			children = (
+				C97DC12C10AB9EE900B0F18D /* SYController.h */,
+				C97DC12D10AB9EE900B0F18D /* SYController.m */,
+				C97DC13110AB9EF100B0F18D /* SYUIController.h */,
+				C97DC13210AB9EF100B0F18D /* SYUIController.m */,
+				C97DC17010ABA51700B0F18D /* SYLCDView.h */,
+				C97DC17110ABA51700B0F18D /* SYLCDView.m */,
+				C97DC18510ABA5CD00B0F18D /* SYWhiteView.h */,
+				C97DC18610ABA5CD00B0F18D /* SYWhiteView.m */,
+			);
+			name = "Classes (Scrobbly)";
 			sourceTree = "<group>";
 		};
 		C9D5C79510A28A5A00AFCF8A /* Classes (Demo App) */ = {
@@ -333,6 +430,25 @@
 			productReference = 8DC2EF5B0486A6940098B216 /* Last.fm.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		C97DBFF010AB9D0200B0F18D /* Scrobbly */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C97DBFF610AB9D0300B0F18D /* Build configuration list for PBXNativeTarget "Scrobbly" */;
+			buildPhases = (
+				C97DBFED10AB9D0200B0F18D /* Resources */,
+				C97DBFEE10AB9D0200B0F18D /* Sources */,
+				C97DBFEF10AB9D0200B0F18D /* Frameworks */,
+				C97DC11410AB9D6100B0F18D /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C97DBFF810AB9D0900B0F18D /* PBXTargetDependency */,
+			);
+			name = Scrobbly;
+			productName = Scrobbly;
+			productReference = C97DBFF110AB9D0200B0F18D /* Scrobbly.app */;
+			productType = "com.apple.product-type.application";
+		};
 		C9D5C78810A28A2500AFCF8A /* Last.fm Demo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C9D5C78F10A28A2500AFCF8A /* Build configuration list for PBXNativeTarget "Last.fm Demo" */;
@@ -367,6 +483,7 @@
 			targets = (
 				8DC2EF4F0486A6940098B216 /* Last.fm */,
 				C9D5C78810A28A2500AFCF8A /* Last.fm Demo */,
+				C97DBFF010AB9D0200B0F18D /* Scrobbly */,
 			);
 		};
 /* End PBXProject section */
@@ -377,6 +494,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C97DBFED10AB9D0200B0F18D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C97DC11B10AB9D9800B0F18D /* Scrobbly.xib in Resources */,
+				C97DC16D10ABA45B00B0F18D /* lcd.png in Resources */,
+				C97DC1BB10ABAC6F00B0F18D /* love.png in Resources */,
+				C97DC1BC10ABAC6F00B0F18D /* ban.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,6 +539,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C97DBFEE10AB9D0200B0F18D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C97DC11710AB9D7500B0F18D /* main.m in Sources */,
+				C97DC11810AB9D8500B0F18D /* EMKeychainItem.m in Sources */,
+				C97DC11910AB9D8C00B0F18D /* EMKeychainProxy.m in Sources */,
+				C97DC12E10AB9EE900B0F18D /* SYController.m in Sources */,
+				C97DC13310AB9EF100B0F18D /* SYUIController.m in Sources */,
+				C97DC17210ABA51700B0F18D /* SYLCDView.m in Sources */,
+				C97DC18710ABA5CD00B0F18D /* SYWhiteView.m in Sources */,
+				C97DC1F910ABB2B700B0F18D /* MPFunctions.m in Sources */,
+				C97DC1FA10ABB2B700B0F18D /* NSCollections+MPTidbits.m in Sources */,
+				C97DC1FB10ABB2B700B0F18D /* NSString+MPTidbits.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C9D5C78610A28A2500AFCF8A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -426,6 +571,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		C97DBFF810AB9D0900B0F18D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8DC2EF4F0486A6940098B216 /* Last.fm */;
+			targetProxy = C97DBFF710AB9D0900B0F18D /* PBXContainerItemProxy */;
+		};
 		C9D5C79210A28A3900AFCF8A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8DC2EF4F0486A6940098B216 /* Last.fm */;
@@ -440,6 +590,14 @@
 				089C1667FE841158C02AAC07 /* English */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		C97DC11A10AB9D9800B0F18D /* Scrobbly.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C97DC11510AB9D6F00B0F18D /* English */,
+			);
+			name = Scrobbly.xib;
 			sourceTree = "<group>";
 		};
 		C9D5C7AD10A28B5D00AFCF8A /* MainMenu.xib */ = {
@@ -520,6 +678,54 @@
 			};
 			name = Release;
 		};
+		C97DBFF410AB9D0300B0F18D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "Scrobbly-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = Scrobbly;
+			};
+			name = Debug;
+		};
+		C97DBFF510AB9D0300B0F18D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "Scrobbly-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = Scrobbly;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 		C9D5C78D10A28A2500AFCF8A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -585,6 +791,15 @@
 			buildConfigurations = (
 				1DEB91B208733DA50010E9CD /* Debug */,
 				1DEB91B308733DA50010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C97DBFF610AB9D0300B0F18D /* Build configuration list for PBXNativeTarget "Scrobbly" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C97DBFF410AB9D0300B0F18D /* Debug */,
+				C97DBFF510AB9D0300B0F18D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
