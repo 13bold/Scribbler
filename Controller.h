@@ -71,6 +71,7 @@
 
 - (void)sessionValidatedForUser:(NSString *)theUser;
 - (void)sessionInvalidForUser:(NSString *)theUser;
+- (void)sessionKeyRevoked:(NSString *)theKey forUser:(NSString *)theUser;
 
 - (void)scrobblerHandshakeSucceeded;
 - (void)scrobblerHandshakeFailed:(NSError *)theError willRetry:(BOOL)willRetry;
