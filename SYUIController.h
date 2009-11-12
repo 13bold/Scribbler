@@ -33,6 +33,8 @@
 	IBOutlet NSTextField *trackSubline;
 	
 	IBOutlet NSTextField *statusField;
+	
+	IBOutlet NSButton *connectButton;
 }
 
 // Composition methods

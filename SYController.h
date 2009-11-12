@@ -47,7 +47,6 @@
 
 // Application delegate methods
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification;
-- (void)applicationWillBecomeActive:(NSNotification *)aNotification;
 - (BOOL)applicationOpenUntitledFile:(NSApplication *)theApplication;
 
 // Connection methods

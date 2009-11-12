@@ -63,6 +63,7 @@
 - (void)showConnectMessage
 {
 	[statusField setStringValue:@"Click to connect with your Last.fm Account."];
+	[connectButton setAction:@selector(connectWithLastFM:)];
 }
 - (void)showPreAuthMessage
 {
@@ -79,6 +80,7 @@
 - (void)showConnectedWithUser:(NSString *)theUser
 {
 	[statusField setStringValue:theUser];
+	[connectButton setAction:@selector(disconnectFromLastFM:)];
 }
 
 @end
