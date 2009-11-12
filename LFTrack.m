@@ -91,11 +91,11 @@
 		if (![last hasStopped])
 			return;
 	}
+	else
+		[lastfm startPlayingTrack:self];
 	
 	LFPlaySession *play = [LFPlaySession session];
 	[timeLog addObject:play];
-	
-	[lastfm startPlayingTrack:self];
 }
 - (void)pause
 {
