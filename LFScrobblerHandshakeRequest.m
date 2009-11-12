@@ -53,7 +53,6 @@
 }
 - (void)dispatch
 {
-	NSLog(@"Performing handshake");
 	// get the URL root
 	static NSString *__LFSubmissionsURL = nil;
 	if (!__LFSubmissionsURL)
