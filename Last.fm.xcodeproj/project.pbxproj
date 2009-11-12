@@ -76,7 +76,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 8DC2EF4F0486A6940098B216 /* Last.fm */;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
 			remoteInfo = Last.fm;
 		};
 		C9D5C79110A28A3900AFCF8A /* PBXContainerItemProxy */ = {
@@ -146,7 +146,7 @@
 		C96971A010A5044400A9FFAD /* LFRequestTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFRequestTypes.h; sourceTree = "<group>"; };
 		C969720510A50DF900A9FFAD /* NSString+LFExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+LFExtensions.h"; sourceTree = "<group>"; };
 		C969720610A50DF900A9FFAD /* NSString+LFExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LFExtensions.m"; sourceTree = "<group>"; };
-		C97DBFF110AB9D0200B0F18D /* Scrobbly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Scrobbly.app; path = build/Release/Scrobbly.app; sourceTree = "<group>"; };
+		C97DBFF110AB9D0200B0F18D /* Scrobbly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scrobbly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C97DBFF310AB9D0200B0F18D /* Scrobbly-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Scrobbly-Info.plist"; sourceTree = "<group>"; };
 		C97DC11510AB9D6F00B0F18D /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/Scrobbly.xib; sourceTree = "<group>"; };
 		C97DC12C10AB9EE900B0F18D /* SYController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYController.h; sourceTree = "<group>"; };

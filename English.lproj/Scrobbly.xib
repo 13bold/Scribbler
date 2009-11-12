@@ -12,8 +12,8 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="29"/>
 			<integer value="367"/>
+			<integer value="29"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1294,7 +1294,7 @@
 				<int key="NSWindowStyleMask">15</int>
 				<int key="NSWindowBacking">2</int>
 				<string key="NSWindowRect">{{196, 295}, {420, 215}}</string>
-				<int key="NSWTFlags">611844096</int>
+				<int key="NSWTFlags">1685585920</int>
 				<string key="NSWindowTitle">Scrobbly</string>
 				<string key="NSWindowClass">NSWindow</string>
 				<nil key="NSViewClass"/>
@@ -2454,6 +2454,14 @@
 						<reference key="destination" ref="201572698"/>
 					</object>
 					<int key="connectionID">865</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">mainWindow</string>
+						<reference key="source" ref="721588658"/>
+						<reference key="destination" ref="513744381"/>
+					</object>
+					<int key="connectionID">866</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -3934,8 +3942,6 @@
 					<string>81.ImportedFromIB2</string>
 					<string>81.editorWindowContentRectSynchronizationRect</string>
 					<string>811.IBPluginDependency</string>
-					<string>812.IBPluginDependency</string>
-					<string>813.IBPluginDependency</string>
 					<string>817.IBPluginDependency</string>
 					<string>818.IBPluginDependency</string>
 					<string>819.IBPluginDependency</string>
@@ -4187,8 +4193,6 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -4235,7 +4239,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">865</int>
+			<int key="maxID">866</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -4264,11 +4268,13 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>mainWindow</string>
 							<string>trackTableView</string>
 							<string>ui</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>NSWindow</string>
 							<string>NSTableView</string>
 							<string>SYUIController</string>
 						</object>
