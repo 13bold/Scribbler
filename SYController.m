@@ -302,6 +302,7 @@
 		[ui displayTrack:trackName subline:subline];
 		
 		currentTrack = [theTrack retain];
+		currentTrackID = theID;
 	}
 	
 	if ([[info objectForKey:@"Player State"] isEqualToString:@"Playing"] && !wasPlaying)
