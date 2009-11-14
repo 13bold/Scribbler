@@ -398,6 +398,12 @@
 	
 	[theRequest setDelegate:nil];
 	
+	if ([theRequest failureCount] >= 5)	// this request failed 5 times
+	{
+		[[theRequest retain] autorelease];	// makes sure it's still valid for scope
+		[requestQueue removeObject:theRequest];
+	}
+	
 	// if it's a "try again" type error, leave it in the queue, redispatch
 	// if it's not a communication error, but it's a "this request will never work" error, remove, dispatch
 	// if it's a communication error, leave it in the queue, but don't dispatch

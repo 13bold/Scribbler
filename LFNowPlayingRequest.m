@@ -73,11 +73,15 @@
 		
 		if ([[[rLines objectAtIndex:0] lowercaseString] hasPrefix:@"ok"])
 		{
+			failureCount = 0;
+			
 			if (delegate && [delegate respondsToSelector:@selector(requestSucceeded:)])
 				[delegate requestSucceeded:self];
 		}
 		else
 		{
+			failureCount++;
+			
 			NSString *errString = [rLines objectAtIndex:0];
 			NSUInteger code = 1;
 			
@@ -88,6 +92,8 @@
 	}
 	else
 	{
+		failureCount++;
+		
 		if (delegate && [delegate respondsToSelector:@selector(request:failedWithError:)])
 			[delegate request:self failedWithError:[NSError errorWithDomain:@"LFMFramework" code:0 userInfo:[NSDictionary dictionaryWithObject:@"An unknown error occurred." forKey:NSLocalizedDescriptionKey]]];
 	}

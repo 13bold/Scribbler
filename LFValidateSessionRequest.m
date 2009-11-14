@@ -65,6 +65,8 @@
 	
 	if (err)
 	{
+		failureCount++;
+		
 		if (delegate && [delegate respondsToSelector:@selector(request:failedWithError:)])
 			[delegate request:self failedWithError:err];
 		return;
@@ -79,6 +81,8 @@
 		
 		if ([[username lowercaseString] isEqualToString:[[delegate sessionUser] lowercaseString]])
 		{
+			failureCount = 0;
+			
 			if (delegate && [delegate respondsToSelector:@selector(requestSucceeded:)])
 				[delegate requestSucceeded:self];
 		}
@@ -87,12 +91,17 @@
 			// valid session but for a different user, sounds suspicious
 			// Last.fm does not presently allow you to change your username
 			// we're going to fail here, just to be on the safe side
+			
+			failureCount++;
+			
 			if (delegate && [delegate respondsToSelector:@selector(request:failedWithError:)])
 				[delegate request:self failedWithError:[NSError errorWithDomain:@"LFMFramework" code:0 userInfo:[NSDictionary dictionaryWithObject:@"An unknown error occurred." forKey:NSLocalizedDescriptionKey]]];
 		}
 	}
 	else if ([status isEqualToString:@"failed"])
 	{
+		failureCount++;
+		
 		NSXMLElement *errorNode = [[root elementsForName:@"error"] objectAtIndex:0];
 		NSError *theError = [NSError errorWithDomain:@"Last.fm" code:[[[errorNode attributeForName:@"code"] objectValue] integerValue] userInfo:[NSDictionary dictionaryWithObject:[errorNode stringValue] forKey:NSLocalizedDescriptionKey]];
 		if (delegate && [delegate respondsToSelector:@selector(request:failedWithError:)])
@@ -100,6 +109,8 @@
 	}
 	else
 	{
+		failureCount++;
+		
 		if (delegate && [delegate respondsToSelector:@selector(request:failedWithError:)])
 			[delegate request:self failedWithError:[NSError errorWithDomain:@"LFMFramework" code:0 userInfo:[NSDictionary dictionaryWithObject:@"An unknown error occurred." forKey:NSLocalizedDescriptionKey]]];
 	}

@@ -53,6 +53,8 @@ typedef enum _LFRequestType {
 	NSURLConnection *connection;
 	NSURLResponse *response;
 	NSMutableData *responseData;
+	
+	NSUInteger failureCount;
 }
 
 // Initializers
@@ -67,6 +69,7 @@ typedef enum _LFRequestType {
 @property(copy,readonly) NSString *identifier;
 @property(retain,readonly) NSURLResponse *response;
 @property(retain,readonly) NSMutableData *responseData;
+@property(assign,readonly) NSUInteger failureCount;
 
 // Dispatch methods
 - (void)dispatch;

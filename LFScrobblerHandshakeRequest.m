@@ -94,6 +94,8 @@
 		
 		if ([[[rLines objectAtIndex:0] lowercaseString] hasPrefix:@"ok"])
 		{
+			failureCount = 0;
+			
 			if (sessionID)
 			{
 				[sessionID release];
@@ -120,6 +122,8 @@
 		}
 		else
 		{
+			failureCount++;
+			
 			NSString *errString = [rLines objectAtIndex:0];
 			NSUInteger code = 0;
 			if ([[errString lowercaseString] hasPrefix:@"banned"])
@@ -138,6 +142,8 @@
 	}
 	else
 	{
+		failureCount++;
+		
 		if (delegate && [delegate respondsToSelector:@selector(request:failedWithError:)])
 			[delegate request:self failedWithError:[NSError errorWithDomain:@"LFMFramework" code:0 userInfo:[NSDictionary dictionaryWithObject:@"An unknown error occurred." forKey:NSLocalizedDescriptionKey]]];
 	}

@@ -72,6 +72,8 @@
 	
 	if (err)
 	{
+		failureCount++;
+		
 		if (delegate && [delegate respondsToSelector:@selector(request:failedWithError:)])
 			[delegate request:self failedWithError:err];
 		return;
@@ -82,6 +84,8 @@
 	
 	if ([status isEqualToString:@"ok"])
 	{
+		failureCount = 0;
+		
 		if (token)
 		{
 			[token release];
@@ -94,6 +98,8 @@
 	}
 	else if ([status isEqualToString:@"failed"])
 	{
+		failureCount++;
+		
 		NSXMLElement *errorNode = [[root elementsForName:@"error"] objectAtIndex:0];
 		NSError *theError = [NSError errorWithDomain:@"Last.fm" code:[[[errorNode attributeForName:@"code"] objectValue] integerValue] userInfo:[NSDictionary dictionaryWithObject:[errorNode stringValue] forKey:NSLocalizedDescriptionKey]];
 		if (delegate && [delegate respondsToSelector:@selector(request:failedWithError:)])
@@ -101,6 +107,8 @@
 	}
 	else
 	{
+		failureCount++;
+		
 		if (delegate && [delegate respondsToSelector:@selector(request:failedWithError:)])
 			[delegate request:self failedWithError:[NSError errorWithDomain:@"LFMFramework" code:0 userInfo:[NSDictionary dictionaryWithObject:@"An unknown error occurred." forKey:NSLocalizedDescriptionKey]]];
 	}

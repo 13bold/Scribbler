@@ -47,6 +47,8 @@
 		
 		responseData = [[NSMutableData alloc] init];
 		identifier = [[NSString stringWithNewUUID] copy];
+		
+		failureCount = 0;
 	}
 	return self;
 }
@@ -77,6 +79,7 @@
 @synthesize identifier;
 @synthesize response;
 @synthesize responseData;
+@synthesize failureCount;
 
 #pragma mark Dispatch methods
 - (void)dispatch
@@ -156,6 +159,8 @@
 }
 - (void)connectionDidFinishLoading:(NSURLConnection *)theConnection
 {
+	failureCount = 0;
+	
 	// hooray!
 	if (delegate && [delegate respondsToSelector:@selector(requestSucceeded:)])
 		[delegate requestSucceeded:self];
@@ -165,6 +170,8 @@
 }
 - (void)connection:(NSURLConnection *)theConnection didFailWithError:(NSError *)error
 {
+	failureCount++;
+	
 	// boo!
 	if (delegate && [delegate respondsToSelector:@selector(request:failedWithError:)])
 		[delegate request:self failedWithError:error];
