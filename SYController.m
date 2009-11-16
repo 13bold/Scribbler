@@ -76,9 +76,8 @@
 	// We'll also set our client ID for scrobbling
 	// You can obtain one of these by contacting Last.fm
 	//  - http://www.last.fm/api/submissions#1.1
-	// For now, we'll use the testing ID 'tst'
-	[lastfm setClientID:@"tst"];
-	[lastfm setClientVersion:@"1.0"];
+	[lastfm setClientID:@"sby"];
+	[lastfm setClientVersion:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
 	
 	// In order to run, we need a valid session key
 	// First, we'll check to see if we have one. If we do,
