@@ -1,5 +1,5 @@
 //
-// Prefix header for all source files of the 'Last.fm' target in the 'Last.fm' project.
+// Prefix header for all source files of the 'Scribbler' target in the 'Scribbler' project.
 //
 
 #ifdef __OBJC__

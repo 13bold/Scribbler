@@ -33,9 +33,9 @@
 		C96971A210A5044400A9FFAD /* LFRequestTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = C96971A010A5044400A9FFAD /* LFRequestTypes.h */; };
 		C969720710A50DF900A9FFAD /* NSString+LFExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = C969720510A50DF900A9FFAD /* NSString+LFExtensions.h */; };
 		C969720810A50DF900A9FFAD /* NSString+LFExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C969720610A50DF900A9FFAD /* NSString+LFExtensions.m */; };
-		C97DBFFD10AB9D1F00B0F18D /* Last.fm.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* Last.fm.framework */; };
+		C97DBFFD10AB9D1F00B0F18D /* Scribbler.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* Scribbler.framework */; };
 		C97DC00510AB9D2600B0F18D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
-		C97DC00A10AB9D2C00B0F18D /* Last.fm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* Last.fm.framework */; };
+		C97DC00A10AB9D2C00B0F18D /* Scribbler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* Scribbler.framework */; };
 		C97DC01510AB9D3B00B0F18D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C968513010A74E8E003816A7 /* Carbon.framework */; };
 		C97DC0D110AB9D4300B0F18D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C96851EE10A74E95003816A7 /* Security.framework */; };
 		C97DC11710AB9D7500B0F18D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D5C79C10A28A8C00AFCF8A /* main.m */; };
@@ -56,19 +56,19 @@
 		C9CD582610A3302200AB1952 /* LFWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = C9CD582410A3302200AB1952 /* LFWebService.m */; };
 		C9CD582B10A3327700AB1952 /* LFPlaySession.h in Headers */ = {isa = PBXBuildFile; fileRef = C9CD582910A3327700AB1952 /* LFPlaySession.h */; };
 		C9CD582C10A3327700AB1952 /* LFPlaySession.m in Sources */ = {isa = PBXBuildFile; fileRef = C9CD582A10A3327700AB1952 /* LFPlaySession.m */; };
-		C9CD583B10A3374100AB1952 /* Last.fm.h in Headers */ = {isa = PBXBuildFile; fileRef = C9CD583910A3374100AB1952 /* Last.fm.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C9CD583B10A3374100AB1952 /* Scribbler.h in Headers */ = {isa = PBXBuildFile; fileRef = C9CD583910A3374100AB1952 /* Scribbler.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C9CD584E10A3553500AB1952 /* LFRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = C9CD584C10A3553500AB1952 /* LFRequest.h */; };
 		C9CD584F10A3553500AB1952 /* LFRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C9CD584D10A3553500AB1952 /* LFRequest.m */; };
 		C9CD589510A366C800AB1952 /* LFWebServicePrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = C9CD589310A366C800AB1952 /* LFWebServicePrivate.h */; };
 		C9CD589F10A367BA00AB1952 /* LFWebServiceDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = C9CD589D10A367BA00AB1952 /* LFWebServiceDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C9D5C79410A28A4B00AFCF8A /* Last.fm.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* Last.fm.framework */; };
+		C9D5C79410A28A4B00AFCF8A /* Scribbler.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* Scribbler.framework */; };
 		C9D5C79D10A28A8C00AFCF8A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D5C79C10A28A8C00AFCF8A /* main.m */; };
 		C9D5C7A210A28B0000AFCF8A /* Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D5C7A110A28B0000AFCF8A /* Controller.m */; };
 		C9D5C7A710A28B3500AFCF8A /* LFTrack.h in Headers */ = {isa = PBXBuildFile; fileRef = C9D5C7A510A28B3500AFCF8A /* LFTrack.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C9D5C7A810A28B3500AFCF8A /* LFTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D5C7A610A28B3500AFCF8A /* LFTrack.m */; };
 		C9D5C7AE10A28B5D00AFCF8A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9D5C7AD10A28B5D00AFCF8A /* MainMenu.xib */; };
 		C9D5C7B810A28BC900AFCF8A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
-		C9D5C7BC10A28BD500AFCF8A /* Last.fm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* Last.fm.framework */; };
+		C9D5C7BC10A28BD500AFCF8A /* Scribbler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* Scribbler.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,7 +95,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C97DBFFD10AB9D1F00B0F18D /* Last.fm.framework in CopyFiles */,
+				C97DBFFD10AB9D1F00B0F18D /* Scribbler.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,7 +105,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C9D5C79410A28A4B00AFCF8A /* Last.fm.framework in CopyFiles */,
+				C9D5C79410A28A4B00AFCF8A /* Scribbler.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,7 +118,7 @@
 		1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		32DBCF5E0370ADEE00C91783 /* Last.fm_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Last.fm_Prefix.pch; sourceTree = "<group>"; };
 		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8DC2EF5B0486A6940098B216 /* Last.fm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Last.fm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DC2EF5B0486A6940098B216 /* Scribbler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Scribbler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9684F7610A7414B003816A7 /* EMKeychainItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMKeychainItem.h; sourceTree = "<group>"; };
 		C9684F7710A7414B003816A7 /* EMKeychainItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMKeychainItem.m; sourceTree = "<group>"; };
 		C9684F7810A7414B003816A7 /* EMKeychainProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMKeychainProxy.h; sourceTree = "<group>"; };
@@ -171,7 +171,7 @@
 		C9CD582410A3302200AB1952 /* LFWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFWebService.m; sourceTree = "<group>"; };
 		C9CD582910A3327700AB1952 /* LFPlaySession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFPlaySession.h; sourceTree = "<group>"; };
 		C9CD582A10A3327700AB1952 /* LFPlaySession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFPlaySession.m; sourceTree = "<group>"; };
-		C9CD583910A3374100AB1952 /* Last.fm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Last.fm.h; sourceTree = "<group>"; };
+		C9CD583910A3374100AB1952 /* Scribbler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scribbler.h; sourceTree = "<group>"; };
 		C9CD584C10A3553500AB1952 /* LFRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFRequest.h; sourceTree = "<group>"; };
 		C9CD584D10A3553500AB1952 /* LFRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFRequest.m; sourceTree = "<group>"; };
 		C9CD589310A366C800AB1952 /* LFWebServicePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFWebServicePrivate.h; sourceTree = "<group>"; };
@@ -201,7 +201,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C97DC00510AB9D2600B0F18D /* Cocoa.framework in Frameworks */,
-				C97DC00A10AB9D2C00B0F18D /* Last.fm.framework in Frameworks */,
+				C97DC00A10AB9D2C00B0F18D /* Scribbler.framework in Frameworks */,
 				C97DC01510AB9D3B00B0F18D /* Carbon.framework in Frameworks */,
 				C97DC0D110AB9D4300B0F18D /* Security.framework in Frameworks */,
 			);
@@ -212,7 +212,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9D5C7B810A28BC900AFCF8A /* Cocoa.framework in Frameworks */,
-				C9D5C7BC10A28BD500AFCF8A /* Last.fm.framework in Frameworks */,
+				C9D5C7BC10A28BD500AFCF8A /* Scribbler.framework in Frameworks */,
 				C968513110A74E8E003816A7 /* Carbon.framework in Frameworks */,
 				C96851EF10A74E95003816A7 /* Security.framework in Frameworks */,
 			);
@@ -224,7 +224,7 @@
 		034768DFFF38A50411DB9C8B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8DC2EF5B0486A6940098B216 /* Last.fm.framework */,
+				8DC2EF5B0486A6940098B216 /* Scribbler.framework */,
 				C9D5C78910A28A2500AFCF8A /* Last.fm Demo.app */,
 				C97DBFF110AB9D0200B0F18D /* Scrobbly.app */,
 			);
@@ -311,7 +311,7 @@
 		32C88DFF0371C24200C91783 /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				C9CD583910A3374100AB1952 /* Last.fm.h */,
+				C9CD583910A3374100AB1952 /* Scribbler.h */,
 				C969720510A50DF900A9FFAD /* NSString+LFExtensions.h */,
 				C969720610A50DF900A9FFAD /* NSString+LFExtensions.m */,
 				C9D5C79C10A28A8C00AFCF8A /* main.m */,
@@ -391,7 +391,7 @@
 				C9D5C7A710A28B3500AFCF8A /* LFTrack.h in Headers */,
 				C9CD582510A3302200AB1952 /* LFWebService.h in Headers */,
 				C9CD582B10A3327700AB1952 /* LFPlaySession.h in Headers */,
-				C9CD583B10A3374100AB1952 /* Last.fm.h in Headers */,
+				C9CD583B10A3374100AB1952 /* Scribbler.h in Headers */,
 				C9CD584E10A3553500AB1952 /* LFRequest.h in Headers */,
 				C9CD589510A366C800AB1952 /* LFWebServicePrivate.h in Headers */,
 				C9CD589F10A367BA00AB1952 /* LFWebServiceDelegate.h in Headers */,
@@ -411,9 +411,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		8DC2EF4F0486A6940098B216 /* Last.fm */ = {
+		8DC2EF4F0486A6940098B216 /* Scribbler */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1DEB91AD08733DA50010E9CD /* Build configuration list for PBXNativeTarget "Last.fm" */;
+			buildConfigurationList = 1DEB91AD08733DA50010E9CD /* Build configuration list for PBXNativeTarget "Scribbler" */;
 			buildPhases = (
 				8DC2EF500486A6940098B216 /* Headers */,
 				8DC2EF520486A6940098B216 /* Resources */,
@@ -424,10 +424,10 @@
 			);
 			dependencies = (
 			);
-			name = Last.fm;
+			name = Scribbler;
 			productInstallPath = "$(HOME)/Library/Frameworks";
 			productName = Last.fm;
-			productReference = 8DC2EF5B0486A6940098B216 /* Last.fm.framework */;
+			productReference = 8DC2EF5B0486A6940098B216 /* Scribbler.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		C97DBFF010AB9D0200B0F18D /* Scrobbly */ = {
@@ -473,7 +473,7 @@
 /* Begin PBXProject section */
 		0867D690FE84028FC02AAC07 /* Project object */ = {
 			isa = PBXProject;
-			buildConfigurationList = 1DEB91B108733DA50010E9CD /* Build configuration list for PBXProject "Last.fm" */;
+			buildConfigurationList = 1DEB91B108733DA50010E9CD /* Build configuration list for PBXProject "Scribbler" */;
 			compatibilityVersion = "Xcode 3.1";
 			hasScannedForEncodings = 1;
 			mainGroup = 0867D691FE84028FC02AAC07 /* Last.fm */;
@@ -481,7 +481,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8DC2EF4F0486A6940098B216 /* Last.fm */,
+				8DC2EF4F0486A6940098B216 /* Scribbler */,
 				C9D5C78810A28A2500AFCF8A /* Last.fm Demo */,
 				C97DBFF010AB9D0200B0F18D /* Scrobbly */,
 			);
@@ -573,12 +573,12 @@
 /* Begin PBXTargetDependency section */
 		C97DBFF810AB9D0900B0F18D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8DC2EF4F0486A6940098B216 /* Last.fm */;
+			target = 8DC2EF4F0486A6940098B216 /* Scribbler */;
 			targetProxy = C97DBFF710AB9D0900B0F18D /* PBXContainerItemProxy */;
 		};
 		C9D5C79210A28A3900AFCF8A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8DC2EF4F0486A6940098B216 /* Last.fm */;
+			target = 8DC2EF4F0486A6940098B216 /* Scribbler */;
 			targetProxy = C9D5C79110A28A3900AFCF8A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -628,7 +628,7 @@
 				GCC_PREFIX_HEADER = Last.fm_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "@loader_path/../Frameworks";
-				PRODUCT_NAME = Last.fm;
+				PRODUCT_NAME = Scribbler;
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Debug;
@@ -647,7 +647,7 @@
 				GCC_PREFIX_HEADER = Last.fm_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "@loader_path/../Frameworks";
-				PRODUCT_NAME = Last.fm;
+				PRODUCT_NAME = Scribbler;
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Release;
@@ -777,7 +777,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1DEB91AD08733DA50010E9CD /* Build configuration list for PBXNativeTarget "Last.fm" */ = {
+		1DEB91AD08733DA50010E9CD /* Build configuration list for PBXNativeTarget "Scribbler" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1DEB91AE08733DA50010E9CD /* Debug */,
@@ -786,7 +786,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1DEB91B108733DA50010E9CD /* Build configuration list for PBXProject "Last.fm" */ = {
+		1DEB91B108733DA50010E9CD /* Build configuration list for PBXProject "Scribbler" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1DEB91B208733DA50010E9CD /* Debug */,

@@ -1,6 +1,6 @@
 //
 //  LFTrack.h
-//  Last.fm
+//  Scribbler
 //
 //  Created by Matt Patenaude on 11/4/09.
 //  Copyright (C) 2009 {13bold}.

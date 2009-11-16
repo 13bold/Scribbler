@@ -1,6 +1,6 @@
 //
 //  LFWebService.m
-//  Last.fm
+//  Scribbler
 //
 //  Created by Matt Patenaude on 11/5/09.
 //  Copyright (C) 2009 {13bold}.
@@ -110,7 +110,7 @@
 {
 	if (!pendingToken)
 	{
-		NSLog(@"Last.fm.framework: warning, session authorization was not pending");
+		NSLog(@"Scribbler.framework: warning, session authorization was not pending");
 		return nil;
 	}
 	
@@ -307,7 +307,7 @@
 		
 		pendingToken = [[(LFGetTokenRequest *)theRequest token] copy];
 		
-		NSURL *authURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://last.fm/api/auth?api_key=%@&token=%@", APIKey, pendingToken]];
+		NSURL *authURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.last.fm/api/auth?api_key=%@&token=%@", APIKey, pendingToken]];
 		
 		if (delegate && [delegate respondsToSelector:@selector(sessionNeedsAuthorizationViaURL:)])
 			[delegate sessionNeedsAuthorizationViaURL:authURL];
@@ -413,7 +413,7 @@
 	{
 		if (![[theError domain] isEqualToString:@"Last.fm"])
 		{
-			NSLog(@"Last.fm.framework: error, %@", [theError localizedDescription]);
+			NSLog(@"Scribbler.framework: error, %@", [theError localizedDescription]);
 			if (delegate && [delegate respondsToSelector:@selector(nowPlayingFailedForTrack:error:willRetry:)])
 				[delegate nowPlayingFailedForTrack:[theRequest track] error:theError willRetry:YES];
 		}
@@ -435,7 +435,7 @@
 	{
 		if (![[theError domain] isEqualToString:@"Last.fm"])
 		{
-			NSLog(@"Last.fm.framework: error, %@", [theError localizedDescription]);
+			NSLog(@"Scribbler.framework: error, %@", [theError localizedDescription]);
 			if (delegate && [delegate respondsToSelector:@selector(scrobbleFailedForTrack:error:willRetry:)])
 				[delegate scrobbleFailedForTrack:[theRequest track] error:theError willRetry:YES];
 		}
@@ -461,7 +461,7 @@
 	{
 		if (![[theError domain] isEqualToString:@"Last.fm"])
 		{
-			NSLog(@"Last.fm.framework: error, %@", [theError localizedDescription]);
+			NSLog(@"Scribbler.framework: error, %@", [theError localizedDescription]);
 			if (delegate && [delegate respondsToSelector:@selector(loveFailedForTrack:error:willRetry:)])
 				[delegate loveFailedForTrack:[theRequest track] error:theError willRetry:YES];
 		}
@@ -501,7 +501,7 @@
 	{
 		if (![[theError domain] isEqualToString:@"Last.fm"])
 		{
-			NSLog(@"Last.fm.framework: error, %@", [theError localizedDescription]);
+			NSLog(@"Scribbler.framework: error, %@", [theError localizedDescription]);
 			if (delegate && [delegate respondsToSelector:@selector(banFailedForTrack:error:willRetry:)])
 				[delegate banFailedForTrack:[theRequest track] error:theError willRetry:YES];
 		}
@@ -551,7 +551,7 @@
 		{
 			state = LFNotConnected;
 			
-			NSLog(@"Last.fm.framework: error, %@", [theError localizedDescription]);
+			NSLog(@"Scribbler.framework: error, %@", [theError localizedDescription]);
 			if (delegate && [delegate respondsToSelector:@selector(sessionAuthorizationFailed)])
 				[delegate sessionAuthorizationFailed];
 		}
@@ -586,7 +586,7 @@
 	{
 		if (![[theError domain] isEqualToString:@"Last.fm"])
 		{
-			NSLog(@"Last.fm.framework: error, %@", [theError localizedDescription]);
+			NSLog(@"Scribbler.framework: error, %@", [theError localizedDescription]);
 			if (delegate && [delegate respondsToSelector:@selector(scrobblerHandshakeFailed:willRetry:)])
 				[delegate scrobblerHandshakeFailed:theError willRetry:YES];
 		}
@@ -640,7 +640,7 @@
 	}
 	else
 	{
-		NSLog(@"Last.fm.framework: error, %@", [theError description]);
+		NSLog(@"Scribbler.framework: error, %@", [theError description]);
 		shouldProceed = YES;
 	}
 	

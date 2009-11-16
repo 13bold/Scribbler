@@ -1,6 +1,6 @@
 //
 //  LFWebServicePrivate.h
-//  Last.fm
+//  Scribbler
 //
 //  Created by Matt Patenaude on 11/5/09.
 //  Copyright (C) 2009 {13bold}.

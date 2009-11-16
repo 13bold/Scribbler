@@ -1,6 +1,6 @@
 //
 //  LFRequest.m
-//  Last.fm
+//  Scribbler
 //
 //  Created by Matt Patenaude on 11/5/09.
 //  Copyright (C) 2009 {13bold}.
@@ -85,7 +85,7 @@
 - (void)dispatch
 {
 	// Can't do anything
-	NSLog(@"Last.fm.framework: warning, attempt to dispatch generic request");
+	NSLog(@"Scribbler.framework: warning, attempt to dispatch generic request");
 }
 
 #pragma mark Composition methods

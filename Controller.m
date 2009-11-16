@@ -1,6 +1,6 @@
 //
 //  Controller.m
-//  Last.fm
+//  Scribbler
 //
 //  Created by Matt Patenaude on 11/4/09.
 //  Copyright (C) 2009 {13bold}.
@@ -26,7 +26,7 @@
 
 #import "Controller.h"
 #import "UIController.h"
-#import <Last.fm/Last.fm.h>
+#import <Scribbler/Scribbler.h>
 #import "EMKeychainProxy.h"
 #import "EMKeychainItem.h"
 
