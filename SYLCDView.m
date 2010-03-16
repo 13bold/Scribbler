@@ -33,9 +33,18 @@
 - (void)drawRect:(NSRect)dirtyRect
 {
 	// I'm feeling lazy; please ignore the inefficiency
-	dirtyRect = [self bounds];
+	NSRect bounds = [self bounds];
 	
-	[[NSImage imageNamed:@"lcd"] drawInRect:dirtyRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+	[[NSImage imageNamed:@"lcd"] drawInRect:bounds fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+	
+	// icons
+	NSRect iconRect = NSMakeRect(0.0, 0.0, 20.0, 17.0);
+	iconRect.origin.x = bounds.size.width - 28.0;
+	iconRect.origin.y = 28.0;
+	[[NSImage imageNamed:@"lcd-love"] drawInRect:iconRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:0.1];
+	
+	iconRect.origin.y = 10.0;
+	[[NSImage imageNamed:@"lcd-ban"] drawInRect:iconRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:0.1];
 }
 
 @end

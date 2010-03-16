@@ -61,6 +61,8 @@
 		C9CD584F10A3553500AB1952 /* LFRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C9CD584D10A3553500AB1952 /* LFRequest.m */; };
 		C9CD589510A366C800AB1952 /* LFWebServicePrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = C9CD589310A366C800AB1952 /* LFWebServicePrivate.h */; };
 		C9CD589F10A367BA00AB1952 /* LFWebServiceDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = C9CD589D10A367BA00AB1952 /* LFWebServiceDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C9D48F2910B33DEF00B42FA8 /* lcd-ban.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D48F2710B33DEF00B42FA8 /* lcd-ban.png */; };
+		C9D48F2A10B33DEF00B42FA8 /* lcd-love.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D48F2810B33DEF00B42FA8 /* lcd-love.png */; };
 		C9D5C79410A28A4B00AFCF8A /* Scribbler.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* Scribbler.framework */; };
 		C9D5C79D10A28A8C00AFCF8A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D5C79C10A28A8C00AFCF8A /* main.m */; };
 		C9D5C7A210A28B0000AFCF8A /* Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D5C7A110A28B0000AFCF8A /* Controller.m */; };
@@ -176,6 +178,8 @@
 		C9CD584D10A3553500AB1952 /* LFRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFRequest.m; sourceTree = "<group>"; };
 		C9CD589310A366C800AB1952 /* LFWebServicePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFWebServicePrivate.h; sourceTree = "<group>"; };
 		C9CD589D10A367BA00AB1952 /* LFWebServiceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFWebServiceDelegate.h; sourceTree = "<group>"; };
+		C9D48F2710B33DEF00B42FA8 /* lcd-ban.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lcd-ban.png"; sourceTree = "<group>"; };
+		C9D48F2810B33DEF00B42FA8 /* lcd-love.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lcd-love.png"; sourceTree = "<group>"; };
 		C9D5C78910A28A2500AFCF8A /* Last.fm Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Last.fm Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9D5C78B10A28A2500AFCF8A /* Last.fm Demo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Last.fm Demo-Info.plist"; sourceTree = "<group>"; };
 		C9D5C79C10A28A8C00AFCF8A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -259,6 +263,8 @@
 		089C1665FE841158C02AAC07 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C9D48F2710B33DEF00B42FA8 /* lcd-ban.png */,
+				C9D48F2810B33DEF00B42FA8 /* lcd-love.png */,
 				C97DC1B910ABAC6F00B0F18D /* love.png */,
 				C97DC1BA10ABAC6F00B0F18D /* ban.png */,
 				C97DC16C10ABA45B00B0F18D /* lcd.png */,
@@ -505,6 +511,8 @@
 				C97DC16D10ABA45B00B0F18D /* lcd.png in Resources */,
 				C97DC1BB10ABAC6F00B0F18D /* love.png in Resources */,
 				C97DC1BC10ABAC6F00B0F18D /* ban.png in Resources */,
+				C9D48F2910B33DEF00B42FA8 /* lcd-ban.png in Resources */,
+				C9D48F2A10B33DEF00B42FA8 /* lcd-love.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

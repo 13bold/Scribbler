@@ -96,7 +96,7 @@
 	if (authorizationPending)
 	{
 		authorizationPending = NO;
-		[self completeAuthorization];
+		[self completeAuthorization:nil];
 	}
 }
 - (BOOL)applicationOpenUntitledFile:(NSApplication *)theApplication
@@ -163,7 +163,7 @@
 		}
 	}
 }
-- (void)completeAuthorization
+- (void)completeAuthorization:(NSNotification *)theNotification
 {
 	// And now we finish authorization
 	[[LFWebService sharedWebService] finishSessionAuthorization];

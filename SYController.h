@@ -53,7 +53,7 @@
 - (IBAction)connectWithLastFM:(id)sender;
 - (IBAction)disconnectFromLastFM:(id)sender;
 - (void)connectWithStoredCredentials;
-- (void)completeAuthorization;
+- (void)completeAuthorization:(NSNotification *)theNotification;
 
 // Web service delegate methods
 - (void)sessionNeedsAuthorizationViaURL:(NSURL *)theURL;
