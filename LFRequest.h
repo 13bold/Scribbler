@@ -26,6 +26,12 @@
 
 #import <Foundation/Foundation.h>
 
+#if __IPHONE_OS_VERSION_MIN_REQUIRED > 0
+#define LFUseTouchXML 1
+#else
+#define LFUseTouchXML 0
+#endif
+
 // Request types
 typedef enum _LFRequestType {
 	LFRequestUnknown = 0,
@@ -35,6 +41,7 @@ typedef enum _LFRequestType {
 	LFRequestBan = 4,
 	LFRequestGetToken = 5,
 	LFRequestGetSession = 6,
+	LFRequestGetMobileSession = 9,
 	LFRequestValidateSession = 7,
 	LFRequestScrobblerHandshake = 8
 } LFRequestType;

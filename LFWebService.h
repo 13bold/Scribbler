@@ -82,6 +82,7 @@ typedef enum _LFConnectionState {
 
 // Session methods (new sessions)
 - (NSString *)establishNewSession;
+- (NSString *)establishNewMobileSessionWithUsername:(NSString *)theUser password:(NSString *)thePassword;
 - (NSString *)finishSessionAuthorization;
 
 // Session methods (existing sessions)

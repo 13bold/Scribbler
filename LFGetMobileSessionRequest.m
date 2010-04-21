@@ -1,9 +1,9 @@
 //
-//  LFGetSessionRequest.m
+//  LFGetMobileSessionRequest.m
 //  Scribbler
 //
 //  Created by Matt Patenaude on 11/6/09.
-//  Copyright (C) 2009 {13bold}.
+//  Copyright (C) 2009 - 10 {13bold}.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -24,18 +24,19 @@
 //  THE SOFTWARE.
 //
 
-#import "LFGetSessionRequest.h"
+#import "LFGetMobileSessionRequest.h"
+#import "NSString+LFExtensions.h"
 
 #if LFUseTouchXML
 #import "TouchXML.h"
 #endif
 
 
-@implementation LFGetSessionRequest
+@implementation LFGetMobileSessionRequest
 
 #pragma mark Properties
-@synthesize token;
 @synthesize sessionUser;
+@synthesize sessionPassword;
 @synthesize sessionKey;
 
 #pragma mark Overridden methods
@@ -43,22 +44,22 @@
 {
 	if (self = [super initWithTrack:theTrack])
 	{
-		requestType = LFRequestGetSession;
+		requestType = LFRequestGetMobileSession;
 	}
 	return self;
 }
 - (void)dealloc
 {
-	[token release];
 	[sessionUser release];
+	[sessionPassword release];
 	[sessionKey release];
 	[super dealloc];
 }
 - (void)dispatch
 {
 	NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
-							@"auth.getSession", @"method",
-							token, @"token",
+							@"auth.getMobileSession", @"method",
+							[[NSString stringWithFormat:@"%@%@", sessionUser, [sessionPassword MD5Hash]] MD5Hash], @"authToken",
 							[delegate APIKey], @"api_key",
 							nil];
 	

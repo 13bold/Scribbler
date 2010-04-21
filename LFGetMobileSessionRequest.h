@@ -1,9 +1,9 @@
 //
-//  LFRequestTypes.h
+//  LFGetMobileSessionRequest.h
 //  Scribbler
 //
 //  Created by Matt Patenaude on 11/6/09.
-//  Copyright (C) 2009 {13bold}.
+//  Copyright (C) 2009 - 10 {13bold}.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -24,12 +24,24 @@
 //  THE SOFTWARE.
 //
 
-#import "LFNowPlayingRequest.h"
-#import "LFScrobbleRequest.h"
-#import "LFLoveRequest.h"
-#import "LFBanRequest.h"
-#import "LFGetTokenRequest.h"
-#import "LFGetSessionRequest.h"
-#import "LFGetMobileSessionRequest.h"
-#import "LFValidateSessionRequest.h"
-#import "LFScrobblerHandshakeRequest.h"
+#import <Foundation/Foundation.h>
+#import "LFRequest.h"
+
+
+@interface LFGetMobileSessionRequest : LFRequest {
+	NSString *sessionUser;
+	NSString *sessionPassword;
+	NSString *sessionKey;
+}
+
+// Properties
+@property(copy) NSString *sessionUser;
+@property(copy) NSString *sessionPassword;
+@property(copy,readonly) NSString *sessionKey;
+
+// Overridden methods
+- (id)initWithTrack:(LFTrack *)theTrack;
+- (void)dispatch;
+- (void)connectionDidFinishLoading:(NSURLConnection *)theConnection;
+
+@end

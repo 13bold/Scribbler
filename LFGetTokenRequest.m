@@ -24,7 +24,12 @@
 //  THE SOFTWARE.
 //
 
+#import "Scribbler.h"
 #import "LFGetTokenRequest.h"
+
+#if LFUseTouchXML
+#import "TouchXML.h"
+#endif
 
 
 @implementation LFGetTokenRequest
@@ -68,7 +73,11 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)theConnection
 {
 	NSError *err;
+#if LFUseTouchXML
+	CXMLDocument *theResponse = [[CXMLDocument alloc] initWithData:responseData options:0 error:&err];
+#else
 	NSXMLDocument *theResponse = [[NSXMLDocument alloc] initWithData:responseData options:0 error:&err];
+#endif
 	
 	if (err)
 	{
@@ -79,7 +88,12 @@
 		return;
 	}
 	
+#if LFUseTouchXML
+	CXMLElement *root = [theResponse rootElement];
+#else
 	NSXMLElement *root = [theResponse rootElement];
+#endif
+	
 	NSString *status = [[[root attributeForName:@"status"] stringValue] lowercaseString];
 	
 	if ([status isEqualToString:@"ok"])
@@ -100,8 +114,12 @@
 	{
 		failureCount++;
 		
+#if LFUseTouchXML
+		CXMLElement *errorNode = [[root elementsForName:@"error"] objectAtIndex:0];
+#else
 		NSXMLElement *errorNode = [[root elementsForName:@"error"] objectAtIndex:0];
-		NSError *theError = [NSError errorWithDomain:@"Last.fm" code:[[[errorNode attributeForName:@"code"] objectValue] integerValue] userInfo:[NSDictionary dictionaryWithObject:[errorNode stringValue] forKey:NSLocalizedDescriptionKey]];
+#endif
+		NSError *theError = [NSError errorWithDomain:@"Last.fm" code:[[[errorNode attributeForName:@"code"] stringValue] integerValue] userInfo:[NSDictionary dictionaryWithObject:[errorNode stringValue] forKey:NSLocalizedDescriptionKey]];
 		if (delegate && [delegate respondsToSelector:@selector(request:failedWithError:)])
 			[delegate request:self failedWithError:theError];
 	}

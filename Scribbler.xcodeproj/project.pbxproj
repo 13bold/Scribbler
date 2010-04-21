@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
 		8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
+		C94D6D8C117F828700E6CCC0 /* LFGetMobileSessionRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BBD75E117F8160003C2830 /* LFGetMobileSessionRequest.m */; };
 		C9684F7A10A7414B003816A7 /* EMKeychainItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C9684F7710A7414B003816A7 /* EMKeychainItem.m */; };
 		C9684F7B10A7414B003816A7 /* EMKeychainProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = C9684F7910A7414B003816A7 /* EMKeychainProxy.m */; };
 		C9684FA410A7483E003816A7 /* UIController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9684FA310A7483E003816A7 /* UIController.m */; };
@@ -52,6 +53,7 @@
 		C97DC1F910ABB2B700B0F18D /* MPFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = C97DC1F310ABB2B700B0F18D /* MPFunctions.m */; };
 		C97DC1FA10ABB2B700B0F18D /* NSCollections+MPTidbits.m in Sources */ = {isa = PBXBuildFile; fileRef = C97DC1F610ABB2B700B0F18D /* NSCollections+MPTidbits.m */; };
 		C97DC1FB10ABB2B700B0F18D /* NSString+MPTidbits.m in Sources */ = {isa = PBXBuildFile; fileRef = C97DC1F810ABB2B700B0F18D /* NSString+MPTidbits.m */; };
+		C9BBD75F117F8160003C2830 /* LFGetMobileSessionRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BBD75E117F8160003C2830 /* LFGetMobileSessionRequest.m */; };
 		C9CD582510A3302200AB1952 /* LFWebService.h in Headers */ = {isa = PBXBuildFile; fileRef = C9CD582310A3302200AB1952 /* LFWebService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C9CD582610A3302200AB1952 /* LFWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = C9CD582410A3302200AB1952 /* LFWebService.m */; };
 		C9CD582B10A3327700AB1952 /* LFPlaySession.h in Headers */ = {isa = PBXBuildFile; fileRef = C9CD582910A3327700AB1952 /* LFPlaySession.h */; };
@@ -169,6 +171,8 @@
 		C97DC1F610ABB2B700B0F18D /* NSCollections+MPTidbits.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSCollections+MPTidbits.m"; sourceTree = "<group>"; };
 		C97DC1F710ABB2B700B0F18D /* NSString+MPTidbits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MPTidbits.h"; sourceTree = "<group>"; };
 		C97DC1F810ABB2B700B0F18D /* NSString+MPTidbits.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MPTidbits.m"; sourceTree = "<group>"; };
+		C9BBD75D117F8160003C2830 /* LFGetMobileSessionRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFGetMobileSessionRequest.h; sourceTree = "<group>"; };
+		C9BBD75E117F8160003C2830 /* LFGetMobileSessionRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFGetMobileSessionRequest.m; sourceTree = "<group>"; };
 		C9CD582310A3302200AB1952 /* LFWebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFWebService.h; sourceTree = "<group>"; };
 		C9CD582410A3302200AB1952 /* LFWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFWebService.m; sourceTree = "<group>"; };
 		C9CD582910A3327700AB1952 /* LFPlaySession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFPlaySession.h; sourceTree = "<group>"; };
@@ -349,6 +353,8 @@
 				C969719510A5039700A9FFAD /* LFGetTokenRequest.m */,
 				C969719810A5039E00A9FFAD /* LFGetSessionRequest.h */,
 				C969719910A5039E00A9FFAD /* LFGetSessionRequest.m */,
+				C9BBD75D117F8160003C2830 /* LFGetMobileSessionRequest.h */,
+				C9BBD75E117F8160003C2830 /* LFGetMobileSessionRequest.m */,
 				C968524410A7514F003816A7 /* LFValidateSessionRequest.h */,
 				C968524510A7514F003816A7 /* LFValidateSessionRequest.m */,
 				C968534810A776F8003816A7 /* LFScrobblerHandshakeRequest.h */,
@@ -541,6 +547,7 @@
 				C969719310A5038A00A9FFAD /* LFBanRequest.m in Sources */,
 				C969719710A5039700A9FFAD /* LFGetTokenRequest.m in Sources */,
 				C969719B10A5039E00A9FFAD /* LFGetSessionRequest.m in Sources */,
+				C94D6D8C117F828700E6CCC0 /* LFGetMobileSessionRequest.m in Sources */,
 				C969720810A50DF900A9FFAD /* NSString+LFExtensions.m in Sources */,
 				C968524710A7514F003816A7 /* LFValidateSessionRequest.m in Sources */,
 				C968534B10A776F8003816A7 /* LFScrobblerHandshakeRequest.m in Sources */,
@@ -561,6 +568,7 @@
 				C97DC1F910ABB2B700B0F18D /* MPFunctions.m in Sources */,
 				C97DC1FA10ABB2B700B0F18D /* NSCollections+MPTidbits.m in Sources */,
 				C97DC1FB10ABB2B700B0F18D /* NSString+MPTidbits.m in Sources */,
+				C9BBD75F117F8160003C2830 /* LFGetMobileSessionRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

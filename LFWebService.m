@@ -106,6 +106,21 @@
 	[self dispatchNextRequestIfPossible];
 	return [theRequest identifier];
 }
+- (NSString *)establishNewMobileSessionWithUsername:(NSString *)theUser password:(NSString *)thePassword
+{
+	if (pendingToken)
+	{
+		[pendingToken release];
+		pendingToken = nil;
+	}
+	
+	LFGetMobileSessionRequest *theRequest = [LFGetMobileSessionRequest request];
+	[theRequest setSessionUser:theUser];
+	[theRequest setSessionPassword:thePassword];
+	[requestQueue insertObject:theRequest atIndex:0];
+	[self dispatchNextRequestIfPossible];
+	return [theRequest identifier];
+}
 - (NSString *)finishSessionAuthorization
 {
 	if (!pendingToken)
@@ -312,9 +327,13 @@
 		if (delegate && [delegate respondsToSelector:@selector(sessionNeedsAuthorizationViaURL:)])
 			[delegate sessionNeedsAuthorizationViaURL:authURL];
 		else
+#if __IPHONE_OS_VERSION_MIN_REQUIRED > 0
+			[[UIApplication sharedApplication] openURL:authURL];
+#else
 			[[NSWorkspace sharedWorkspace] openURL:authURL];
+#endif
 	}
-	else if (r == LFRequestGetSession)
+	else if (r == LFRequestGetSession || r== LFRequestGetMobileSession)
 	{
 		if (pendingToken)
 		{
@@ -545,7 +564,7 @@
 		if (delegate && [delegate respondsToSelector:@selector(sessionRequestCouldNotBeMade)])
 			[delegate sessionRequestCouldNotBeMade];
 	}
-	else if (r == LFRequestGetSession)
+	else if (r == LFRequestGetSession || LFRequestGetMobileSession)
 	{
 		if (![[theError domain] isEqualToString:@"Last.fm"] || [theError code] != 14)
 		{
