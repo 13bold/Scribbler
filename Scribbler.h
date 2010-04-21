@@ -24,7 +24,7 @@
 //  THE SOFTWARE.
 //
 
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
 #import "LFWebService.h"
 #import "LFWebServiceDelegate.h"
 #import "LFTrack.h"
