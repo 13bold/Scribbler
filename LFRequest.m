@@ -106,7 +106,7 @@
 	NSMutableArray *parts = [[NSMutableArray alloc] init];
 	for (NSString *key in params)
 	{
-		NSMutableString *escaped = [NSMutableString stringWithString:[[params objectForKey:key] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+		NSMutableString *escaped = [NSMutableString stringWithString:[params objectForKey:key]];
 		[escaped replaceOccurrencesOfString:@"%" withString:@"%25" options:NSLiteralSearch range:NSMakeRange(0, [escaped length])];
 		[escaped replaceOccurrencesOfString:@"&" withString:@"%26" options:NSLiteralSearch range:NSMakeRange(0, [escaped length])];
 		[escaped replaceOccurrencesOfString:@"=" withString:@"%3D" options:NSLiteralSearch range:NSMakeRange(0, [escaped length])];
