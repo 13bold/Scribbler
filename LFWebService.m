@@ -257,11 +257,11 @@
 		
 		LFRequest *nextRequest = [requestQueue objectAtIndex:0];
 		
-		if (([nextRequest requestType] != LFRequestGetToken && [nextRequest requestType] != LFRequestGetSession) && sessionKey == nil)
+		if (([nextRequest requestType] != LFRequestGetToken && [nextRequest requestType] != LFRequestGetSession && [nextRequest requestType] != LFRequestGetMobileSession) && sessionKey == nil)
 			return;
 		
 		LFRequestType t = [nextRequest requestType];
-		if (t == LFRequestGetToken || t == LFRequestGetSession || t == LFRequestValidateSession)
+		if (t == LFRequestGetToken || t == LFRequestGetSession || t == LFRequestGetMobileSession || t == LFRequestValidateSession)
 			state = LFConnecting;
 		
 		runningRequest = YES;
@@ -564,7 +564,7 @@
 		if (delegate && [delegate respondsToSelector:@selector(sessionRequestCouldNotBeMade)])
 			[delegate sessionRequestCouldNotBeMade];
 	}
-	else if (r == LFRequestGetSession || LFRequestGetMobileSession)
+	else if (r == LFRequestGetSession || r == LFRequestGetMobileSession)
 	{
 		if (![[theError domain] isEqualToString:@"Last.fm"] || [theError code] != 14)
 		{

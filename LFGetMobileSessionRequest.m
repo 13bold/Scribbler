@@ -59,6 +59,7 @@
 {
 	NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
 							@"auth.getMobileSession", @"method",
+							sessionUser, @"username",
 							[[NSString stringWithFormat:@"%@%@", sessionUser, [sessionPassword MD5Hash]] MD5Hash], @"authToken",
 							[delegate APIKey], @"api_key",
 							nil];
