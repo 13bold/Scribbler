@@ -45,7 +45,6 @@
 		
 		runningRequest = NO;
 		autoScrobble = YES;
-		handshakeInProgress = NO;
 		
 		state = LFNotConnected;
 	}
@@ -68,9 +67,6 @@
 	[clientVersion release];
 	[sessionUser release];
 	[sessionKey release];
-	[scrobbleSessionID release];
-	[scrobbleNPURL release];
-	[scrobbleSubmissionURL release];
 	[currentTrack release];
 	[requestQueue release];
 	[queueTimer release];
@@ -86,9 +82,6 @@
 @synthesize clientVersion;
 @synthesize sessionKey;
 @synthesize sessionUser;
-@synthesize scrobbleSessionID;
-@synthesize scrobbleNPURL;
-@synthesize scrobbleSubmissionURL;
 @synthesize autoScrobble;
 @synthesize currentTrack;
 
@@ -145,23 +138,9 @@
 	return [theRequest identifier];
 }
 
-#pragma mark Scrobbler methods
-- (NSString *)performScrobblerHandshake
-{
-	handshakeInProgress = YES;
-	
-	LFScrobblerHandshakeRequest *theRequest = [LFScrobblerHandshakeRequest request];
-	[requestQueue insertObject:theRequest atIndex:0];
-	[self dispatchNextRequestIfPossible];
-	return [theRequest identifier];
-}
-
 #pragma mark Track methods
 - (NSString *)startPlayingTrack:(LFTrack *)theTrack
 {
-	if (!scrobbleSessionID && !handshakeInProgress)
-		[self performScrobblerHandshake];
-	
 	if (autoScrobble && currentTrack)
 		[currentTrack stop];
 	
@@ -182,9 +161,6 @@
 }
 - (NSString *)scrobbleTrackIfNecessary:(LFTrack *)theTrack
 {
-	if (!scrobbleSessionID && !handshakeInProgress)
-		[self performScrobblerHandshake];
-	
 	if (!theTrack)
 	{
 		if (currentTrack)
@@ -360,36 +336,6 @@
 		
 		shouldProceed = YES;
 	}
-	else if (r == LFRequestScrobblerHandshake)
-	{
-		handshakeInProgress = NO;
-		
-		if (scrobbleSessionID)
-		{
-			[scrobbleSessionID release];
-			scrobbleSessionID = nil;
-		}
-		scrobbleSessionID = [[(LFScrobblerHandshakeRequest *)theRequest sessionID] copy];
-		
-		if (scrobbleNPURL)
-		{
-			[scrobbleNPURL release];
-			scrobbleNPURL = nil;
-		}
-		scrobbleNPURL = [[(LFScrobblerHandshakeRequest *)theRequest nowPlayingURL] copy];
-		
-		if (scrobbleSubmissionURL)
-		{
-			[scrobbleSubmissionURL release];
-			scrobbleSubmissionURL = nil;
-		}
-		scrobbleSubmissionURL = [[(LFScrobblerHandshakeRequest *)theRequest submissionURL] copy];
-		
-		if (delegate && [delegate respondsToSelector:@selector(scrobblerHandshakeSucceeded)])
-			[delegate scrobblerHandshakeSucceeded];
-		
-		shouldProceed = YES;
-	}
 	else
 		shouldProceed = YES;
 	
@@ -438,16 +384,34 @@
 		}
 		else
 		{
-			// this means we need to rehandshake, so add a handshake to the front of
-			// the queue, and being redispatching
-			
-			if (delegate && [delegate respondsToSelector:@selector(nowPlayingFailedForTrack:error:willRetry:)])
-				[delegate nowPlayingFailedForTrack:[theRequest track] error:theError willRetry:YES];
-			
-			LFScrobblerHandshakeRequest *theRequest = [LFScrobblerHandshakeRequest request];
-			[requestQueue insertObject:theRequest atIndex:0];
-			handshakeInProgress = YES;
-			shouldProceed = YES;
+			if ([theError code] == 6)	// invalid track name
+			{
+				if (delegate && [delegate respondsToSelector:@selector(loveFailedForTrack:error:willRetry:)])
+					[delegate nowPlayingFailedForTrack:[theRequest track] error:theError willRetry:NO];
+				
+				[requestQueue removeObject:theRequest];
+				shouldProceed = YES;
+			}
+			else if ([theError code] == 9)	// invalid session key
+			{
+				if (delegate && [delegate respondsToSelector:@selector(loveFailedForTrack:error:willRetry:)])
+					[delegate nowPlayingFailedForTrack:[theRequest track] error:theError willRetry:YES];
+				
+				state = LFNotConnected;
+				
+				// session key was revoked
+				if (delegate && [delegate respondsToSelector:@selector(sessionKeyRevoked:forUser:)])
+					[delegate sessionKeyRevoked:sessionKey forUser:sessionUser];
+				
+				[self setSessionKey:nil];
+				[self setSessionUser:nil];
+			}
+			else
+			{
+				// halt redispatching, try later
+				if (delegate && [delegate respondsToSelector:@selector(loveFailedForTrack:error:willRetry:)])
+					[delegate nowPlayingFailedForTrack:[theRequest track] error:theError willRetry:YES];
+			}
 		}
 	}
 	else if (r == LFRequestScrobble)
@@ -460,19 +424,33 @@
 		}
 		else
 		{
-			// 1 = BADSESSION, 2 = FAILED <reason>
-			// if this is a badsession, rehandshake and begin redispatching
-			// otherwise, halt redispatching but leave in queue
-			
-			if (delegate && [delegate respondsToSelector:@selector(scrobbleFailedForTrack:error:willRetry:)])
-				[delegate scrobbleFailedForTrack:[theRequest track] error:theError willRetry:YES];
-			
-			if ([theError code] == 1)
+			if ([theError code] == 6)	// invalid track name
 			{
-				LFScrobblerHandshakeRequest *theRequest = [LFScrobblerHandshakeRequest request];
-				[requestQueue insertObject:theRequest atIndex:0];
-				handshakeInProgress = YES;
+				if (delegate && [delegate respondsToSelector:@selector(loveFailedForTrack:error:willRetry:)])
+					[delegate scrobbleFailedForTrack:[theRequest track] error:theError willRetry:NO];
+				
+				[requestQueue removeObject:theRequest];
 				shouldProceed = YES;
+			}
+			else if ([theError code] == 9)	// invalid session key
+			{
+				if (delegate && [delegate respondsToSelector:@selector(loveFailedForTrack:error:willRetry:)])
+					[delegate scrobbleFailedForTrack:[theRequest track] error:theError willRetry:YES];
+				
+				state = LFNotConnected;
+				
+				// session key was revoked
+				if (delegate && [delegate respondsToSelector:@selector(sessionKeyRevoked:forUser:)])
+					[delegate sessionKeyRevoked:sessionKey forUser:sessionUser];
+				
+				[self setSessionKey:nil];
+				[self setSessionUser:nil];
+			}
+			else
+			{
+				// halt redispatching, try later
+				if (delegate && [delegate respondsToSelector:@selector(loveFailedForTrack:error:willRetry:)])
+					[delegate scrobbleFailedForTrack:[theRequest track] error:theError willRetry:YES];
 			}
 		}
 	}
@@ -600,62 +578,6 @@
 		}
 		
 		[requestQueue removeObject:theRequest];
-	}
-	else if (r == LFRequestScrobblerHandshake)
-	{
-		if (![[theError domain] isEqualToString:@"Last.fm"])
-		{
-			NSLog(@"Scribbler.framework: error, %@", [theError localizedDescription]);
-			if (delegate && [delegate respondsToSelector:@selector(scrobblerHandshakeFailed:willRetry:)])
-				[delegate scrobblerHandshakeFailed:theError willRetry:YES];
-		}
-		else
-		{
-			// 1 = BANNED, 2 = BADAUTH, 3 = BADTIME, 4 = FAILED <reason>
-			switch ([theError code])
-			{
-				case 1:
-					if (delegate && [delegate respondsToSelector:@selector(scrobblerHandshakeFailed:willRetry:)])
-						[delegate scrobblerHandshakeFailed:theError willRetry:NO];
-					if (delegate && [delegate respondsToSelector:@selector(scrobblerClient:bannedForVersion:)])
-						[delegate scrobblerClient:clientID bannedForVersion:clientVersion];
-					[requestQueue removeObject:theRequest];
-					handshakeInProgress = NO;
-					break;
-					
-				case 2:
-					if (delegate && [delegate respondsToSelector:@selector(scrobblerHandshakeFailed:willRetry:)])
-						[delegate scrobblerHandshakeFailed:theError willRetry:NO];
-					
-					state = LFNotConnected;
-					
-					// session key was revoked
-					if (delegate && [delegate respondsToSelector:@selector(sessionKeyRevoked:forUser:)])
-						[delegate sessionKeyRevoked:sessionKey forUser:sessionUser];
-					
-					[self setSessionKey:nil];
-					[self setSessionUser:nil];
-					
-					[requestQueue removeObject:theRequest];
-					handshakeInProgress = NO;
-					break;
-					
-				case 3:
-					if (delegate && [delegate respondsToSelector:@selector(scrobblerHandshakeFailed:willRetry:)])
-						[delegate scrobblerHandshakeFailed:theError willRetry:NO];
-					if (delegate && [delegate respondsToSelector:@selector(scrobblerRejectedSystemTime)])
-						[delegate scrobblerRejectedSystemTime];
-					[requestQueue removeObject:theRequest];
-					handshakeInProgress = NO;
-					break;
-					
-				case 4:
-				default:
-					if (delegate && [delegate respondsToSelector:@selector(scrobblerHandshakeFailed:willRetry:)])
-						[delegate scrobblerHandshakeFailed:theError willRetry:YES];
-					break;
-			}
-		}
 	}
 	else
 	{

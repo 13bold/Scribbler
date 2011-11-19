@@ -39,9 +39,6 @@
 	CGFloat duration;
 	NSString *mbID;
 	NSMutableArray *timeLog;
-	
-	BOOL shouldLoveTrack;
-	BOOL shouldBanTrack;
 }
 
 // Initializers
@@ -57,8 +54,6 @@
 @property(copy) NSString *mbID;
 @property(assign) CGFloat duration;
 @property(assign) LFWebService *webService;
-@property(assign,readonly) BOOL shouldLoveTrack;
-@property(assign,readonly) BOOL shouldBanTrack;
 
 // Track control methods
 - (void)play;

@@ -17,8 +17,6 @@
 		C96851EF10A74E95003816A7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C96851EE10A74E95003816A7 /* Security.framework */; };
 		C968524610A7514F003816A7 /* LFValidateSessionRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = C968524410A7514F003816A7 /* LFValidateSessionRequest.h */; };
 		C968524710A7514F003816A7 /* LFValidateSessionRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C968524510A7514F003816A7 /* LFValidateSessionRequest.m */; };
-		C968534A10A776F8003816A7 /* LFScrobblerHandshakeRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = C968534810A776F8003816A7 /* LFScrobblerHandshakeRequest.h */; };
-		C968534B10A776F8003816A7 /* LFScrobblerHandshakeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C968534910A776F8003816A7 /* LFScrobblerHandshakeRequest.m */; };
 		C969718610A5037500A9FFAD /* LFNowPlayingRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = C969718410A5037500A9FFAD /* LFNowPlayingRequest.h */; };
 		C969718710A5037500A9FFAD /* LFNowPlayingRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C969718510A5037500A9FFAD /* LFNowPlayingRequest.m */; };
 		C969718A10A5037E00A9FFAD /* LFScrobbleRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = C969718810A5037E00A9FFAD /* LFScrobbleRequest.h */; };
@@ -133,8 +131,6 @@
 		C96851EE10A74E95003816A7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
 		C968524410A7514F003816A7 /* LFValidateSessionRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFValidateSessionRequest.h; sourceTree = "<group>"; };
 		C968524510A7514F003816A7 /* LFValidateSessionRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFValidateSessionRequest.m; sourceTree = "<group>"; };
-		C968534810A776F8003816A7 /* LFScrobblerHandshakeRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFScrobblerHandshakeRequest.h; sourceTree = "<group>"; };
-		C968534910A776F8003816A7 /* LFScrobblerHandshakeRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFScrobblerHandshakeRequest.m; sourceTree = "<group>"; };
 		C969718410A5037500A9FFAD /* LFNowPlayingRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFNowPlayingRequest.h; sourceTree = "<group>"; };
 		C969718510A5037500A9FFAD /* LFNowPlayingRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFNowPlayingRequest.m; sourceTree = "<group>"; };
 		C969718810A5037E00A9FFAD /* LFScrobbleRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFScrobbleRequest.h; sourceTree = "<group>"; };
@@ -357,8 +353,6 @@
 				C9BBD75E117F8160003C2830 /* LFGetMobileSessionRequest.m */,
 				C968524410A7514F003816A7 /* LFValidateSessionRequest.h */,
 				C968524510A7514F003816A7 /* LFValidateSessionRequest.m */,
-				C968534810A776F8003816A7 /* LFScrobblerHandshakeRequest.h */,
-				C968534910A776F8003816A7 /* LFScrobblerHandshakeRequest.m */,
 			);
 			name = "Request Types";
 			sourceTree = "<group>";
@@ -416,7 +410,6 @@
 				C96971A210A5044400A9FFAD /* LFRequestTypes.h in Headers */,
 				C969720710A50DF900A9FFAD /* NSString+LFExtensions.h in Headers */,
 				C968524610A7514F003816A7 /* LFValidateSessionRequest.h in Headers */,
-				C968534A10A776F8003816A7 /* LFScrobblerHandshakeRequest.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -560,7 +553,6 @@
 				C94D6D8C117F828700E6CCC0 /* LFGetMobileSessionRequest.m in Sources */,
 				C969720810A50DF900A9FFAD /* NSString+LFExtensions.m in Sources */,
 				C968524710A7514F003816A7 /* LFValidateSessionRequest.m in Sources */,
-				C968534B10A776F8003816A7 /* LFScrobblerHandshakeRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

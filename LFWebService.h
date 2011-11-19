@@ -49,11 +49,6 @@ typedef enum _LFConnectionState {
 	NSString *sessionKey;
 	NSString *sessionUser;
 	
-	NSString *scrobbleSessionID;
-	NSString *scrobbleNPURL;
-	NSString *scrobbleSubmissionURL;
-	BOOL handshakeInProgress;
-	
 	LFTrack *currentTrack;
 	NSMutableArray *requestQueue;
 	

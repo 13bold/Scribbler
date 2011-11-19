@@ -32,4 +32,3 @@
 #import "LFGetSessionRequest.h"
 #import "LFGetMobileSessionRequest.h"
 #import "LFValidateSessionRequest.h"
-#import "LFScrobblerHandshakeRequest.h"

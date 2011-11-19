@@ -27,6 +27,10 @@
 #import "LFNowPlayingRequest.h"
 #import "LFTrack.h"
 
+#if LFUseTouchXML
+#import "TouchXML.h"
+#endif
+
 
 @implementation LFNowPlayingRequest
 
@@ -41,19 +45,26 @@
 }
 - (void)dispatch
 {
+	// get the URL root
+	static NSString *__LFWebServiceURL = nil;
+	if (!__LFWebServiceURL)
+		__LFWebServiceURL = [[NSBundle bundleForClass:[self class]] objectForInfoDictionaryKey:@"LFWebServiceURL"];
+	
 	NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
-							[delegate scrobbleSessionID], @"s",
-							([track artist] != nil) ? [track artist] : @"", @"a",
-							([track title] != nil) ? [track title] : @"", @"t",
-							([track album] != nil) ? [track album] : @"", @"b",
-							[NSString stringWithFormat:@"%0.0f", [track duration]], @"l",
-							([track albumPosition] > 0) ? [NSString stringWithFormat:@"%u", [track albumPosition]] : @"", @"n",
-							([track mbID] != nil) ? [track mbID] : @"", @"m",
+							@"track.updateNowPlaying", @"method",
+							([track title] != nil) ? [track title] : @"", @"track",
+							([track artist] != nil) ? [track artist] : @"", @"artist",
+                            ([track album] != nil) ? [track album] : @"", @"album",
+                            ([track albumPosition] > 0) ? [NSString stringWithFormat:@"%u", [track albumPosition]] : @"", @"trackNumber",
+							([track mbID] != nil) ? [track mbID] : @"", @"mbid",
+                            [NSString stringWithFormat:@"%0.0f", [track duration]], @"duration",
+							[delegate APIKey], @"api_key",
+							[delegate sessionKey], @"sk",
 							nil];
 	
-	NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[delegate scrobbleNPURL]]];
+	NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:__LFWebServiceURL]];
 	[theRequest setHTTPMethod:@"POST"];
-	[theRequest setHTTPBody:[[self queryStringWithParameters:params sign:NO] dataUsingEncoding:NSUTF8StringEncoding]];
+	[theRequest setHTTPBody:[[self queryStringWithParameters:params sign:YES] dataUsingEncoding:NSUTF8StringEncoding]];
 	[params release];
 	
 	if (connection)
@@ -65,30 +76,48 @@
 }
 - (void)connectionDidFinishLoading:(NSURLConnection *)theConnection
 {
-	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+	NSError *err;
+#if LFUseTouchXML
+	CXMLDocument *theResponse = [[CXMLDocument alloc] initWithData:responseData options:0 error:&err];
+#else
+	NSXMLDocument *theResponse = [[NSXMLDocument alloc] initWithData:responseData options:0 error:&err];
+#endif
 	
-	if (responseString)
+	if (err)
 	{
-		NSArray *rLines = [responseString componentsSeparatedByString:@"\n"];
+		failureCount++;
 		
-		if ([[[rLines objectAtIndex:0] lowercaseString] hasPrefix:@"ok"])
-		{
-			failureCount = 0;
-			
-			if (delegate && [delegate respondsToSelector:@selector(requestSucceeded:)])
-				[delegate requestSucceeded:self];
-		}
-		else
-		{
-			failureCount++;
-			
-			NSString *errString = [rLines objectAtIndex:0];
-			NSUInteger code = 1;
-			
-			NSError *theError = [NSError errorWithDomain:@"Last.fm" code:code userInfo:[NSDictionary dictionaryWithObject:errString forKey:NSLocalizedDescriptionKey]];
-			if (delegate && [delegate respondsToSelector:@selector(request:failedWithError:)])
-				[delegate request:self failedWithError:theError];
-		}
+		if (delegate && [delegate respondsToSelector:@selector(request:failedWithError:)])
+			[delegate request:self failedWithError:err];
+		return;
+	}
+	
+#if LFUseTouchXML
+	CXMLElement *root = [theResponse rootElement];
+#else
+	NSXMLElement *root = [theResponse rootElement];
+#endif
+	NSString *status = [[[root attributeForName:@"status"] stringValue] lowercaseString];
+	
+	if ([status isEqualToString:@"ok"])
+	{
+		failureCount = 0;
+		
+		if (delegate && [delegate respondsToSelector:@selector(requestSucceeded:)])
+			[delegate requestSucceeded:self];
+	}
+	else if ([status isEqualToString:@"failed"])
+	{
+		failureCount++;
+		
+#if LFUseTouchXML
+		CXMLElement *errorNode = [[root elementsForName:@"error"] objectAtIndex:0];
+#else
+		NSXMLElement *errorNode = [[root elementsForName:@"error"] objectAtIndex:0];
+#endif
+		NSError *theError = [NSError errorWithDomain:@"Last.fm" code:[[[errorNode attributeForName:@"code"] stringValue] integerValue] userInfo:[NSDictionary dictionaryWithObject:[errorNode stringValue] forKey:NSLocalizedDescriptionKey]];
+		if (delegate && [delegate respondsToSelector:@selector(request:failedWithError:)])
+			[delegate request:self failedWithError:theError];
 	}
 	else
 	{
@@ -98,7 +127,7 @@
 			[delegate request:self failedWithError:[NSError errorWithDomain:@"LFMFramework" code:0 userInfo:[NSDictionary dictionaryWithObject:@"An unknown error occurred." forKey:NSLocalizedDescriptionKey]]];
 	}
 	
-	[responseString release];
+	[theResponse release];
 	[connection release];
 	connection = nil;
 }

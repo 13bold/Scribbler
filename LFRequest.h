@@ -42,8 +42,7 @@ typedef enum _LFRequestType {
 	LFRequestGetToken = 5,
 	LFRequestGetSession = 6,
 	LFRequestGetMobileSession = 9,
-	LFRequestValidateSession = 7,
-	LFRequestScrobblerHandshake = 8
+	LFRequestValidateSession = 7
 } LFRequestType;
 
 // Forward declarations
@@ -103,9 +102,6 @@ typedef enum _LFRequestType {
 - (NSString *)clientVersion;
 - (NSString *)sessionKey;
 - (NSString *)sessionUser;
-- (NSString *)scrobbleSessionID;
-- (NSString *)scrobbleNPURL;
-- (NSString *)scrobbleSubmissionURL;
 
 - (void)requestSucceeded:(LFRequest *)theRequest;
 - (void)request:(LFRequest *)theRequest failedWithError:(NSError *)theError;
