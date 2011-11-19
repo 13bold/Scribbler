@@ -48,7 +48,7 @@
 	// get the URL root
 	static NSString *__LFWebServiceURL = nil;
 	if (!__LFWebServiceURL)
-		__LFWebServiceURL = [[NSBundle bundleForClass:[self class]] objectForInfoDictionaryKey:@"LFWebServiceURL"];
+		__LFWebServiceURL = [[[NSBundle bundleForClass:[self class]] objectForInfoDictionaryKey:@"LFWebServiceURL"] retain];
 	
 	NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
 							@"track.love", @"method",
