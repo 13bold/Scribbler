@@ -51,18 +51,19 @@
 		__LFWebServiceURL = [[[NSBundle bundleForClass:[self class]] objectForInfoDictionaryKey:@"LFWebServiceURL"] retain];
 	
 	NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
-							@"track.scrobble", @"method",
-                            [NSString stringWithFormat:@"%0.0f", [track startTime]], @"timestamp",
-							([track title] != nil) ? [track title] : @"", @"track",
-							([track artist] != nil) ? [track artist] : @"", @"artist",
-                            ([track album] != nil) ? [track album] : @"", @"album",
-                            ([track albumPosition] > 0) ? [NSString stringWithFormat:@"%u", [track albumPosition]] : @"", @"trackNumber",
-							([track mbID] != nil) ? [track mbID] : @"", @"mbid",
-                            [NSString stringWithFormat:@"%0.0f", [track duration]], @"duration",
-							[delegate APIKey], @"api_key",
-							[delegate sessionKey], @"sk",
-							nil];
-	
+                          @"track.scrobble", @"method",
+                          [NSString stringWithFormat:@"%0.0f", [track startTime]], @"timestamp",
+                          ([track title] != nil) ? [track title] : @"", @"track",
+                          ([track artist] != nil) ? [track artist] : @"", @"artist",
+                          ([track album] != nil) ? [track album] : @"", @"album",
+                          ([track albumPosition] > 0) ? [NSString stringWithFormat:@"%u", [track albumPosition]] : @"", @"trackNumber",
+                          ([track mbID] != nil) ? [track mbID] : @"", @"mbid",
+                          [track chosenByUser] ? @"1" : @"0", @"chosenByUser",
+                          [NSString stringWithFormat:@"%0.0f", [track duration]], @"duration",
+                          [delegate APIKey], @"api_key",
+                          [delegate sessionKey], @"sk",
+                          nil];
+  	
 	NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:__LFWebServiceURL]];
 	[theRequest setHTTPMethod:@"POST"];
 	[theRequest setHTTPBody:[[self queryStringWithParameters:params sign:YES] dataUsingEncoding:NSUTF8StringEncoding]];

@@ -44,8 +44,9 @@
 		[self setArtist:theArtist];
 		[self setDuration:theDuration];
 		
-		timeLog = [[NSMutableArray alloc] init];
+		timeLog       = [[NSMutableArray alloc] init];
 		albumPosition = 0;
+    chosenByUser  = YES;
 		
 		lastfm = [LFWebService sharedWebService];
 	}
@@ -76,6 +77,7 @@
 @synthesize artist;
 @synthesize album;
 @synthesize albumPosition;
+@synthesize chosenByUser;
 @synthesize duration;
 @synthesize mbID;
 @synthesize webService = lastfm;
