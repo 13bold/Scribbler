@@ -4,10 +4,6 @@ Scribbler is a Cocoa framework for Last.fm by {13bold}. Drawing on inspiration f
 
 Scribbler **IS NOT** backwards-compatible with `LFScrobbler`.
 
-A Note on Garbage Collection
-----------------------------
-For the sake of compatibility, Scribbler supports living inside an application with Garbage Collection enabled. However, it is designed most stringently using reference counting. I don't anticipate there being any problems with Scribbler in a Garbage Collected-environment; however, I have not been able to provide ample testing. If any GC-related issues should come up, please submit a bug report.
-
 Licensing
 ---------
 Scribbler is licensed under the MIT license, excerpted below.

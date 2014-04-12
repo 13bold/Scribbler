@@ -47,20 +47,14 @@
 }
 + (id)session
 {
-	return [[[self alloc] init] autorelease];
+	return [[self alloc] init];
 }
 + (id)sessionWithStartTime:(NSDate *)theTime
 {
-	return [[[self alloc] initWithStartTime:theTime] autorelease];
+	return [[self alloc] initWithStartTime:theTime];
 }
 
 #pragma mark Deallocator
-- (void)dealloc
-{
-	[startTime release];
-	[stopTime release];
-	[super dealloc];
-}
 
 #pragma mark Properties
 @synthesize startTime;

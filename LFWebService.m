@@ -59,19 +59,6 @@
 }
 
 #pragma mark Deallocator
-- (void)dealloc
-{
-	[APIKey release];
-	[sharedSecret release];
-	[clientID release];
-	[clientVersion release];
-	[sessionUser release];
-	[sessionKey release];
-	[currentTrack release];
-	[requestQueue release];
-	[queueTimer release];
-	[super dealloc];
-}
 
 #pragma mark Properties
 @synthesize delegate;
@@ -90,7 +77,6 @@
 {
 	if (pendingToken)
 	{
-		[pendingToken release];
 		pendingToken = nil;
 	}
 	
@@ -103,7 +89,6 @@
 {
 	if (pendingToken)
 	{
-		[pendingToken release];
 		pendingToken = nil;
 	}
 	
@@ -146,10 +131,9 @@
 	
 	if (currentTrack)
 	{
-		[currentTrack release];
 		currentTrack = nil;
 	}
-	currentTrack = [theTrack retain];
+	currentTrack = theTrack;
 	
 	if (!theTrack)
 		return nil;
@@ -180,7 +164,6 @@
 		
 		if (currentTrack)
 		{
-			[currentTrack release];
 			currentTrack = nil;
 		}
 		
@@ -227,7 +210,6 @@
 		if (queueTimer)
 		{
 			[queueTimer invalidate];
-			[queueTimer release];
 			queueTimer = nil;
 		}
 		
@@ -292,7 +274,6 @@
 	{
 		if (pendingToken)
 		{
-			[pendingToken release];
 			pendingToken = nil;
 		}
 		
@@ -313,7 +294,6 @@
 	{
 		if (pendingToken)
 		{
-			[pendingToken release];
 			pendingToken = nil;
 		}
 		
@@ -347,10 +327,9 @@
 		if (queueTimer)
 		{
 			[queueTimer invalidate];
-			[queueTimer release];
 			queueTimer = nil;
 		}
-		queueTimer = [[NSTimer scheduledTimerWithTimeInterval:150.0 target:self selector:@selector(dispatchTimerCalled:) userInfo:nil repeats:NO] retain];
+		queueTimer = [NSTimer scheduledTimerWithTimeInterval:150.0 target:self selector:@selector(dispatchTimerCalled:) userInfo:nil repeats:NO];
 	}
 }
 - (void)request:(LFRequest *)theRequest failedWithError:(NSError *)theError
@@ -365,7 +344,6 @@
 	
 	if ([theRequest failureCount] >= 5)	// this request failed 5 times
 	{
-		[[theRequest retain] autorelease];	// makes sure it's still valid for scope
 		[requestQueue removeObject:theRequest];
 	}
 	
@@ -592,10 +570,9 @@
 		if (queueTimer)
 		{
 			[queueTimer invalidate];
-			[queueTimer release];
 			queueTimer = nil;
 		}
-		queueTimer = [[NSTimer scheduledTimerWithTimeInterval:150.0 target:self selector:@selector(dispatchTimerCalled:) userInfo:nil repeats:NO] retain];
+		queueTimer = [NSTimer scheduledTimerWithTimeInterval:150.0 target:self selector:@selector(dispatchTimerCalled:) userInfo:nil repeats:NO];
 	}
 }
 

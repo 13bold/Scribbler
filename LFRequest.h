@@ -50,7 +50,7 @@ typedef enum _LFRequestType {
 @protocol LFRequestDelegate;
 
 @interface LFRequest : NSObject {
-	NSObject<LFRequestDelegate> *delegate;
+	NSObject<LFRequestDelegate> __weak *delegate;
 	LFTrack *track;
 	LFRequestType requestType;
 	
@@ -69,12 +69,12 @@ typedef enum _LFRequestType {
 + (id)requestWithTrack:(LFTrack *)theTrack;
 
 // Properties
-@property(assign) NSObject<LFRequestDelegate> *delegate;
-@property(retain) LFTrack *track;
+@property(weak) NSObject<LFRequestDelegate> *delegate;
+@property(strong) LFTrack *track;
 @property(assign,readonly) LFRequestType requestType;
 @property(copy,readonly) NSString *identifier;
-@property(retain,readonly) NSURLResponse *response;
-@property(retain,readonly) NSMutableData *responseData;
+@property(strong,readonly) NSURLResponse *response;
+@property(strong,readonly) NSMutableData *responseData;
 @property(assign,readonly) NSUInteger failureCount;
 
 // Dispatch methods

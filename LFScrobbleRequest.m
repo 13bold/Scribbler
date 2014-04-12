@@ -48,7 +48,7 @@
 	// get the URL root
 	static NSString *__LFWebServiceURL = nil;
 	if (!__LFWebServiceURL)
-		__LFWebServiceURL = [[[NSBundle bundleForClass:[self class]] objectForInfoDictionaryKey:@"LFWebServiceURL"] retain];
+		__LFWebServiceURL = [[NSBundle bundleForClass:[self class]] objectForInfoDictionaryKey:@"LFWebServiceURL"];
 	
 	NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
 							@"track.scrobble", @"method",
@@ -56,7 +56,7 @@
 							([track title] != nil) ? [track title] : @"", @"track",
 							([track artist] != nil) ? [track artist] : @"", @"artist",
                             ([track album] != nil) ? [track album] : @"", @"album",
-                            ([track albumPosition] > 0) ? [NSString stringWithFormat:@"%u", [track albumPosition]] : @"", @"trackNumber",
+                            ([track albumPosition] > 0) ? [NSString stringWithFormat:@"%lu", (unsigned long)[track albumPosition]] : @"", @"trackNumber",
 							([track mbID] != nil) ? [track mbID] : @"", @"mbid",
                             [NSString stringWithFormat:@"%0.0f", [track duration]], @"duration",
 							[delegate APIKey], @"api_key",
@@ -66,14 +66,12 @@
 	NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:__LFWebServiceURL]];
 	[theRequest setHTTPMethod:@"POST"];
 	[theRequest setHTTPBody:[[self queryStringWithParameters:params sign:YES] dataUsingEncoding:NSUTF8StringEncoding]];
-	[params release];
 	
 	if (connection)
 	{
-		[connection release];
 		connection = nil;
 	}
-	connection = [[NSURLConnection connectionWithRequest:theRequest delegate:self] retain];
+	connection = [NSURLConnection connectionWithRequest:theRequest delegate:self];
 }
 - (void)connectionDidFinishLoading:(NSURLConnection *)theConnection
 {
@@ -88,8 +86,8 @@
 	{
 		failureCount++;
 		
-		if (delegate && [delegate respondsToSelector:@selector(request:failedWithError:)])
-			[delegate request:self failedWithError:err];
+		if (self.delegate && [self.delegate respondsToSelector:@selector(request:failedWithError:)])
+			[self.delegate request:self failedWithError:err];
 		return;
 	}
 	
@@ -104,8 +102,8 @@
 	{
 		failureCount = 0;
 		
-		if (delegate && [delegate respondsToSelector:@selector(requestSucceeded:)])
-			[delegate requestSucceeded:self];
+		if (self.delegate && [self.delegate respondsToSelector:@selector(requestSucceeded:)])
+			[self.delegate requestSucceeded:self];
 	}
 	else if ([status isEqualToString:@"failed"])
 	{
@@ -128,8 +126,6 @@
 			[delegate request:self failedWithError:[NSError errorWithDomain:@"LFMFramework" code:0 userInfo:[NSDictionary dictionaryWithObject:@"An unknown error occurred." forKey:NSLocalizedDescriptionKey]]];
 	}
 	
-	[theResponse release];
-	[connection release];
 	connection = nil;
 }
 

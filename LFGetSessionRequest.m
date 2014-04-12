@@ -47,13 +47,6 @@
 	}
 	return self;
 }
-- (void)dealloc
-{
-	[token release];
-	[sessionUser release];
-	[sessionKey release];
-	[super dealloc];
-}
 - (void)dispatch
 {
 	NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
@@ -63,16 +56,14 @@
 							nil];
 	
 	NSURL *theURL = [self URLWithParameters:params sign:YES];
-	[params release];
 	
 	NSURLRequest *theRequest = [NSURLRequest requestWithURL:theURL];
 	
 	if (connection)
 	{
-		[connection release];
 		connection = nil;
 	}
-	connection = [[NSURLConnection connectionWithRequest:theRequest delegate:self] retain];
+	connection = [NSURLConnection connectionWithRequest:theRequest delegate:self];
 }
 - (void)connectionDidFinishLoading:(NSURLConnection *)theConnection
 {
@@ -111,14 +102,12 @@
 		
 		if (sessionUser)
 		{
-			[sessionUser release];
 			sessionUser = nil;
 		}
 		sessionUser = [[[[session elementsForName:@"name"] objectAtIndex:0] stringValue] copy];
 		
 		if (sessionKey)
 		{
-			[sessionKey release];
 			sessionKey = nil;
 		}
 		sessionKey = [[[[session elementsForName:@"key"] objectAtIndex:0] stringValue] copy];
@@ -147,8 +136,6 @@
 			[delegate request:self failedWithError:[NSError errorWithDomain:@"LFMFramework" code:0 userInfo:[NSDictionary dictionaryWithObject:@"An unknown error occurred." forKey:NSLocalizedDescriptionKey]]];
 	}
 	
-	[theResponse release];
-	[connection release];
 	connection = nil;
 }
 

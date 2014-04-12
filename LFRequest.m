@@ -54,23 +54,14 @@
 }
 + (id)request
 {
-	return [[[self alloc] init] autorelease];
+	return [[self alloc] init];
 }
 + (id)requestWithTrack:(LFTrack *)theTrack
 {
-	return [[[self alloc] initWithTrack:theTrack] autorelease];
+	return [[self alloc] initWithTrack:theTrack];
 }
 
 #pragma mark Deallocator
-- (void)dealloc
-{
-	[track release];
-	[identifier release];
-	[connection release];
-	[response release];
-	[responseData release];
-	[super dealloc];
-}
 
 #pragma mark Properties
 @synthesize delegate;
@@ -118,7 +109,6 @@
 	}
 	
 	[output appendString:[parts componentsJoinedByString:@"&"]];
-	[parts release];
 	
 	// now sign if necessary
 	if (shouldSign)
@@ -140,7 +130,6 @@
 	[paramList appendString:[delegate sharedSecret]];
 	
 	NSString *output = [paramList MD5Hash];
-	[paramList release];
 	return output;
 }
 
@@ -152,10 +141,9 @@
 	
 	if (response)
 	{
-		[response release];
 		response = nil;
 	}
-	response = [theResponse retain];
+	response = theResponse;
 }
 - (void)connection:(NSURLConnection *)theConnection didReceiveData:(NSData *)data
 {
@@ -170,7 +158,6 @@
 	if (delegate && [delegate respondsToSelector:@selector(requestSucceeded:)])
 		[delegate requestSucceeded:self];
 	
-	[connection release];
 	connection = nil;
 }
 - (void)connection:(NSURLConnection *)theConnection didFailWithError:(NSError *)error
@@ -181,7 +168,6 @@
 	if (delegate && [delegate respondsToSelector:@selector(request:failedWithError:)])
 		[delegate request:self failedWithError:error];
 	
-	[connection release];
 	connection = nil;
 }
 

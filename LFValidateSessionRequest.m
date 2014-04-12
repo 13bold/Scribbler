@@ -51,16 +51,14 @@
 							nil];
 	
 	NSURL *theURL = [self URLWithParameters:params sign:YES];
-	[params release];
 	
 	NSURLRequest *theRequest = [NSURLRequest requestWithURL:theURL];
 	
 	if (connection)
 	{
-		[connection release];
 		connection = nil;
 	}
-	connection = [[NSURLConnection connectionWithRequest:theRequest delegate:self] retain];
+	connection = [NSURLConnection connectionWithRequest:theRequest delegate:self];
 }
 - (void)connectionDidFinishLoading:(NSURLConnection *)theConnection
 {
@@ -131,8 +129,6 @@
 			[delegate request:self failedWithError:[NSError errorWithDomain:@"LFMFramework" code:0 userInfo:[NSDictionary dictionaryWithObject:@"An unknown error occurred." forKey:NSLocalizedDescriptionKey]]];
 	}
 	
-	[theResponse release];
-	[connection release];
 	connection = nil;
 }
 

@@ -39,7 +39,7 @@ typedef enum _LFConnectionState {
 @class LFRequest;
 
 @interface LFWebService : NSObject {
-	id delegate;
+	id __weak delegate;
 	NSString *APIKey;
 	NSString *sharedSecret;
 	NSString *clientID;
@@ -64,7 +64,7 @@ typedef enum _LFConnectionState {
 + (id)sharedWebService;
 
 // Properties
-@property(assign) id delegate;
+@property(weak) id delegate;
 @property(assign,readonly) LFConnectionState state;
 @property(copy) NSString *APIKey;
 @property(copy) NSString *sharedSecret;
@@ -73,7 +73,7 @@ typedef enum _LFConnectionState {
 @property(copy) NSString *sessionKey;
 @property(copy) NSString *sessionUser;
 @property(assign) BOOL autoScrobble;
-@property(retain,readonly) LFTrack *currentTrack;
+@property(strong,readonly) LFTrack *currentTrack;
 
 // Session methods (new sessions)
 - (NSString *)establishNewSession;
