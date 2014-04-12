@@ -53,23 +53,14 @@
 }
 + (id)track
 {
-	return [[[self alloc] init] autorelease];
+	return [[self alloc] init];
 }
 + (id)trackWithTitle:(NSString *)theTitle artist:(NSString *)theArtist duration:(CGFloat)theDuration
 {
-	return [[[self alloc] initWithTitle:theTitle artist:theArtist duration:theDuration] autorelease];
+	return [[self alloc] initWithTitle:theTitle artist:theArtist duration:theDuration];
 }
 
 #pragma mark Deallocator
-- (void)dealloc
-{
-	[title release];
-	[artist release];
-	[album release];
-	[mbID release];
-	[timeLog release];
-	[super dealloc];
-}
 
 #pragma mark Properties
 @synthesize title;

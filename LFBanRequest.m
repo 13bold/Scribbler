@@ -48,7 +48,7 @@
 	// get the URL root
 	static NSString *__LFWebServiceURL = nil;
 	if (!__LFWebServiceURL)
-		__LFWebServiceURL = [[[NSBundle bundleForClass:[self class]] objectForInfoDictionaryKey:@"LFWebServiceURL"] retain];
+		__LFWebServiceURL = [[NSBundle bundleForClass:[self class]] objectForInfoDictionaryKey:@"LFWebServiceURL"];
 	
 	NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
 							@"track.ban", @"method",
@@ -61,14 +61,12 @@
 	NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:__LFWebServiceURL]];
 	[theRequest setHTTPMethod:@"POST"];
 	[theRequest setHTTPBody:[[self queryStringWithParameters:params sign:YES] dataUsingEncoding:NSUTF8StringEncoding]];
-	[params release];
 	
 	if (connection)
 	{
-		[connection release];
 		connection = nil;
 	}
-	connection = [[NSURLConnection connectionWithRequest:theRequest delegate:self] retain];
+	connection = [NSURLConnection connectionWithRequest:theRequest delegate:self];
 }
 - (void)connectionDidFinishLoading:(NSURLConnection *)theConnection
 {
@@ -123,8 +121,6 @@
 			[delegate request:self failedWithError:[NSError errorWithDomain:@"LFMFramework" code:0 userInfo:[NSDictionary dictionaryWithObject:@"An unknown error occurred." forKey:NSLocalizedDescriptionKey]]];
 	}
 	
-	[theResponse release];
-	[connection release];
 	connection = nil;
 }
 

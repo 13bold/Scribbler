@@ -52,10 +52,10 @@ NSString *LFHexStringFromBytes(void *bytes, NSUInteger len)
 + (NSString *)stringWithNewUUID
 {
     CFUUIDRef uuid = CFUUIDCreate(nil);
-    NSString *output = (NSString *)CFUUIDCreateString(nil, uuid);
+    NSString *output = (NSString *)CFBridgingRelease(CFUUIDCreateString(nil, uuid));
     CFRelease(uuid);
 	
-    return [output autorelease];
+    return output;
 }
 
 @end

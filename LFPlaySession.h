@@ -38,8 +38,8 @@
 + (id)sessionWithStartTime:(NSDate *)theTime;
 
 // Properties
-@property(retain) NSDate *startTime;
-@property(retain) NSDate *stopTime;
+@property(strong) NSDate *startTime;
+@property(strong) NSDate *stopTime;
 
 // Control methods
 - (void)start;
